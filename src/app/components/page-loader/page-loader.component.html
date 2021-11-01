@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md border rounded">
+        <img class="imgloader" [src]="url"/>
+      </div>
+      <div class="col-md border rounded">
+        <textarea class="inputtextarea" name="textarea" id="textarea" [(ngModel)]="text"></textarea>
+      </div>
+      <div class="col-md border rounded">
+        <table class="table">
+          <tbody>
+            <tr *ngFor="let item of Pages">
+              <td scope="row" >Page {{item.id}}</td>
+              <td scope="row">
+                <input class="form-check-input" type="checkbox" (change)="used_pages($event)" [value]="item.id"[checked]="item.checked">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+      <label class="btn btn-outline-primary" style="margin-right:1%"><input  type="file" multiple="multiple" accept="image/*,.txt,.zip" (change)="selectfile($event)">Choose file</label>
+      <button class="btn btn-outline-primary" (click)="uploadPage()"><fa-icon [icon]="faTimes"></fa-icon> Upload file</button>
+      </div>
+  </div>
+  
