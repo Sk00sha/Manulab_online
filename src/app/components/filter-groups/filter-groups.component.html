@@ -1,0 +1,9 @@
+<div *ngFor="let filter of filter_groups">
+    <input type="radio" 
+    name="dayOfTheWeek"
+    value="{{filter}}"
+    (change)="radioChangeHandler($event)">
+    <span>{{filter}}</span>
+</div>
+
+

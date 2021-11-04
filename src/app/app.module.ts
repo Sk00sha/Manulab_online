@@ -23,6 +23,7 @@ import { initializeApp } from "firebase/app";
 import {AngularFireModule} from '@angular/fire/compat'
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from 'src/environments/environment';
+import { FilterGroupsComponent } from './components/filter-groups/filter-groups.component';
 
 
 
@@ -36,6 +37,7 @@ import { environment } from 'src/environments/environment';
     UploadComponent,
     NavigationComponent,
     PageLoaderComponent,
+    FilterGroupsComponent,
 
   ],
   imports: [
