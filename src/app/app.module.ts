@@ -24,6 +24,7 @@ import {AngularFireModule} from '@angular/fire/compat'
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from 'src/environments/environment';
 import { FilterGroupsComponent } from './components/filter-groups/filter-groups.component';
+import { PageViewerComponent } from './components/page-viewer/page-viewer.component';
 
 
 
@@ -38,6 +39,7 @@ import { FilterGroupsComponent } from './components/filter-groups/filter-groups.
     NavigationComponent,
     PageLoaderComponent,
     FilterGroupsComponent,
+    PageViewerComponent,
 
   ],
   imports: [

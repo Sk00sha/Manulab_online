@@ -1,9 +1,13 @@
-<div *ngFor="let filter of filter_groups">
-    <input type="radio" 
+<div class="form-check d-flex border-bottom mt-1 mb-1">
+<div class="custommargin" *ngFor="let filter of filter_groups">
+    <input
+    class="form-check-input"
+    type="radio" 
     name="dayOfTheWeek"
-    value="{{filter}}"
+    value="{{filter.id}}"
     (change)="radioChangeHandler($event)">
-    <span>{{filter}}</span>
+    <span>{{filter.value}}</span>
+    <fa-icon class="paddingicon" [icon]="filter.icon"></fa-icon>
 </div>
-
+</div>
 

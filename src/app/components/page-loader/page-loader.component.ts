@@ -3,11 +3,12 @@ import { ɵangular_packages_platform_browser_dynamic_platform_browser_dynamic_a 
 import { DataloaderService } from 'src/app/services/dataloader.service';
 import { Pages } from 'src/app/models/pages';
 import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
-import * as JSZip from 'jszip';
+
+
 import { HttpClient } from '@angular/common/http';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import {Metadata} from 'src/app/models/page_metadata'
-import { file } from 'jszip';
+
 
 @Component({
   selector: 'app-page-loader',
@@ -20,7 +21,7 @@ export class PageLoaderComponent implements OnInit {
     private af:AngularFireStorage
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {this.Pages=this.dataService.get_pages()}
   faTimes = faCloudUploadAlt;
   url: string = 'assets/images/placeholder.jpg';
   text: string = '';
@@ -62,12 +63,21 @@ export class PageLoaderComponent implements OnInit {
       this.filepath_data=[];
     }
     else{
+      
       this.id_generator++;
       this.Pages.push({ id: this.id_generator,
         img: this.url,
         page_text: this.text,
         name: this.text_name,
         checked: false});
+        for(let i=0;i<this.filepath_data.length;i++){
+          if(this.Pages.find(e => e.name === this.filepath_data[i].name)){
+            console.log("Uploading");
+            this.af.upload(this.filepath_data[i].blob.name,this.filepath_data[i].blob);
+            
+          }
+        }
+        this.Page_pictures=[];
         this.url = 'assets/images/placeholder.jpg';
         this.text = '';
     }
@@ -107,7 +117,7 @@ export class PageLoaderComponent implements OnInit {
           };
       }
      // this.reset_vars();
-      if (input_type[1] == 'png' || input_type[1] == 'jpeg') {
+      if (input_type[1] == 'png' || input_type[1] == 'jpeg'){
         reader.readAsDataURL(e.target.files[i]);
         this.filepath_data.push({name:e.target.files[i].name.split(".")[0],blob:e.target.files[i]});
         reader.onload = (event: any) => {
@@ -139,6 +149,13 @@ export class PageLoaderComponent implements OnInit {
       }
       return item;
     });
-    this.dataService.add_page(this.Pages);
+    var temp:Array<Pages>=[]
+    if (this.Pages.filter(item => item.checked === true).length > 0) {
+      temp=this.Pages.filter(item=>item.checked===true)
+      console.log(temp)
+    }
+    
+    
+    this.dataService.add_page(temp);
   }
 }

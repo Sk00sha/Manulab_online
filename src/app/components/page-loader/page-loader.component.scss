@@ -18,6 +18,8 @@ img {
 .col-md{
   height: 500px;
   margin: 1px;
+  background-color: white;
+
 }
 .inputtextarea{
   height: 100%;
@@ -41,6 +43,7 @@ input[type="checkbox"] {
 padding: 5px;
 margin-top: 1%;
 margin-bottom: 1%;
+background-color: rgb(218, 214, 236);
 }
 input[type="file"] {
   display: none;

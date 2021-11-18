@@ -1,25 +1,36 @@
 <app-navigation></app-navigation>
-<app-filter-groups></app-filter-groups>
-<div cdkDropListGroup>
-    <div class="example-container">
-      <h2>To do</h2>
+<app-filter-groups (messageEvent)="receiveData($event)"></app-filter-groups>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 border rounded">
+        <div cdkDropListGroup>
+          <div class="example-container">
+            <h2>Available filters</h2>
+        
+            <div
+              cdkDropList
+              [cdkDropListData]="filters"
+              class="example-list"
+              (cdkDropListDropped)="drop($event)">
+              <div class="example-box" *ngFor="let item of filters" cdkDrag>{{item}}<button (click)="add($event)">Add</button></div>
+            </div>
+          </div>
+          <div class="example-container">
+            <h2>Applied filters</h2>
+            <div
+              cdkDropList
+              [cdkDropListData]="applied"
+              class="example-list"
+              (cdkDropListDropped)="drop($event)">
+              <div class="example-box" *ngFor="let item of applied" cdkDrag>{{item}}<div><button class="standoff">Edit</button><button (click)="delete($event)">Delete</button></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 border rounded">
+        <app-page-viewer></app-page-viewer>
+      </div>
+    </div>
+
   
-      <div
-        cdkDropList
-        [cdkDropListData]="todo"
-        class="example-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
-      </div>
-    </div>
-    <div class="example-container">
-      <h2>Done</h2>
-      <div
-        cdkDropList
-        [cdkDropListData]="done"
-        class="example-list"
-        (cdkDropListDropped)="drop($event)">
-        <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
-      </div>
-    </div>
-  </div>
+  

@@ -1,4 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
-@import "~@angular/material/prebuilt-themes/indigo-pink.css"
-
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "swiper/css";
+@import "swiper/css/pagination";
+@import "swiper/css/navigation";
+body{
+    background: url('assets/images/flat-mountains.svg') no-repeat;
+    background-size: cover;
+}

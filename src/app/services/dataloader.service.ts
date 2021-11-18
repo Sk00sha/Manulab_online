@@ -14,5 +14,8 @@ add_page(array_of_pages:Array<Pages>){
 this.pages=array_of_pages;
 console.log(this.pages);
 }
+get_pages():Array<Pages>{
+  return this.pages;
+}
 
 }
