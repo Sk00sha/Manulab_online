@@ -47,7 +47,7 @@ export class PageLoaderComponent implements OnInit {
                   img: this.Page_pictures[j].img,
                   page_text: this.Page_texts[i].page_text,
                   name: this.Page_texts[i].name,
-                  checked: false});
+                  checked: true});
             }
         }
       }
@@ -69,7 +69,7 @@ export class PageLoaderComponent implements OnInit {
         img: this.url,
         page_text: this.text,
         name: this.text_name,
-        checked: false});
+        checked: true});
         for(let i=0;i<this.filepath_data.length;i++){
           if(this.Pages.find(e => e.name === this.filepath_data[i].name)){
             console.log("Uploading");
@@ -101,6 +101,7 @@ export class PageLoaderComponent implements OnInit {
       let input_type: Array<string> = e.target.files[i].type.split('/');
       let name_split: Array<string>=[];
       if (input_type[1] == 'plain') {
+        console.log(e.target.files.length);
           reader.readAsText(e.target.files[i]);
           this.filepath_data.push({name:e.target.files[i].name.split(".")[0],blob:e.target.files[i]});
           reader.onload = (event: any) => {
@@ -112,7 +113,7 @@ export class PageLoaderComponent implements OnInit {
             img: 'assets/images/placeholder.jpg',
             page_text: this.text,
             name: this.text_name,
-            checked: false
+            checked: true
           });
           };
       }
@@ -129,7 +130,7 @@ export class PageLoaderComponent implements OnInit {
           img: this.url,
           page_text: "",
           name: this.img_name,
-          checked: false,
+          checked: true,
        });
       };
       console.log(this.filepath_data);
@@ -137,6 +138,16 @@ export class PageLoaderComponent implements OnInit {
       }
       }  
     }
+
+  check_all($event:any){
+    var id = $event.target.value;
+    var checked = $event.target.checked;
+    this.Pages.map((item)=>{
+      item.checked = checked;
+      return item;
+    });
+    
+  }
 
   
   used_pages($event: any) {
@@ -152,9 +163,7 @@ export class PageLoaderComponent implements OnInit {
     var temp:Array<Pages>=[]
     if (this.Pages.filter(item => item.checked === true).length > 0) {
       temp=this.Pages.filter(item=>item.checked===true)
-      console.log(temp)
     }
-    
     
     this.dataService.add_page(temp);
   }

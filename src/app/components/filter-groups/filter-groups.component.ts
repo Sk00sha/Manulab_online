@@ -1,8 +1,12 @@
-import { Component, OnInit,Output,EventEmitter } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter, Input } from '@angular/core';
 import { DataExchangeService } from 'src/app/services/data-exchange.service';
+import { DataloaderService } from 'src/app/services/dataloader.service';
 import {faCalculator} from '@fortawesome/free-solid-svg-icons';
 import {faTextWidth}from '@fortawesome/free-solid-svg-icons';
 import {faChartArea}from '@fortawesome/free-solid-svg-icons';
+import { HttpClient } from '@angular/common/http';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Filter_JSON } from 'src/app/models/filter'; 
 
 @Component({
   selector: 'app-filter-groups',
@@ -14,16 +18,35 @@ export class FilterGroupsComponent implements OnInit {
   faTextWidth=faTextWidth;
   faChartarea=faChartArea;
 
-  constructor(private exchange:DataExchangeService) { }
+  constructor(private exchange:DataExchangeService,private loader:DataloaderService,private sanitizer: DomSanitizer) { }
   local_filters:string[]=[];
   @Output() messageEvent=new EventEmitter<string[]>()
+  @Output() emit_applied_filter=new EventEmitter<string[]>()
+  @Input() get_applied:string[];
+
   filter_groups=[
     {value:'Statistics',id:1,icon:this.faCalculator},
     {value:'Text operations',id:2,icon:this.faTextWidth},
     {value:'Cryptanalysis',id:3,icon:this.faChartarea}
   ]
   selectedDay:number;
+  filter_data:string="";
+  downloadJsonHref:SafeUrl;
+  filters_export:Filter_JSON[]=[];
   ngOnInit(): void {
+  }
+  applied_filters(element:string){
+    this.filters_export.push({filter:element});
+    
+  }
+
+  download_filter():void{
+  //appending to export applied filters
+  this.get_applied.forEach(element=>this.applied_filters(element));
+    var theJSON = JSON.stringify(this.filters_export);
+    var uri = this.sanitizer.bypassSecurityTrustUrl("data:text/json;charset=UTF-8," + encodeURIComponent(theJSON));
+    //in HTML we reffer to this uri to get our JSON
+    this.downloadJsonHref=uri;
   }
   radioChangeHandler (event: any) {
     //update the ui
@@ -31,6 +54,40 @@ export class FilterGroupsComponent implements OnInit {
     this.exchange.exchangeList(this.selectedDay);
     this.local_filters=this.exchange.available_filters;
     this.messageEvent.emit(this.local_filters);
+  }
+  searcheChangeHandler(event:any){
+    //this function handles searchbar
+
+    this.filter_data = event.target.value;
+    var data=this.exchange.filter_from_data(this.filter_data);
+    //emiting from child=>parent
+    this.messageEvent.emit(data);
+    
+  }
+  
+  selectfile(event:any) {
+    const f = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = ((theFile) => {
+      return (e:any) => {
+        try {
+          const json = JSON.parse(e.target.result);
+          const resSTR = JSON.stringify(json);
+          var cUser = JSON.parse(resSTR);
+          var return_array:string[]=[];
+          console.log('... uuid of cUser: ', cUser);
+          cUser.forEach(function(e:any){
+            return_array.push(e.filter);
+          })
+          this.emit_applied_filter.emit(return_array)
+         
+        } catch (ex) {
+          alert('exception when trying to parse json = ' + ex);
+        }
+      };
+    })(f);
+    reader.readAsText(f);
   }
 
 }

@@ -24,9 +24,20 @@
   align-items: center;
 }
 
-.swiper-slide img {
-  display: block;
-  width: 100%;
+.left {
+  width: 50%;
   height: 100%;
+float: left;
+}
+.left img{
+  width: 100%;
+  height: auto;
   object-fit: cover;
+}
+.right {
+  width: 50%;
+  height: 100%;
+  float: right;
+  object-fit: cover;
+
 }

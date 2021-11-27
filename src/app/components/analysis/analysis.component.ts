@@ -27,12 +27,17 @@ export class AnalysisComponent implements OnInit {
     
 
   applied:string[] = [];
+
+  receive_applied_filterData($event:any){
+    this.applied=$event;
+    console.log(this.applied)
+    }
+
   add(event: any){
       this.applied.push(event.path[1].textContent.replace('Add',''))
   }
-  delete(event: any){
-    console.log(event.currentIndex)
-    console.log(event.path[3]);
+  delete(event: any,i:number){
+    this.applied.splice(i,1)
     
 }
   drop(event: CdkDragDrop<string[]>) {

@@ -7,8 +7,14 @@ export class DataExchangeService {
 
   constructor() { }
   available_filters:string[]=[];
+  all_filters:string[]=["Remove accents","Frequency of text elements",'Index of coincidence','Shannons entrophy'
+  ,'Pattern search','Adjacent contacts','Text element distances',"Anagram detection",'Vowel detection','Language guess']
 
-  exchangeList(name_filter_group:number):void{
+    filter_from_data(string_search:string):string[]{
+      const matches = this.all_filters.filter(s => s.includes(string_search));
+      return matches;
+    }
+    exchangeList(name_filter_group:number):void{
     if(name_filter_group==1){
       console.log("filter one inside");
        this.available_filters=["Remove accents"];

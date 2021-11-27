@@ -1,5 +1,5 @@
 <swiper
-    [slidesPerView]="2"
+    [slidesPerView]="1"
     [spaceBetween]="30"
     [navigation]="true"
     [pagination]="{
@@ -7,7 +7,7 @@
     }"
     class="mySwiper"
   >
-    <ng-template *ngFor="let page of pages" swiperSlide><div class="swiper-slide"><img [src]="page.img" alt="page.page_text"></div></ng-template>
-    <ng-template *ngFor="let page of pages" swiperSlide><div class="swiper-slide"><p>{{page.page_text}}</p></div></ng-template>
+    <ng-template *ngFor="let page of pages" swiperSlide><div class="swiper-slide"><div class="left"><img [src]="page.img" alt="page.page_text"></div><div class="right"><p>{{page.page_text}}</p></div></div></ng-template>
+    
     
   </swiper>

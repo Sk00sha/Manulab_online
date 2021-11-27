@@ -1,5 +1,5 @@
 <app-navigation></app-navigation>
-<app-filter-groups (messageEvent)="receiveData($event)"></app-filter-groups>
+<app-filter-groups (messageEvent)="receiveData($event)" (emit_applied_filter)="receive_applied_filterData($event)" [get_applied]="applied"></app-filter-groups>
   <div class="container">
     <div class="row">
       <div class="col-md-6 border rounded">
@@ -22,12 +22,12 @@
               [cdkDropListData]="applied"
               class="example-list"
               (cdkDropListDropped)="drop($event)">
-              <div class="example-box" *ngFor="let item of applied" cdkDrag>{{item}}<div><button class="standoff">Edit</button><button (click)="delete($event)">Delete</button></div></div>
+              <div class="example-box" *ngFor="let item of applied ; let i = index" cdkDrag>{{item}}<div><button class="standoff">Edit</button><button (click)="delete($event,i)">Delete</button></div></div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-5 border rounded">
+      <div class="col-md-5">
         <app-page-viewer></app-page-viewer>
       </div>
     </div>

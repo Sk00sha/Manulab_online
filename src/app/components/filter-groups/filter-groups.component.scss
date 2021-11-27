@@ -1,8 +1,36 @@
 .custommargin{
-    margin-right: 2%;
+
+    padding-bottom: 1%;
+    padding-top: 1%;
+    padding-right: 10%;
+}
+.custommargin2{
     padding-bottom: 1%;
     padding-top: 1%;
 }
 .paddingicon{
     padding: 2;
 }
+.btn.btn-outline-primary{
+    padding: 5px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    background-color: rgb(218, 214, 236);
+    width: 200px;
+    height: 40px;
+    }
+    .btn.btn-outline-success{
+        padding: 5px;
+        margin-top: 1%;
+        margin-bottom: 1%;
+        background-color: rgb(218, 214, 236);
+        width: 200px;
+        height: 40px;
+        }
+    input[type="file"] {
+      display: none;
+    }
+    input[type="text"] {
+        background-color: rgb(218, 214, 236);
+
+      }
