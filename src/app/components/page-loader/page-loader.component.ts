@@ -40,17 +40,22 @@ export class PageLoaderComponent implements OnInit {
     if (this.text) {
       if(this.bulk_upload){
       for(let i=0;i<this.Page_texts.length;i++){
-        for(let j=0;j<this.Page_pictures.length;j++){
-            if(this.Page_pictures[j].name==this.Page_texts[i].name){
               this.id_generator++;
-                this.Pages.push({ id: this.id_generator,
-                  img: this.Page_pictures[j].img,
+                this.Pages.push({ 
+                  id: this.id_generator,
+                  img: this.url,
                   page_text: this.Page_texts[i].page_text,
                   name: this.Page_texts[i].name,
-                  checked: true});
-            }
-        }
+                  checked: true});   
       }
+      for(let i=0;i<this.Page_pictures.length;i++){
+        for(let i=0;i<this.Pages.length;i++){
+          if(this.Page_pictures[i].name==this.Pages[i].name){
+            this.Pages[i].img=this.Page_pictures[i].img;
+          }
+          }
+       
+    }
       for(let i=0;i<this.filepath_data.length;i++){
         if(this.Pages.find(e => e.name === this.filepath_data[i].name)){
           console.log("Uploading");

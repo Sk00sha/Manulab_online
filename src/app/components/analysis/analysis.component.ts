@@ -4,6 +4,15 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 import { DataExchangeService } from 'src/app/services/data-exchange.service';
 import { DataloaderService } from 'src/app/services/dataloader.service';
 import { Pages } from 'src/app/models/pages';
+import { lower_case } from 'src/app/filters/text operations/lower_case';
+import { remove_accents } from 'src/app/filters/text operations/remove_accents';
+import { countNGram } from 'src/app/filters/Statistics/helpers';
+import { getAbsoluteNGrams } from 'src/app/filters/Statistics/helpers';
+import { getRelativeNgrams } from 'src/app/filters/Statistics/helpers';
+import { frequency_of_text_elements } from 'src/app/filters/Statistics/frequency_of_text_elements';
+import { shannons_entrophy } from 'src/app/filters/Statistics/shannons_entrophy';
+import { index_of_coincidence } from 'src/app/filters/Statistics/index_of_coincidence';
+
 
 @Component({
   selector: 'app-analysis',
@@ -15,7 +24,10 @@ export class AnalysisComponent implements OnInit {
   constructor(private exchange:DataExchangeService,private data_load:DataloaderService) { }
   ngOnInit(): void {
     this.pages=this.data_load.get_pages();
+    
+  
   }
+  text:string="Mám sa fajn ďakujem ti merciiiiiiiii vňať sľatina"
   filters:string[] = [];
   pages:Array<Pages>=[];
   receiveData($event:any){
@@ -23,9 +35,31 @@ export class AnalysisComponent implements OnInit {
     console.log(this.pages)
     }
 
+make_analysis(){
+  let text = new remove_accents();
+  var text2=text.activate(this.text,true);
+  //console.log(text2);
+  var pages:Pages[]=[{  id: 1,
+    img: "string",
+    page_text: "what a wonderful world",
+    name:"string",
+    checked:true},{  id: 2,
+      img: "string2",
+      page_text: "string",
+      name:"string",
+      checked:true}]
+
+  var ngrams= new frequency_of_text_elements();
+  console.log(ngrams.activate(pages,true,"",1));
+  var entrophy=new shannons_entrophy();
+  //pages,relative,delimiter,n
+  console.log(entrophy.activate(pages,true,"",1));
+  var ioc=new index_of_coincidence();
+  //pages,approx,delimiter,n
+  console.log(ioc.activate(pages,true,"",1));
+}
 
     
-
   applied:string[] = [];
 
   receive_applied_filterData($event:any){
