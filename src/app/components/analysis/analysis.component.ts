@@ -14,7 +14,7 @@ import { shannons_entrophy } from 'src/app/filters/Statistics/shannons_entrophy'
 import { index_of_coincidence } from 'src/app/filters/Statistics/index_of_coincidence';
 import { pattern_search } from 'src/app/filters/Statistics/pattern_search';
 import { findPosition } from 'src/app/filters/Statistics/helpers';
-
+import { CountContacts } from 'src/app/filters/Statistics/helpers';
 
 @Component({
   selector: 'app-analysis',
@@ -61,7 +61,7 @@ make_analysis(){
   console.log(ioc.activate(pages,true,"",1));
   var patt_search= new pattern_search();
   console.log(patt_search.activate(pages,"strings",""));
-  
+  console.log(CountContacts("Hi my name is Slim Shady",""));
   
 }
 

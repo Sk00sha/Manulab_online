@@ -118,4 +118,42 @@ export function findPosition(where:string, pattern:string):number[]{
     }
     return indices;
 }
+function ord(str:string){return str.charCodeAt(0);}
+
+export function CountContacts(page:string,delimiter:string){
+        var n=2;
+        var ngrams:any={};
+        if(delimiter == ""){
+            var pieces_all = page.split("");
+        } else {
+            var pieces_all = page.split(delimiter);
+        }
+        for(let i=0;i<pieces_all.length-n-1;i++){
+            var piece=pieces_all[i]+pieces_all[i+1];
+            if(ord(pieces_all[i])>ord(pieces_all[i+1])){
+                piece=piece.split("").reverse().join("");
+            }
+            if(ngrams.hasOwnProperty(piece)){
+                ngrams[piece]+=1;
+            }
+            else{
+                ngrams[piece]=1;
+            }
+        }
+        var piece=pieces_all[n-1]+pieces_all[0]; // connect last and first
+        if(ord(pieces_all[n-1])>ord(pieces_all[0])){
+            piece=piece.split("").reverse().join("");
+        }
+        if(ngrams.hasOwnProperty(piece)){
+            ngrams[piece]+=1;
+        }
+        else{
+            ngrams[piece]=1;
+        }
+
+        return ngrams;
+       
+        //TODO THIS-----------------------------------
+}
+
 
