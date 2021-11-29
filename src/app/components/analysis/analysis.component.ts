@@ -12,6 +12,8 @@ import { getRelativeNgrams } from 'src/app/filters/Statistics/helpers';
 import { frequency_of_text_elements } from 'src/app/filters/Statistics/frequency_of_text_elements';
 import { shannons_entrophy } from 'src/app/filters/Statistics/shannons_entrophy';
 import { index_of_coincidence } from 'src/app/filters/Statistics/index_of_coincidence';
+import { pattern_search } from 'src/app/filters/Statistics/pattern_search';
+import { findPosition } from 'src/app/filters/Statistics/helpers';
 
 
 @Component({
@@ -41,7 +43,7 @@ make_analysis(){
   //console.log(text2);
   var pages:Pages[]=[{  id: 1,
     img: "string",
-    page_text: "what a wonderful world",
+    page_text: "strings are so simple",
     name:"string",
     checked:true},{  id: 2,
       img: "string2",
@@ -57,6 +59,10 @@ make_analysis(){
   var ioc=new index_of_coincidence();
   //pages,approx,delimiter,n
   console.log(ioc.activate(pages,true,"",1));
+  var patt_search= new pattern_search();
+  console.log(patt_search.activate(pages,"strings",""));
+  
+  
 }
 
     

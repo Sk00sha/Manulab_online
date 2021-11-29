@@ -7,7 +7,7 @@ export function countNGram(text:string,delimiter:string,n:number){
     } else {
         var pieces_all = text.split(delimiter);
     }
-    //$sum = 0;
+ 
     for (let i = 0; i < pieces_all.length - (n-1); i++) {
         let piece:string = "";
         for(let j=0; j < n; j++){
@@ -19,7 +19,7 @@ export function countNGram(text:string,delimiter:string,n:number){
         else{
             ngrams[piece]=1;
         }
-        //$sum++;
+        
     }
 
     
@@ -105,3 +105,17 @@ export function indexOfCoincidenceApprox(normalize:boolean,pages:Pages[],delimit
     })
     return res;
 }
+
+export function findPosition(where:string, pattern:string):number[]{
+    var seachLen = pattern.length;
+    if (seachLen == 0) {
+        return [];
+    }
+    var startIndex = 0, index, indices = [];
+    while ((index = where.indexOf(pattern, startIndex)) > -1) {
+        indices.push(index);
+        startIndex = index + seachLen;
+    }
+    return indices;
+}
+
