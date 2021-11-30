@@ -17,6 +17,7 @@ import { findPosition } from 'src/app/filters/Statistics/helpers';
 import { CountContacts } from 'src/app/filters/Statistics/helpers';
 import { AdjacentContacts } from 'src/app/filters/Statistics/adjacent_contacts';
 import { findDistances } from 'src/app/filters/Statistics/helpers';
+import { LetterDistances } from 'src/app/filters/Statistics/letter_distances';
 
 @Component({
   selector: 'app-analysis',
@@ -28,30 +29,33 @@ export class AnalysisComponent implements OnInit {
   constructor(private exchange:DataExchangeService,private data_load:DataloaderService) { }
   ngOnInit(): void {
     this.pages=this.data_load.get_pages();
-    
-  
   }
+ 
   text:string="Mám sa fajn ďakujem ti merciiiiiiiii vňať sľatina"
+  applied:string[] = [];
   filters:string[] = [];
   pages:Array<Pages>=[];
+
   receiveData($event:any){
     this.filters=$event;
     console.log(this.pages)
     }
+
+  delete_filters(){
+    this.applied=[];
+  }
+    
 
 make_analysis(){
   let text = new remove_accents();
   var text2=text.activate(this.text,true);
   //console.log(text2);
   var pages:Pages[]=[{  id: 1,
-    img: "string",
-    page_text: "strings are so simple",
-    name:"string",
-    checked:true},{  id: 2,
-      img: "string2",
-      page_text: "string",
+      img: "undefined",
+      page_text: "Distance of letters",
       name:"string",
       checked:true}]
+    
 
   var ngrams= new frequency_of_text_elements();
   console.log(ngrams.activate(pages,true,"",1));
@@ -63,15 +67,14 @@ make_analysis(){
   console.log(ioc.activate(pages,true,"",1));
   var patt_search= new pattern_search();
   console.log(patt_search.activate(pages,"strings",""));
-  var ac=new AdjacentContacts()
-  console.log(ac.activate(pages,""));
- console.log( findDistances("Hi my name is slim shady","my",""));
+ var ac=new AdjacentContacts()
+ console.log(ac.activate(pages,""));
 
-  
+var distance=new LetterDistances();
+console.log(distance.activate(pages,""));
 }
 
-    
-  applied:string[] = [];
+  
 
   receive_applied_filterData($event:any){
     this.applied=$event;
@@ -86,18 +89,16 @@ make_analysis(){
     
 }
   drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
+    if (event.previousContainer === event.container ) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-  
+      console.log(event.container.id);
+      
+    } else if(event.previousContainer.id!="cdk-drop-list-1") {
       transferArrayItem(event.previousContainer.data,
                         event.container.data,
                         event.previousIndex,
                         event.currentIndex);
-                        console.log(event.previousContainer.data,
-                          event.container.data,
-                          event.previousIndex,
-                          event.currentIndex);
+                        
                         
       this.filters.push(event.container.data[event.currentIndex]);
                   

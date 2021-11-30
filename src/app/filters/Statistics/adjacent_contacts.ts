@@ -9,7 +9,6 @@ export class AdjacentContacts{
         
             var result=[]
             var allInOne = "";
-    
             // by page
             pages.forEach(element=>{
                 result.push([CountContacts(element.page_text,delimiter)])
@@ -19,7 +18,7 @@ export class AdjacentContacts{
                     allInOne+=element.page_text;
                 })
             }
-            result.push([CountContacts(allInOne,delimiter)])
+            result.push([CountContacts(allInOne,delimiter)]);
             return result;
         }
     }

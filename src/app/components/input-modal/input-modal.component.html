@@ -1,6 +1,6 @@
 <!-- The Modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal"(click)="showModal=true" data-target="#myModal">
-    Open modal
+<button type="button" data-toggle="modal"(click)="showModal=true" data-target="#myModal">
+    Edit
   </button>
 
 <div class="modal" id="myModal" [ngClass]="{'show':showModal}">
@@ -16,14 +16,17 @@
         <!-- Modal body -->
         <div class="modal-body">
             <ul>
-        <li class="d-flex">
-            <fa-icon [icon]="faCalculator"></fa-icon><p>Shows data that...</p>
+        <li >
+           <p>Shows data that...</p>
+           <input type="text">
         </li>
-        <li class="d-flex">
-            <fa-icon  [icon]="faChartarea"></fa-icon><p>This filtergroup does blabla operations on text</p>
+        <li >
+           <p>This filtergroup does blabla operations on text</p>
+           <input type="text">
         </li>
-        <li class="d-flex">
-            <fa-icon  [icon]="faTextWidth"></fa-icon><p>This filtergroup does bola thisng really nice man</p>
+        <li >
+           <p>This filtergroup does bola thisng really nice man</p>
+           <input type="text">
         </li>
         </ul>
         </div>

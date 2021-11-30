@@ -6,10 +6,11 @@
     name="dayOfTheWeek"
     value="{{filter.id}}"
     (change)="radioChangeHandler($event)">
-    <span>{{filter.value}}</span>
+    <span class="font-weight-bold">{{filter.value}}</span>
     <fa-icon class="paddingicon" [icon]="filter.icon"></fa-icon>
 </div>
-<form class=" custommargin2 form-inline waves-light" mdbWavesEffect>
+<div class="custommargin2 form-inline waves-light">
+<form >
     <div class="md-form mt-0">
       <input (change)="searcheChangeHandler($event)" class="form-control mr-sm-2" type="text" placeholder="Search">
     </div>
@@ -18,4 +19,6 @@
      (change)="selectfile($event)">Choose file</label>
   <a class="btn btn-outline-success" title="Download JSON" (click)="download_filter()" [href]="downloadJsonHref" download="download.json">Save filters</a>
 </div>
+</div>
+
 

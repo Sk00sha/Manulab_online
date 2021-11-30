@@ -2,7 +2,7 @@
 <app-filter-groups (messageEvent)="receiveData($event)" (emit_applied_filter)="receive_applied_filterData($event)" [get_applied]="applied"></app-filter-groups>
   <div class="container">
     <div class="row">
-      <div class="col-md-6 border rounded">
+      <div class="col-md-6 border rounded bg-white">
         <div cdkDropListGroup>
           <div class="example-container">
             <h2>Available filters</h2>
@@ -22,20 +22,19 @@
               [cdkDropListData]="applied"
               class="example-list"
               (cdkDropListDropped)="drop($event)">
-              <div class="example-box" *ngFor="let item of applied ; let i = index" cdkDrag>{{item}}<div><button class="standoff">Edit</button><button (click)="delete($event,i)">Delete</button></div></div>
+              <div class="example-box" *ngFor="let item of applied ; let i = index" cdkDrag>{{item}}<div><app-input-modal></app-input-modal><button (click)="delete($event,i)">Delete</button></div></div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-5 bg-white border rounded">
         <app-page-viewer></app-page-viewer>
       </div>
     </div>
     <div class="row">
       <div class="col-md"><button (click)="make_analysis()">Analysis</button>
-      <button>Delete all filters</button></div>
+      <button (click)="delete_filters()">Delete all filters</button></div>
       <div class="col-md"></div>
     </div>
-
-  
+  </div>
   

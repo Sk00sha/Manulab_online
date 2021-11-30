@@ -26,6 +26,7 @@ import { environment } from 'src/environments/environment';
 import { FilterGroupsComponent } from './components/filter-groups/filter-groups.component';
 import { PageViewerComponent } from './components/page-viewer/page-viewer.component';
 import { InfoModalComponent } from './components/info-modal/info-modal.component';
+import { InputModalComponent } from './components/input-modal/input-modal.component';
 
 
 
@@ -42,6 +43,7 @@ import { InfoModalComponent } from './components/info-modal/info-modal.component
     FilterGroupsComponent,
     PageViewerComponent,
     InfoModalComponent,
+    InputModalComponent,
 
   ],
   imports: [
