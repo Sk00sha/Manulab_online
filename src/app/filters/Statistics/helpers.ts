@@ -153,7 +153,45 @@ export function CountContacts(page:string,delimiter:string){
 
         return ngrams;
        
-        //TODO THIS-----------------------------------
+}
+function sum_array(array:number[]){
+    return array.reduce((a, b) => a + b, 0)
+}
+
+export function findDistances(text:string, symbols:string,delimiter:string){
+    var result = [];
+    // split by delimitter
+    if(delimiter == ""){
+        var pieces_all = text.split("");
+    } else {
+        var pieces_all = text.split(delimiter);
+    }
+    var positions:any = {};
+    for(let i=0;i<pieces_all.length;i++){
+        var piece = pieces_all[i];
+        if(!positions.hasOwnProperty(piece)){
+            positions[piece]=[];
+        }
+        positions[piece].push(i);
+    }
+    for(var element in positions){
+        if(positions[element].length>1){
+            var res_key:any = {};
+                // find the distances
+            var distances = [];
+         for(let i=1; i <positions[element].length; i++){
+                var distance = positions[element][i] - positions[element][i-1];
+                distances.push(distance);
+         }
+         res_key['avg'] = sum_array(distances) / distances.length;
+         res_key['min'] = Math.min.apply(Math,distances);
+         res_key['max'] = Math.max.apply(Math, distances);
+         res_key['distances'] = distances;
+         result.push(res_key);
+        }
+        
+    }
+    return result;
 }
 
 

@@ -13,7 +13,6 @@ export class shannons_entrophy {
             var entropy = 0;
             Object.keys(element).forEach(function(key, index) {
                 var localdata=element[key];
-                console.log(localdata);
                 Object.keys(localdata).forEach((key,index)=>{
                     var val=localdata[key];
                     entropy -= val * Math.log(val) / Math.log(2);
