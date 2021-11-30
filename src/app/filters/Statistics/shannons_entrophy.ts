@@ -2,9 +2,8 @@ import { getRelativeNgrams } from 'src/app/filters/Statistics/helpers';
 import { Pages } from 'src/app/models/pages';
 
 export class shannons_entrophy {
-    constructor() {
-        
-      }
+    constructor() {}
+    
       activate(text:Pages[],relative:boolean,delimiter:string,n:number):any {
         var res:any = [];
         var frequency = getRelativeNgrams(text, delimiter,n);
