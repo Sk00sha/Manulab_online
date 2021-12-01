@@ -18,6 +18,7 @@ import { CountContacts } from 'src/app/filters/Statistics/helpers';
 import { AdjacentContacts } from 'src/app/filters/Statistics/adjacent_contacts';
 import { findDistances } from 'src/app/filters/Statistics/helpers';
 import { LetterDistances } from 'src/app/filters/Statistics/letter_distances';
+import { FilterController } from 'src/app/filters/Controller/Filter_Controller';
 
 @Component({
   selector: 'app-analysis',
@@ -47,15 +48,21 @@ export class AnalysisComponent implements OnInit {
     
 
 make_analysis(){
-  let text = new remove_accents();
-  var text2=text.activate(this.text,true);
+
   //console.log(text2);
-  var pages:Pages[]=[{  id: 1,
-      img: "undefined",
-      page_text: "Distance of letters",
-      name:"string",
-      checked:true}]
-    
+  var pages:Pages[]=[new Pages(1,"undefined","Mám malé plány pán skoosha","string",true)]
+      console.log(this.applied.toString());
+      var controller=new FilterController(pages);
+      var entrophy=new shannons_entrophy();
+  //pages,relative,delimiter,n
+  console.log(entrophy.activate(pages,true," ",1));
+      controller.add_multiple_filters(this.applied);
+      controller.start_analysis();
+    /*
+      let text = new remove_accents();
+      //pages,keep whitespaces?
+      text.activate(pages,true);*/
+    /*
 
   var ngrams= new frequency_of_text_elements();
   console.log(ngrams.activate(pages,true,"",1));
@@ -71,7 +78,8 @@ make_analysis(){
  console.log(ac.activate(pages,""));
 
 var distance=new LetterDistances();
-console.log(distance.activate(pages,""));
+console.log(distance.activate(pages,""));*/
+
 }
 
   

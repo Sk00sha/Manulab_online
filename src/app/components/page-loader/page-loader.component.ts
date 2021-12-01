@@ -10,6 +10,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import {Metadata} from 'src/app/models/page_metadata'
 
 
+
 @Component({
   selector: 'app-page-loader',
   templateUrl: './page-loader.component.html',
@@ -41,12 +42,7 @@ export class PageLoaderComponent implements OnInit {
       if(this.bulk_upload){
       for(let i=0;i<this.Page_texts.length;i++){
               this.id_generator++;
-                this.Pages.push({ 
-                  id: this.id_generator,
-                  img: this.url,
-                  page_text: this.Page_texts[i].page_text,
-                  name: this.Page_texts[i].name,
-                  checked: true});   
+                this.Pages.push(new Pages(this.id_generator,this.url,this.Page_texts[i].page_text,this.Page_texts[i].name,true));   
       }
       for(let i=0;i<this.Page_pictures.length;i++){
         for(let i=0;i<this.Pages.length;i++){
@@ -70,11 +66,7 @@ export class PageLoaderComponent implements OnInit {
     else{
       
       this.id_generator++;
-      this.Pages.push({ id: this.id_generator,
-        img: this.url,
-        page_text: this.text,
-        name: this.text_name,
-        checked: true});
+      this.Pages.push(new Pages(this.id_generator,this.url,this.text,this.text_name,true));
         for(let i=0;i<this.filepath_data.length;i++){
           if(this.Pages.find(e => e.name === this.filepath_data[i].name)){
             console.log("Uploading");
@@ -113,13 +105,7 @@ export class PageLoaderComponent implements OnInit {
           name_split=e.target.files[i].name.split('.');
           this.text_name = name_split[0];
           this.text = event.target.result;
-          this.Page_texts.push({
-            id: this.id_generator,
-            img: 'assets/images/placeholder.jpg',
-            page_text: this.text,
-            name: this.text_name,
-            checked: true
-          });
+          this.Page_texts.push(new Pages(this.id_generator,'assets/images/placeholder.jpg',this.text,this.text_name,true));
           };
       }
      // this.reset_vars();
@@ -130,13 +116,7 @@ export class PageLoaderComponent implements OnInit {
         name_split=e.target.files[i].name.split('.');
         this.img_name = name_split[0];
         this.url = event.target.result;
-        this.Page_pictures.push({
-          id: 0,
-          img: this.url,
-          page_text: "",
-          name: this.img_name,
-          checked: true,
-       });
+        this.Page_pictures.push(new Pages(0,this.url,"",this.img_name,true));
       };
       console.log(this.filepath_data);
       }

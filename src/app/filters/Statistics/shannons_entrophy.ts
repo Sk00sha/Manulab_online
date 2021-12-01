@@ -3,10 +3,9 @@ import { Pages } from 'src/app/models/pages';
 
 export class shannons_entrophy {
     constructor() {}
-      activate(text:Pages[],relative:boolean,delimiter:string,n:number):any {
+      activate(text:Pages[],relative:boolean=false,delimiter:string="",n:number=1):any {
         var res:any = [];
         var frequency = getRelativeNgrams(text, delimiter,n);
-
         frequency.forEach((element:any)=>{
             var entropy = 0;
             Object.keys(element).forEach(function(key, index) {

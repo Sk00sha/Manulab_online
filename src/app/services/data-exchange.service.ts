@@ -15,11 +15,11 @@ export class DataExchangeService {
       return matches;
     }
     exchangeList(name_filter_group:number):void{
-    if(name_filter_group==1){
+    if(name_filter_group==2){
       console.log("filter one inside");
        this.available_filters=["Remove accents"];
     }
-    if(name_filter_group==2){
+    if(name_filter_group==1){
       this.available_filters=["Frequency of text elements",'Index of coincidence','Shannons entrophy'
       ,'Pattern search','Adjacent contacts','Text element distances'];
     }
