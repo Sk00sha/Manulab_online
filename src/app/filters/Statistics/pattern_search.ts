@@ -2,14 +2,17 @@ import { findPosition } from "./helpers";
 import { Pages } from "src/app/models/pages";
 
 export class pattern_search{
-    constructor(){}
+    pattern:string;
+    constructor(pattern:string){
+        this.pattern=pattern;
+    }
 
-     activate(text:Pages[],pattern:string,delimiter:string){
+     activate(text:Pages[]){
         var result:any = [];
         var allInOne = "";
         var n = 1;
         text.forEach((page)=>{
-           var positions= findPosition(page.page_text,pattern);
+           var positions= findPosition(page.page_text,this.pattern);
            if (positions.length>0) {
             result.push(positions);
         }

@@ -56,15 +56,17 @@ function sum(obj:any) {
   }
 
 export function indexOfCoincidenceDirect(normalize:boolean,pages:Pages[],delimiter:string,n:number) {
-    var res:any = [];
+    var res:any = {};
     var frequency  = getAbsoluteNGrams(pages, delimiter,n);
+    var page_index=0;
     frequency.forEach((element:any)=>{
         var ic = 0;
         var elements = 0;
         var tot = 0;
+        page_index++;
         Object.keys(element).forEach(function(key, index) {
             var localdata=element[key];
-    
+            
             Object.keys(localdata).forEach((key,index)=>{
                 var val=localdata[key];
                 ic+=val*(val-1)
@@ -75,7 +77,7 @@ export function indexOfCoincidenceDirect(normalize:boolean,pages:Pages[],delimit
             if(normalize){
                 ic /= tot;
             }
-            res.push(ic);
+            res["Page"+page_index]=ic;
           });
         
     })
@@ -83,15 +85,15 @@ export function indexOfCoincidenceDirect(normalize:boolean,pages:Pages[],delimit
 }
 
 export function indexOfCoincidenceApprox(normalize:boolean,pages:Pages[],delimiter:string,n:number) {
-    var res:any = [];
+    var res:any = {};
     var frequency =getRelativeNgrams(pages, delimiter,n);
-
+    var page_index=0;
     frequency.forEach((element:any)=>{
         var ic = 0;
         var tot = 0;
         Object.keys(element).forEach(function(key, index) {
             var localdata=element[key];
-        
+            page_index++;
             Object.keys(localdata).forEach((key,index)=>{
                 var val=localdata[key];
                 ic+=val*val;
@@ -100,7 +102,7 @@ export function indexOfCoincidenceApprox(normalize:boolean,pages:Pages[],delimit
             if(normalize){
                 ic /= tot;
             }
-            res.push(ic);
+            res["Page"+page_index]=ic;
           });
         
     })
@@ -190,9 +192,11 @@ export function findDistances(text:string, symbols:any,delimiter:string){
                 // find the distances
             var distances = [];
          for(let i=1; i <positions[element].length; i++){
+        
                 var distance = positions[element][i] - positions[element][i-1];
                 distances.push(distance);
          }
+         res_key['element']=element;
          res_key['avg'] = sum_array(distances) / distances.length;
          res_key['min'] = Math.min.apply(Math,distances);
          res_key['max'] = Math.max.apply(Math, distances);

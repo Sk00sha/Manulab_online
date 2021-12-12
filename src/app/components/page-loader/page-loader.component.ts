@@ -22,7 +22,7 @@ export class PageLoaderComponent implements OnInit {
     private af:AngularFireStorage
   ) {}
 
-  ngOnInit(): void {this.Pages=this.dataService.get_pages()}
+  ngOnInit(): void {this.Pages=this.dataService.pages}
   faTimes = faCloudUploadAlt;
   url: string = 'assets/images/placeholder.jpg';
   text: string = '';
@@ -145,11 +145,8 @@ export class PageLoaderComponent implements OnInit {
       }
       return item;
     });
-    var temp:Array<Pages>=[]
-    if (this.Pages.filter(item => item.checked === true).length > 0) {
-      temp=this.Pages.filter(item=>item.checked===true)
-    }
     
-    this.dataService.add_page(temp);
+    
+    this.dataService.add_page(this.Pages);
   }
 }

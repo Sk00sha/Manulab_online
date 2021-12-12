@@ -10,7 +10,7 @@ import { countNGram } from 'src/app/filters/Statistics/helpers';
 import { getAbsoluteNGrams } from 'src/app/filters/Statistics/helpers';
 import { getRelativeNgrams } from 'src/app/filters/Statistics/helpers';
 import { frequency_of_text_elements } from 'src/app/filters/Statistics/frequency_of_text_elements';
-import { shannons_entrophy } from 'src/app/filters/Statistics/shannons_entrophy';
+import { shannons_entropy } from 'src/app/filters/Statistics/shannons_entropy';
 import { index_of_coincidence } from 'src/app/filters/Statistics/index_of_coincidence';
 import { pattern_search } from 'src/app/filters/Statistics/pattern_search';
 import { findPosition } from 'src/app/filters/Statistics/helpers';
@@ -30,12 +30,14 @@ export class AnalysisComponent implements OnInit {
   constructor(private exchange:DataExchangeService,private data_load:DataloaderService) { }
   ngOnInit(): void {
     this.pages=this.data_load.get_pages();
+    this.applied=this.exchange.applied_filters_array;
   }
  
   text:string="Mám sa fajn ďakujem ti merciiiiiiiii vňať sľatina"
-  applied:string[] = [];
-  filters:string[] = [];
+  applied:any[] = [];
+  filters:any[] = [];
   pages:Array<Pages>=[];
+  list_bool_toggle:boolean=true;
 
   receiveData($event:any){
     this.filters=$event;
@@ -44,69 +46,61 @@ export class AnalysisComponent implements OnInit {
 
   delete_filters(){
     this.applied=[];
+    this.exchange.applied_filters(this.applied);
   }
     
+recieve_disable(event:boolean){
+this.list_bool_toggle=event;
 
+}
 make_analysis(){
 
   //console.log(text2);
-  var pages:Pages[]=[new Pages(1,"undefined","Mám malé plány pán skoosha","string",true)]
-      console.log(this.applied.toString());
+  var pages:Pages[]=[new Pages(1,"undefined","Here you can find activities to practise your reading skills. Reading will help you to improve your understanding of the language and build your vocabulary.","string",true),new Pages(1,"undefined","Here you can find activities to practise your reading skills. Reading will help you.","string",true)]
+
       var controller=new FilterController(pages);
-      var entrophy=new shannons_entrophy();
-  //pages,relative,delimiter,n
-  console.log(entrophy.activate(pages,true," ",1));
       controller.add_multiple_filters(this.applied);
-      controller.start_analysis();
+      var result=controller.start_analysis();
+      this.exchange.analysis_result_set(result)
     /*
       let text = new remove_accents();
       //pages,keep whitespaces?
       text.activate(pages,true);*/
-    /*
-
-  var ngrams= new frequency_of_text_elements();
-  console.log(ngrams.activate(pages,true,"",1));
-  var entrophy=new shannons_entrophy();
-  //pages,relative,delimiter,n
-  console.log(entrophy.activate(pages,true,"",1));
-  var ioc=new index_of_coincidence();
-  //pages,approx,delimiter,n
-  console.log(ioc.activate(pages,true,"",1));
-  var patt_search= new pattern_search();
-  console.log(patt_search.activate(pages,"strings",""));
- var ac=new AdjacentContacts()
- console.log(ac.activate(pages,""));
-
-var distance=new LetterDistances();
-console.log(distance.activate(pages,""));*/
-
+    
+  
+  
 }
 
   
 
   receive_applied_filterData($event:any){
     this.applied=$event;
-    console.log(this.applied)
+    console.log(this.applied);
     }
 
-  add(event: any){
-      this.applied.push(event.path[1].textContent.replace('Add',''))
+  add(event: any,i:number){    
+     console.log(this.applied);
+    this.applied.push(this.filters[i]);
+    this.exchange.applied_filters(this.applied);
+      
   }
   delete(event: any,i:number){
-    this.applied.splice(i,1)
+    this.applied.splice(i,1);
+    this.exchange.applied_filters(this.applied);
     
 }
   drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container ) {
+    if (event.previousContainer === event.container && this.list_bool_toggle===true ) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-      console.log(event.container.id);
+    
       
     } else if(event.previousContainer.id!="cdk-drop-list-1") {
       transferArrayItem(event.previousContainer.data,
                         event.container.data,
                         event.previousIndex,
                         event.currentIndex);
-                        
+      console.log(this.applied);
+      this.exchange.applied_filters(this.applied);
                         
       this.filters.push(event.container.data[event.currentIndex]);
                   

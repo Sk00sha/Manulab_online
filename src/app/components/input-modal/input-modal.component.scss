@@ -1,8 +1,11 @@
 .modal.show{
     display:block;
-    background-color:rgba(0, 0, 0, 0.5);
+    background-color:#00000080;
   position: fixed;
-    }
+}
+  .modal{
+        cursor: default;
+  }
     li{
         list-style: none;
     }

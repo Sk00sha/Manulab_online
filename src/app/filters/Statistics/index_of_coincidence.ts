@@ -3,12 +3,21 @@ import { indexOfCoincidenceDirect } from './helpers';
 import { indexOfCoincidenceApprox } from './helpers';
 
 export class index_of_coincidence {
-  constructor() {}
-  activate(text: Pages[], approx: boolean, delimiter: string, n: number): any {
-    if (!approx) {
-      var ic = indexOfCoincidenceDirect(true, text, delimiter, n);
+  approx: boolean;
+  normalize:boolean;
+   delimiter: string;
+    n: number;
+  constructor( approx: boolean,normalize:boolean, delimiter: string, n: number) {
+    this.delimiter=delimiter;
+    this.approx=approx;
+    this.n=n;
+    this.normalize=normalize;
+  }
+  activate(text: Pages[]): any {
+    if (!this.approx) {
+      var ic = indexOfCoincidenceDirect(this.normalize, text, this.delimiter, this.n);
     } else {
-        var ic=indexOfCoincidenceApprox(true,text,delimiter,n);
+        var ic=indexOfCoincidenceApprox(this.normalize,text,this.delimiter,this.n);
     }
     return ic;
   }

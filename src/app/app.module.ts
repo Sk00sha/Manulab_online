@@ -27,6 +27,10 @@ import { FilterGroupsComponent } from './components/filter-groups/filter-groups.
 import { PageViewerComponent } from './components/page-viewer/page-viewer.component';
 import { InfoModalComponent } from './components/info-modal/info-modal.component';
 import { InputModalComponent } from './components/input-modal/input-modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Form1Component } from './components/form1/form1.component';
+import { AnalysisResultComponent } from './components/analysis-result/analysis-result.component';
+
 
 
 
@@ -44,6 +48,8 @@ import { InputModalComponent } from './components/input-modal/input-modal.compon
     PageViewerComponent,
     InfoModalComponent,
     InputModalComponent,
+    Form1Component,
+    AnalysisResultComponent,
 
   ],
   imports: [
@@ -58,13 +64,15 @@ import { InputModalComponent } from './components/input-modal/input-modal.compon
     RouterModule.forRoot([
       {path:'',component:HomeComponent},
       {path:'analysis',component:AnalysisComponent},
-      {path:'upload',component:UploadComponent}
+      {path:'upload',component:UploadComponent},
+      {path:'analysis results',component:AnalysisResultComponent}
     ]),
     FontAwesomeModule,
     SwiperModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

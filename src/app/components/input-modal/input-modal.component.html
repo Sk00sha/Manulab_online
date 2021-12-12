@@ -1,5 +1,5 @@
 <!-- The Modal -->
-<button type="button" data-toggle="modal"(click)="showModal=true" data-target="#myModal">
+<button type="button" (click)="send_disable_flag()" data-toggle="modal"(click)="showModal=true" data-target="#myModal" data-backdrop="static" data-keyboard="false">
     Edit
   </button>
 
@@ -9,27 +9,13 @@
   
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Inputs for</h4>
-          <button type="button" class="close" (click)="showModal=false" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Inputs for {{name_of_input.name}}</h4>
+          <button type="button" class="close" (click)="showModal=false" data-dismiss="modal"  (click)="send_enable_flag()">&times;</button>
         </div>
   
-        <!-- Modal body -->
-        <div class="modal-body">
-            <ul>
-        <li >
-           <p>Shows data that...</p>
-           <input type="text">
-        </li>
-        <li >
-           <p>This filtergroup does blabla operations on text</p>
-           <input type="text">
-        </li>
-        <li >
-           <p>This filtergroup does bola thisng really nice man</p>
-           <input type="text">
-        </li>
-        </ul>
-        </div>
+        <!-- Modal body //tu potrebujeme zmenu->string na objekt pre setovanie filter parametrov -->
+        
+        <app-form1 [name_of_filter]="name_of_input"></app-form1>
   
         <!-- Modal footer -->
         <div class="modal-footer">

@@ -2,41 +2,38 @@
 import { Pages } from "src/app/models/pages";
 import { countNGram } from "./helpers";
 import { findDistances } from "./helpers";
-export class LetterDistances{
-    constructor(){
 
+export class LetterDistances{
+    n:number;
+    delimiter:string;
+    constructor(delimiter:string,n:number){
+        this.delimiter=delimiter;
+        this.n=n;
     }
-    activate(pages:Pages[],delimiter:string){
-        var result:any = [];
+    activate(pages:Pages[]){
+        var result:any = {};
         var allInOne = "";
         var n = 1;
-        
+        var page_index=0;
         pages.forEach(element => {
-            var frequency=countNGram(element.page_text,delimiter,1);
-            var distances = findDistances(element.page_text,"unique",delimiter);
+            page_index++;
+            var frequency=countNGram(element.page_text,this.delimiter,n);
+            var distances = findDistances(element.page_text,"unique",this.delimiter);
             if (distances.length!=0) {
-                result.push([distances]);
+                result["Page"+page_index]=distances;
             }
         });
-        /*
-        // by page
-            
+        if(pages.length>1){
+            pages.forEach(element => {
+            allInOne+=element.page_text;
+            });
+            var frequency=countNGram(allInOne,this.delimiter,1);
+                var distances = findDistances(allInOne,"unique",this.delimiter);
+                if (distances.length!=0) {
+                    result["All Pages"]=distances;
+                }
         }
-
-        if(sizeof($this->pages) > 1){
-            foreach($this->pages as $page => $page_value) {
-                $allInOne .= $page_value;
-                $allInOne .= $this->delimiter;
-            }
-            $allInOne = trim($allInOne);
-            // all in one
-            $frequency = $this->countNGram($allInOne);
-            $unique = array_unique($frequency);
-            $distances = $this->findDistances($allInOne, $unique);
-            if (!empty($distances)) {
-                $result['all'] = $distances;
-            }
-        }*/
+    
         return result;
     }
 }
