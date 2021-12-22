@@ -36,19 +36,23 @@ export class FilterController{
             this.filters.push(freq);
         }
         if(filter_name.name=="Index of coincidence"){
-            var index_of_coinc=new index_of_coincidence(true,true,"",1);
+            var index_of_coinc=new index_of_coincidence(filter_name.approx,filter_name.normalize,filter_name.delimiter,filter_name.n);
+            this.filters.push(index_of_coinc);
         }
         if(filter_name.name=="Pattern search"){
-            var patt_search=new pattern_search("patt");
+            var patt_search=new pattern_search(filter_name.pattern);
+            this.filters.push(patt_search);
         }
         if(filter_name.name=="Adjacent contacts"){
-            var adjacent_contacts=new AdjacentContacts("");
+            var adjacent_contacts=new AdjacentContacts(filter_name.delimite);
+            this.filters.push(adjacent_contacts);
         }
         if(filter_name.name=="Text element distances"){
-            var letter_distances=new LetterDistances("",1);
+            var letter_distances=new LetterDistances(filter_name.delimiter,filter_name.n);
+            this.filters.push(letter_distances);
         }
         if(filter_name.name=="Remove accents"){
-            var remove_accent=new remove_accents();
+            var remove_accent=new remove_accents(filter_name.Spaces);
             this.filters.push(remove_accent)
         }
         
@@ -74,6 +78,8 @@ export class FilterController{
         var result:any[]=[];
         var index:number=0;
         this.filters.forEach((filter:any)=>{
+            console.log(filter);
+            
             console.log(filter.activate(this.pages_for_analysis));
             result.push(filter.activate(this.pages_for_analysis));
             });

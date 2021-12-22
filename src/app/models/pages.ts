@@ -8,7 +8,7 @@ export class Pages {
     img: string,
     page_text: string,
     name:string,
-    checked:boolean,){
+    checked:boolean){
 this.id=id;
 this.img=img;
 this.page_text=page_text;

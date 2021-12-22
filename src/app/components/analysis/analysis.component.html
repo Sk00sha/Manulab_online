@@ -22,7 +22,7 @@
               [cdkDropListData]="applied"
               class="example-list"
               (cdkDropListDropped)="drop($event)">
-              <div class="example-box" *ngFor="let item of applied ; let i = index" cdkDrag>{{item.name}}<div><app-input-modal (disable)="recieve_disable($event)"[name_of_input]="item"></app-input-modal><button (click)="delete($event,i)">Delete</button></div></div>
+              <div class="example-box" *ngFor="let item of applied ; let i = index" cdkDrag>{{item.name}}<div><app-input-modal (disable)="recieve_disable($event)" [number_of_input]="i" [name_of_input]="item"></app-input-modal><button (click)="delete($event,i)">Delete</button></div></div>
             </div>
           </div>
         </div>

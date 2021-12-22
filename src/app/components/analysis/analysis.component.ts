@@ -33,7 +33,6 @@ export class AnalysisComponent implements OnInit {
     this.applied=this.exchange.applied_filters_array;
   }
  
-  text:string="Mám sa fajn ďakujem ti merciiiiiiiii vňať sľatina"
   applied:any[] = [];
   filters:any[] = [];
   pages:Array<Pages>=[];
@@ -56,26 +55,19 @@ this.list_bool_toggle=event;
 make_analysis(){
 
   //console.log(text2);
-  var pages:Pages[]=[new Pages(1,"undefined","Here you can find activities to practise your reading skills. Reading will help you to improve your understanding of the language and build your vocabulary.","string",true),new Pages(1,"undefined","Here you can find activities to practise your reading skills. Reading will help you.","string",true)]
-
-      var controller=new FilterController(pages);
+      var controller=new FilterController(this.pages);
+      this.applied=this.exchange.getapplied_filters();
       controller.add_multiple_filters(this.applied);
       var result=controller.start_analysis();
-      this.exchange.analysis_result_set(result)
-    /*
-      let text = new remove_accents();
-      //pages,keep whitespaces?
-      text.activate(pages,true);*/
-    
-  
-  
+      this.exchange.analysis_result_set(result);
+
 }
 
   
 
   receive_applied_filterData($event:any){
     this.applied=$event;
-    console.log(this.applied);
+    
     }
 
   add(event: any,i:number){    

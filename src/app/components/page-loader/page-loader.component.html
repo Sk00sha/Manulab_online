@@ -14,10 +14,10 @@
                 <td scope="col">Delete page</td>
                 <td scope="col">Use all <input class="form-check-input" type="checkbox" [checked]="true" (change)="check_all($event)"></td>
               </tr>
-            <tr *ngFor="let item of Pages">
+            <tr *ngFor="let item of Pages ;let i = index">
               <td scope="row" >Page {{item.id}}</td>
               <td scope="row">
-                <Button>Delete</Button>
+                <Button (click)="delete_page($event,i)">Delete</Button>
               </td>
               <td scope="row">
                 <input class="form-check-input" type="checkbox" (change)="used_pages($event)" [value]="item.id"[checked]="item.checked">

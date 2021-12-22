@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ɵangular_packages_platform_browser_dynamic_platform_browser_dynamic_a } from '@angular/platform-browser-dynamic';
 import { DataloaderService } from 'src/app/services/dataloader.service';
 import { Pages } from 'src/app/models/pages';
 import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
-
-
 import { HttpClient } from '@angular/common/http';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
 import {Metadata} from 'src/app/models/page_metadata'
 
 
@@ -19,7 +15,6 @@ import {Metadata} from 'src/app/models/page_metadata'
 export class PageLoaderComponent implements OnInit {
   constructor(
     private dataService: DataloaderService,
-    private af:AngularFireStorage
   ) {}
 
   ngOnInit(): void {this.Pages=this.dataService.pages}
@@ -31,59 +26,58 @@ export class PageLoaderComponent implements OnInit {
   bulk_upload:boolean=false;
   id_generator: number = 0;
   Pages: Pages[] = [];
-  Page_pictures:Pages[]=[]
-  Page_texts:Pages[]=[]
+  Page_pictures:Pages[]=[];
+  Page_texts:Pages[]=[];
   filepath_data:Metadata[]=[];
-    
+  delete_page(event:any,i:number){
+    this.Pages.splice(i,1);
+    this.dataService.pages=this.Pages;
+  }
 
   uploadPage() {
-   
-    if (this.text) {
+    if (this.text && this.Page_texts.length>0 || this.text_name) {
       if(this.bulk_upload){
+        if(this.Pages.length >0){
+          this.id_generator=this.Pages[this.Pages.length-1].id;
+        }
       for(let i=0;i<this.Page_texts.length;i++){
               this.id_generator++;
                 this.Pages.push(new Pages(this.id_generator,this.url,this.Page_texts[i].page_text,this.Page_texts[i].name,true));   
       }
-      for(let i=0;i<this.Page_pictures.length;i++){
-        for(let i=0;i<this.Pages.length;i++){
-          if(this.Page_pictures[i].name==this.Pages[i].name){
-            this.Pages[i].img=this.Page_pictures[i].img;
+      for(let j=0;j<this.Pages.length;j++){
+        for(let i=0;i<this.Page_pictures.length;i++){
+          if(this.Page_pictures[i].name==this.Pages[j].name){
+            this.Pages[j].img=this.Page_pictures[i].img;
+            console.log(this.Page_pictures[i].name +" "+this.Pages[i].name);
           }
-          }
-       
-    }
-      for(let i=0;i<this.filepath_data.length;i++){
-        if(this.Pages.find(e => e.name === this.filepath_data[i].name)){
-          console.log("Uploading");
-          this.af.upload(this.filepath_data[i].blob.name,this.filepath_data[i].blob);
-          
         }
+    }
+    console.log(this.Pages);
+      this.url = 'assets/images/placeholder.jpg';
+      this.text = '';
+      this.Page_pictures=[];
+      this.Page_texts=[];
+      this.filepath_data=[];
+      this.bulk_upload=false;
+    }
+    else{
+      if(this.Pages.length >0){
+        this.id_generator=this.Pages[this.Pages.length-1].id;
       }
+      this.id_generator++;
+      this.Pages.push(new Pages(this.id_generator,this.url,this.text,this.text_name,true));
+      this.url = 'assets/images/placeholder.jpg';
+      this.text = '';
       this.Page_pictures=[];
       this.Page_texts=[];
       this.filepath_data=[];
     }
-    else{
-      
-      this.id_generator++;
-      this.Pages.push(new Pages(this.id_generator,this.url,this.text,this.text_name,true));
-        for(let i=0;i<this.filepath_data.length;i++){
-          if(this.Pages.find(e => e.name === this.filepath_data[i].name)){
-            console.log("Uploading");
-            this.af.upload(this.filepath_data[i].blob.name,this.filepath_data[i].blob);
-            
-          }
-        }
-        this.Page_pictures=[];
-        this.url = 'assets/images/placeholder.jpg';
-        this.text = '';
-    }
-      this.url = 'assets/images/placeholder.jpg';
-      this.text = '';
-    
-    } else {
+    } 
+    else {
       alert('Upload textfile please!');
     }
+    this.url = 'assets/images/placeholder.jpg';
+    this.text = '';
   }
   selectfile(e: any): void {
     if (e.target.files) {

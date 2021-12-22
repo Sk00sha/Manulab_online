@@ -20,8 +20,6 @@ import { SwiperModule } from 'swiper/angular';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { initializeApp } from "firebase/app";
-import {AngularFireModule} from '@angular/fire/compat'
-import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from 'src/environments/environment';
 import { FilterGroupsComponent } from './components/filter-groups/filter-groups.component';
 import { PageViewerComponent } from './components/page-viewer/page-viewer.component';
@@ -70,8 +68,6 @@ import { AnalysisResultComponent } from './components/analysis-result/analysis-r
     FontAwesomeModule,
     SwiperModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireStorageModule,
     ReactiveFormsModule
   ],
   providers: [],

@@ -15,7 +15,7 @@
   
         <!-- Modal body //tu potrebujeme zmenu->string na objekt pre setovanie filter parametrov -->
         
-        <app-form1 [name_of_filter]="name_of_input"></app-form1>
+        <app-form1 [name_of_filter]="name_of_input" [number_of_filter]="number_of_input" (message)="recieve_modal_close($event)"></app-form1>
   
         <!-- Modal footer -->
         <div class="modal-footer">

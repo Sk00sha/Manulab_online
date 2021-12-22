@@ -2,12 +2,13 @@ import { Pages } from "src/app/models/pages";
 
 
 export class remove_accents {
-    constructor() {
-        
+  boolean:boolean;
+    constructor(spaces:boolean) {
+        this.boolean=spaces;
       }
-      activate(page:Pages[],boolean:boolean=true){
+      activate(page:Pages[]){
         page.forEach(element=>{
-          element.setter(this.remove_accents(element.page_text,boolean));
+          element.setter(this.remove_accents(element.page_text,this.boolean));
           console.log("->"+element.page_text);
           
         })

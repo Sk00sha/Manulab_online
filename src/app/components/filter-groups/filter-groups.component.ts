@@ -22,7 +22,7 @@ export class FilterGroupsComponent implements OnInit {
   local_filters:string[]=[];
   @Output() messageEvent=new EventEmitter<string[]>()
   @Output() emit_applied_filter=new EventEmitter<string[]>()
-  @Input() get_applied:string[];
+  @Input() get_applied:any[];
 
   filter_groups=[
     {value:'Statistics',id:1,icon:this.faCalculator},
@@ -32,12 +32,11 @@ export class FilterGroupsComponent implements OnInit {
   selectedDay:number;
   filter_data:string="";
   downloadJsonHref:SafeUrl;
-  filters_export:Filter_JSON[]=[];
+  filters_export:any[]=[];
   ngOnInit(): void {
   }
   applied_filters(element:string){
-    this.filters_export.push({filter:element});
-    
+    this.filters_export.push(element);
   }
 
   download_filter():void{
@@ -47,6 +46,7 @@ export class FilterGroupsComponent implements OnInit {
     var uri = this.sanitizer.bypassSecurityTrustUrl("data:text/json;charset=UTF-8," + encodeURIComponent(theJSON));
     //in HTML we reffer to this uri to get our JSON
     this.downloadJsonHref=uri;
+    this.filters_export=[];
   }
   radioChangeHandler (event: any) {
     //update the ui
@@ -74,14 +74,16 @@ export class FilterGroupsComponent implements OnInit {
         try {
           const json = JSON.parse(e.target.result);
           const resSTR = JSON.stringify(json);
+          console.log(resSTR);
+          
           var cUser = JSON.parse(resSTR);
           var return_array:string[]=[];
           console.log('... uuid of cUser: ', cUser);
           cUser.forEach(function(e:any){
-            return_array.push(e.filter);
+            return_array.push(e);
           })
-          this.emit_applied_filter.emit(return_array)
-         
+          this.emit_applied_filter.emit(return_array);
+          this.exchange.applied_filters_array=return_array;
         } catch (ex) {
           alert('exception when trying to parse json = ' + ex);
         }

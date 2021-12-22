@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { FilterObject } from '../models/filter_object';
 @Injectable({
   providedIn: 'root',
 })
@@ -9,62 +9,12 @@ export class DataExchangeService {
   applied_filters_array:any[]=[];
   analysis_results:any[]=[];
   all_filters: any[] = [
-    {
-      name: 'Remove accents',
-      delimiter: '',
-      approx: false,
-      normalize: false,
-      relative: false,
-      n: 1,
-    },
-    {
-      name: 'Frequency of text elements',
-      delimiter: '',
-      approx: false,
-      normalize: false,
-      relative: false,
-      n: 1,
-    },
-    {
-      name: 'Index of coincidence',
-      delimiter: '',
-      approx: false,
-      normalize: false,
-      relative: false,
-      n: 1,
-    },
-    {
-      name: 'Shannons entrophy',
-      delimiter: '',
-      approx: false,
-      normalize: false,
-      relative: false,
-      n: 1,
-    },
-    {
-      name: 'Pattern search',
-      delimiter: '',
-      approx: false,
-      normalize: false,
-      relative: false,
-      n: 1,
-    },
-    {
-      name: 'Adjacent contacts',
-      delimiter: '',
-      approx: false,
-      normalize: false,
-      relative: false,
-      n: 1,
-    },
-    {
-      name: 'Text element distances',
-      delimiter: '',
-      approx: false,
-      normalize: false,
-      relative: false,
-      n: 1,
-    },
+    new FilterObject("Frequency of text elements","",false,false,false,1,false,""),
+        new FilterObject("Index of coincidence","",false,false,false,1,false,""),
+        new FilterObject("Shannons entrophy","",false,false,false,1,false,""),
+        new FilterObject("Pattern search","",false,false,false,1,false,""),
+        new FilterObject("Adjacent contacts","",false,false,false,1,false,""),
+        new FilterObject("Text element distances","",false,false,false,1,false,""),
     { name: 'Anagram detection' },
     { name: 'Vowel detection' },
     { name: 'Language guess' },
@@ -82,6 +32,8 @@ export class DataExchangeService {
       this.available_filters = [
         {
           name: 'Remove accents',
+          Spaces:false,
+          group:2,
           delimiter: '',
           approx: false,
           normalize: false,
@@ -92,54 +44,12 @@ export class DataExchangeService {
     }
     if (name_filter_group == 1) {
       this.available_filters = [
-        {
-          name: 'Frequency of text elements',
-          delimiter: '',
-          approx: false,
-          normalize: false,
-          relative: false,
-          n: 1,
-        },
-        {
-          name: 'Index of coincidence',
-          delimiter: '',
-          approx: false,
-          normalize: false,
-          relative: false,
-          n: 1,
-        },
-        {
-          name: 'Shannons entrophy',
-          delimiter: '',
-          approx: false,
-          normalize: false,
-          relative: false,
-          n: 1,
-        },
-        {
-          name: 'Pattern search',
-          delimiter: '',
-          approx: false,
-          normalize: false,
-          relative: false,
-          n: 1,
-        },
-        {
-          name: 'Adjacent contacts',
-          delimiter: '',
-          approx: false,
-          normalize: false,
-          relative: false,
-          n: 1,
-        },
-        {
-          name: 'Text element distances',
-          delimiter: '',
-          approx: false,
-          normalize: false,
-          relative: false,
-          n: 1,
-        },
+        new FilterObject("Frequency of text elements","",false,false,false,1,false,""),
+        new FilterObject("Index of coincidence","",false,false,false,1,false,""),
+        new FilterObject("Shannons entrophy","",false,false,false,1,false,""),
+        new FilterObject("Pattern search","",false,false,false,1,false,""),
+        new FilterObject("Adjacent contacts","",false,false,false,1,false,""),
+        new FilterObject("Text element distances","",false,false,false,1,false,"")
       ];
     }
     if (name_filter_group == 3) {
@@ -159,6 +69,9 @@ export class DataExchangeService {
   }
   applied_filters(list:any[]) {
     this.applied_filters_array=list;
+  }
+  getapplied_filters() {
+    return this.applied_filters_array;
   }
   analysis_result_set(list:any){
     this.analysis_results=list;

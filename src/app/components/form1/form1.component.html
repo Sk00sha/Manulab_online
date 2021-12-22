@@ -31,7 +31,22 @@
     placeholder="pattern"
     formControlName="pattern"
   />
-  <label *ngIf="name_of_filter.name == 'Remove accents'" for="spaces">Do you want to keep spaces?</label>
+
+  <label *ngIf="name_of_filter.name == 'Index of coincidence'" for="normalize">Do you want to normalize?</label>
+  <input
+    *ngIf="name_of_filter.name == 'Index of coincidence'"
+    type="checkbox"
+    name="normalize"
+    formControlName="normalize"
+  />
+  <label *ngIf="name_of_filter.name == 'Index of coincidence'" for="approx">Do you want to use approx.?</label>
+  <input
+  *ngIf="name_of_filter.name == 'Index of coincidence'"
+  type="checkbox"
+  name="approx"
+  formControlName="approx"
+/>
+<label *ngIf="name_of_filter.name == 'Remove accents'" for="spaces">Do you want to keep spaces?</label>
   <input
     *ngIf="name_of_filter.name == 'Remove accents'"
     type="checkbox"
@@ -40,3 +55,4 @@
     formControlName="Spaces"
   />
 </form>
+<button (click)="send_notification()">ADD AND SAVE MORE LOCATIONS</button>

@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit,ViewChild } from '@angular/core';
 import { Input,Output } from '@angular/core';
+import { Form1Component } from '../form1/form1.component';
 
 @Component({
   selector: 'app-input-modal',
@@ -10,6 +11,7 @@ export class InputModalComponent implements OnInit {
   showModal:boolean=false;
   disable_input:boolean=false;
   @Input() name_of_input:any;
+  @Input() number_of_input:number;
   @Output() disable=new EventEmitter<boolean>();
   constructor() { }
 
@@ -19,10 +21,14 @@ export class InputModalComponent implements OnInit {
     console.log($event);
   }
   send_disable_flag(){
+    
     this.disable.emit(this.disable_input);
   }
   send_enable_flag(){
     this.disable.emit(true);
+  }
+  recieve_modal_close($event:any){
+      this.showModal=$event;
   }
 
 }
