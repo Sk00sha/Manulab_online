@@ -38,14 +38,15 @@ export function getAbsoluteNGrams(pages:Pages[],delimiter:string,n:number):any {
 }
 export function getRelativeNgrams(pages:Pages[],delimiter:string,n:number):any {
     var result:any = [];
-    
    pages.forEach((element)=>{
-    const sumValues = sum(countNGram(element.page_text,delimiter,n))
+    const sumValues = sum(countNGram(element.page_text,delimiter,n));
+    console.log(sumValues);
+    
     const data=countNGram(element.page_text,delimiter,n)
     Object.keys(data).map(function(key, index) {
-        data[key] /= sumValues;
+        data[key] = (data[key]/sumValues).toFixed(4);
       });
-      result.push([data])
+      result.push([data]);
     
     });
     return result

@@ -9,7 +9,7 @@ import { Form1Component } from '../form1/form1.component';
 })
 export class InputModalComponent implements OnInit {
   showModal:boolean=false;
-  disable_input:boolean=false;
+  disable_input:boolean=true;
   @Input() name_of_input:any;
   @Input() number_of_input:number;
   @Output() disable=new EventEmitter<boolean>();
@@ -21,11 +21,10 @@ export class InputModalComponent implements OnInit {
     console.log($event);
   }
   send_disable_flag(){
-    
     this.disable.emit(this.disable_input);
   }
   send_enable_flag(){
-    this.disable.emit(true);
+    this.disable.emit(false);
   }
   recieve_modal_close($event:any){
       this.showModal=$event;

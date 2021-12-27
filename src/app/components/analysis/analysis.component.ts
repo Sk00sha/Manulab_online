@@ -36,11 +36,11 @@ export class AnalysisComponent implements OnInit {
   applied:any[] = [];
   filters:any[] = [];
   pages:Array<Pages>=[];
-  list_bool_toggle:boolean=true;
+  list_bool_toggle:boolean=false;
 
   receiveData($event:any){
     this.filters=$event;
-    console.log(this.pages)
+   
     }
 
   delete_filters(){
@@ -52,15 +52,13 @@ recieve_disable(event:boolean){
 this.list_bool_toggle=event;
 
 }
-make_analysis(){
-
-  //console.log(text2);
+make_analysis(){  
       var controller=new FilterController(this.pages);
       this.applied=this.exchange.getapplied_filters();
       controller.add_multiple_filters(this.applied);
       var result=controller.start_analysis();
       this.exchange.analysis_result_set(result);
-
+      console.log(result);
 }
 
   
@@ -71,7 +69,7 @@ make_analysis(){
     }
 
   add(event: any,i:number){    
-     console.log(this.applied);
+
     this.applied.push(this.filters[i]);
     this.exchange.applied_filters(this.applied);
       
@@ -91,7 +89,7 @@ make_analysis(){
                         event.container.data,
                         event.previousIndex,
                         event.currentIndex);
-      console.log(this.applied);
+
       this.exchange.applied_filters(this.applied);
                         
       this.filters.push(event.container.data[event.currentIndex]);

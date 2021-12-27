@@ -3,15 +3,17 @@ import { Pages } from "src/app/models/pages";
 
 export class remove_accents {
   boolean:boolean;
-    constructor(spaces:boolean) {
+  wanted_pages:Pages[];
+    constructor(spaces:boolean,page:Pages[]) {
         this.boolean=spaces;
+        this.wanted_pages=page;
       }
-      activate(page:Pages[]){
-        page.forEach(element=>{
-          element.setter(this.remove_accents(element.page_text,this.boolean));
-          console.log("->"+element.page_text);
-          
+      activate(){
+        var new_pages:Pages[]=[];
+        this.wanted_pages.forEach(element=>{
+          new_pages.push(new Pages(element.id,element.img,this.remove_accents(element.page_text,this.boolean),element.name,element.checked));
         })
+        return new_pages;
       }
 
       remove_accents(text:string,keep_space:boolean) {

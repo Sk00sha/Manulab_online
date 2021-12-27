@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {faCalculator} from '@fortawesome/free-solid-svg-icons';
 import {faTextWidth}from '@fortawesome/free-solid-svg-icons';
 import {faChartArea}from '@fortawesome/free-solid-svg-icons';
+import {faInfo}from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-info-modal',
@@ -13,6 +15,7 @@ export class InfoModalComponent implements OnInit {
   faCalculator=faCalculator;
   faTextWidth=faTextWidth;
   faChartarea=faChartArea;
+faInfo=faInfo;
   constructor() { }
 
   ngOnInit(): void {

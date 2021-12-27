@@ -20,40 +20,40 @@ export class FilterController{
     constructor(pages:Pages[]){
         this.pages_for_analysis=pages;
     }
-    all_filters:string[]=["Remove accents","Frequency of text elements",'Index of coincidence','Shannons entrophy'
+    all_filters:string[]=["Remove accents","Frequency of text elements",'Index of coincidence','Shannons entropy'
   ,'Pattern search','Adjacent contacts','Text element distances',"Anagram detection",'Vowel detection','Language guess'];
 
     add_filter_to_stack(filter_name:any){
         
-        if (filter_name.name=="Shannons entrophy"){
-            console.log("Added shannons entrophy")
+        if (filter_name.name=="Shannons entropy"){
+            console.log("Added shannons entropy")
             var enth= new shannons_entropy(filter_name.delimiter,filter_name.n);
-            this.filters.push(enth);
+            this.filters.push({name:filter_name.name,function:enth});
         }
         if (filter_name.name=="Frequency of text elements"){
             console.log("Added frequency of text elements")
             var freq= new frequency_of_text_elements(filter_name.relative,filter_name.delimiter,filter_name.n);
-            this.filters.push(freq);
+            this.filters.push({name:filter_name.name,function:freq});
         }
         if(filter_name.name=="Index of coincidence"){
             var index_of_coinc=new index_of_coincidence(filter_name.approx,filter_name.normalize,filter_name.delimiter,filter_name.n);
-            this.filters.push(index_of_coinc);
+            this.filters.push({name:filter_name.name,function:index_of_coinc});
         }
         if(filter_name.name=="Pattern search"){
             var patt_search=new pattern_search(filter_name.pattern);
-            this.filters.push(patt_search);
+            this.filters.push({name:filter_name.name,function:patt_search});
         }
         if(filter_name.name=="Adjacent contacts"){
-            var adjacent_contacts=new AdjacentContacts(filter_name.delimite);
-            this.filters.push(adjacent_contacts);
+            var adjacent_contacts=new AdjacentContacts(filter_name.delimiter);
+            this.filters.push({name:filter_name.name,function:adjacent_contacts});
         }
         if(filter_name.name=="Text element distances"){
             var letter_distances=new LetterDistances(filter_name.delimiter,filter_name.n);
-            this.filters.push(letter_distances);
+            this.filters.push({name:filter_name.name,function:letter_distances});
         }
         if(filter_name.name=="Remove accents"){
-            var remove_accent=new remove_accents(filter_name.Spaces);
-            this.filters.push(remove_accent)
+            var remove_accent=new remove_accents(filter_name.Spaces,this.pages_for_analysis);
+            this.filters.push({name:filter_name.name,function:remove_accent});
         }
         
         if(filter_name.name=="Anagram detection"){
@@ -68,20 +68,28 @@ export class FilterController{
     }
     add_multiple_filters(array_of_filters:any[]){
         for(var item in array_of_filters){
-            console.log(array_of_filters[item]);
-            
             this.add_filter_to_stack(array_of_filters[item]);
         }
     }
     start_analysis(){
-        console.log("starting analysis:");
         var result:any[]=[];
-        var index:number=0;
+        var transformation:boolean=false;
+        var new_pages:Pages[]=[];
         this.filters.forEach((filter:any)=>{
-            console.log(filter);
             
-            console.log(filter.activate(this.pages_for_analysis));
-            result.push(filter.activate(this.pages_for_analysis));
+            if(filter.name=="Remove accents"){
+                console.log("Removing accents");
+                new_pages=filter.function.activate();
+                transformation=true;
+            }
+            if(transformation && filter.name!="Remove accents"){
+                console.log("Removing accents pages used");
+                result.push(filter.function.activate(new_pages));
+            }
+            else if(filter.name!="Remove accents"){
+                result.push(filter.function.activate(this.pages_for_analysis));
+            }
+            
             });
             return result;
     }

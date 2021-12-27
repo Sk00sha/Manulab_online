@@ -4,6 +4,8 @@ import { DataloaderService } from 'src/app/services/dataloader.service';
 import {faCalculator} from '@fortawesome/free-solid-svg-icons';
 import {faTextWidth}from '@fortawesome/free-solid-svg-icons';
 import {faChartArea}from '@fortawesome/free-solid-svg-icons';
+import {faFile}from '@fortawesome/free-solid-svg-icons';
+import {faFileDownload}from '@fortawesome/free-solid-svg-icons';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Filter_JSON } from 'src/app/models/filter'; 
@@ -17,6 +19,8 @@ export class FilterGroupsComponent implements OnInit {
   faCalculator=faCalculator;
   faTextWidth=faTextWidth;
   faChartarea=faChartArea;
+  faFile=faFile;
+  faFileDownload=faFileDownload;
 
   constructor(private exchange:DataExchangeService,private loader:DataloaderService,private sanitizer: DomSanitizer) { }
   local_filters:string[]=[];
@@ -74,11 +78,11 @@ export class FilterGroupsComponent implements OnInit {
         try {
           const json = JSON.parse(e.target.result);
           const resSTR = JSON.stringify(json);
-          console.log(resSTR);
+          
           
           var cUser = JSON.parse(resSTR);
           var return_array:string[]=[];
-          console.log('... uuid of cUser: ', cUser);
+          console.log('cUser: ', cUser);
           cUser.forEach(function(e:any){
             return_array.push(e);
           })

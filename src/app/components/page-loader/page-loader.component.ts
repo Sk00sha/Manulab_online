@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { DataloaderService } from 'src/app/services/dataloader.service';
 import { Pages } from 'src/app/models/pages';
 import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { HttpClient } from '@angular/common/http';
 import {Metadata} from 'src/app/models/page_metadata'
+
 
 
 
@@ -19,6 +21,7 @@ export class PageLoaderComponent implements OnInit {
 
   ngOnInit(): void {this.Pages=this.dataService.pages}
   faTimes = faCloudUploadAlt;
+  faDelete=faTimes;
   url: string = 'assets/images/placeholder.jpg';
   text: string = '';
   img_name:string='placeholder';
@@ -45,14 +48,15 @@ export class PageLoaderComponent implements OnInit {
                 this.Pages.push(new Pages(this.id_generator,this.url,this.Page_texts[i].page_text,this.Page_texts[i].name,true));   
       }
       for(let j=0;j<this.Pages.length;j++){
+        this.Pages[j].page_text=this.Pages[j].page_text.replace(/\r\n/g,"\n");
         for(let i=0;i<this.Page_pictures.length;i++){
           if(this.Page_pictures[i].name==this.Pages[j].name){
             this.Pages[j].img=this.Page_pictures[i].img;
-            console.log(this.Page_pictures[i].name +" "+this.Pages[i].name);
+            
           }
         }
     }
-    console.log(this.Pages);
+
       this.url = 'assets/images/placeholder.jpg';
       this.text = '';
       this.Page_pictures=[];
@@ -65,6 +69,8 @@ export class PageLoaderComponent implements OnInit {
         this.id_generator=this.Pages[this.Pages.length-1].id;
       }
       this.id_generator++;
+      //TUTO sa meni text - simple regex
+      this.text=this.text.replace(/\r\n/g,"\n");
       this.Pages.push(new Pages(this.id_generator,this.url,this.text,this.text_name,true));
       this.url = 'assets/images/placeholder.jpg';
       this.text = '';
@@ -78,6 +84,8 @@ export class PageLoaderComponent implements OnInit {
     }
     this.url = 'assets/images/placeholder.jpg';
     this.text = '';
+    console.log(this.Pages);
+    
   }
   selectfile(e: any): void {
     if (e.target.files) {
@@ -87,12 +95,14 @@ export class PageLoaderComponent implements OnInit {
       if(e.target.files.length>1){
         this.bulk_upload=true;
       }
+      console.log(this.bulk_upload);
+      
     for(let i=0;i<e.target.files.length;i++){
       var reader = new FileReader();
       let input_type: Array<string> = e.target.files[i].type.split('/');
       let name_split: Array<string>=[];
       if (input_type[1] == 'plain') {
-        console.log(e.target.files.length);
+
           reader.readAsText(e.target.files[i]);
           this.filepath_data.push({name:e.target.files[i].name.split(".")[0],blob:e.target.files[i]});
           reader.onload = (event: any) => {
@@ -112,7 +122,7 @@ export class PageLoaderComponent implements OnInit {
         this.url = event.target.result;
         this.Page_pictures.push(new Pages(0,this.url,"",this.img_name,true));
       };
-      console.log(this.filepath_data);
+    
       }
       }
       }  

@@ -11,7 +11,7 @@ export class DataExchangeService {
   all_filters: any[] = [
     new FilterObject("Frequency of text elements","",false,false,false,1,false,""),
         new FilterObject("Index of coincidence","",false,false,false,1,false,""),
-        new FilterObject("Shannons entrophy","",false,false,false,1,false,""),
+        new FilterObject("Shannons entropy","",false,false,false,1,false,""),
         new FilterObject("Pattern search","",false,false,false,1,false,""),
         new FilterObject("Adjacent contacts","",false,false,false,1,false,""),
         new FilterObject("Text element distances","",false,false,false,1,false,""),
@@ -30,23 +30,15 @@ export class DataExchangeService {
     if (name_filter_group == 2) {
      
       this.available_filters = [
-        {
-          name: 'Remove accents',
-          Spaces:false,
-          group:2,
-          delimiter: '',
-          approx: false,
-          normalize: false,
-          relative: false,
-          n: 1,
-        },
+      
+        new FilterObject("Remove accents","",false,false,false,1,false,"")
       ];
     }
     if (name_filter_group == 1) {
       this.available_filters = [
         new FilterObject("Frequency of text elements","",false,false,false,1,false,""),
         new FilterObject("Index of coincidence","",false,false,false,1,false,""),
-        new FilterObject("Shannons entrophy","",false,false,false,1,false,""),
+        new FilterObject("Shannons entropy","",false,false,false,1,false,""),
         new FilterObject("Pattern search","",false,false,false,1,false,""),
         new FilterObject("Adjacent contacts","",false,false,false,1,false,""),
         new FilterObject("Text element distances","",false,false,false,1,false,"")

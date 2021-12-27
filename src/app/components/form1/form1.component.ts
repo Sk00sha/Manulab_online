@@ -3,6 +3,7 @@ import {FormBuilder,FormGroup} from '@angular/forms';
 import { Output,Input  } from '@angular/core';
 import { DataExchangeService } from 'src/app/services/data-exchange.service';
 import { EventEmitter } from '@angular/core';
+import { FilterObject } from 'src/app/models/filter_object';
 @Component({
   selector: 'app-form1',
   templateUrl: './form1.component.html',
@@ -35,27 +36,21 @@ export class Form1Component implements OnInit {
     this.message.emit(false);
     this.set_filter_specs();
   }
-  reply(){
-    console.log("oy");
-  }
+  
 
   set_filter_specs(){
     var exchange_service_list:any=this.exchange_service.getapplied_filters();
-    //console.log(this.exchange_service.getapplied_filters());
-    console.log(exchange_service_list);
+  
     
-      exchange_service_list[this.number_of_filter]={
-        name: exchange_service_list[this.number_of_filter].name,
-        Spaces:this.form.get('Spaces')?.value,
-        group:1,
-        delimiter: this.form.get('delimiter')?.value,
-        approx: this.form.get('approx')?.value,
-        normalize: this.form.get('normalize')?.value,
-        relative: this.form.get('relative')?.value,
-        n: this.form.get('n')?.value,
-      }
- 
-    
+      exchange_service_list[this.number_of_filter]=new FilterObject(
+        exchange_service_list[this.number_of_filter].name,
+        this.form.get('delimiter')?.value,
+        this.form.get('approx')?.value,
+        this.form.get('normalize')?.value,
+        this.form.get('relative')?.value,
+        this.form.get('n')?.value,
+        this.form.get('Spaces')?.value,
+        this.form.get('pattern')?.value)   
   }
 
 }

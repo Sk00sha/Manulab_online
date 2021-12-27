@@ -28,6 +28,7 @@ import { InputModalComponent } from './components/input-modal/input-modal.compon
 import { ReactiveFormsModule } from '@angular/forms';
 import { Form1Component } from './components/form1/form1.component';
 import { AnalysisResultComponent } from './components/analysis-result/analysis-result.component';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 
 
@@ -68,7 +69,8 @@ import { AnalysisResultComponent } from './components/analysis-result/analysis-r
     FontAwesomeModule,
     SwiperModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent],
