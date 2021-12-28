@@ -24,10 +24,14 @@ export class InputModalComponent implements OnInit {
     this.disable.emit(this.disable_input);
   }
   send_enable_flag(){
+    //sends false to template to enable list wrangling
     this.disable.emit(false);
   }
   recieve_modal_close($event:any){
+    //function calls when we close with form button and sends false to template to enable list wrangling
       this.showModal=$event;
+      this.send_enable_flag();
   }
+  
 
 }

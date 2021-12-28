@@ -4,17 +4,15 @@
   </button>
 
 <div class="modal" id="myModal" [ngClass]="{'show':showModal}">
-    <div class="modal-dialog">
-      <div class="modal-content">
+    <div class="modal-dialog" >
+      <div class="modal-content" >
   
         <!-- Modal Header -->
         <div class="modal-header">
           <h4 class="modal-title">Inputs for {{name_of_input.name}}</h4>
           <button type="button" class="close" (click)="showModal=false" data-dismiss="modal"  (click)="send_enable_flag()">&times;</button>
         </div>
-  
-        <!-- Modal body //tu potrebujeme zmenu->string na objekt pre setovanie filter parametrov -->
-        
+      
         <app-form1 [name_of_filter]="name_of_input" [number_of_filter]="number_of_input" (message)="recieve_modal_close($event)"></app-form1>
   
         <!-- Modal footer -->

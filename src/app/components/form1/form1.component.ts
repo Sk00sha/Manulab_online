@@ -4,13 +4,15 @@ import { Output,Input  } from '@angular/core';
 import { DataExchangeService } from 'src/app/services/data-exchange.service';
 import { EventEmitter } from '@angular/core';
 import { FilterObject } from 'src/app/models/filter_object';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
   selector: 'app-form1',
   templateUrl: './form1.component.html',
   styleUrls: ['./form1.component.scss']
 })
 export class Form1Component implements OnInit {
-
+  fatimes=faTimes;
   form:FormGroup;
   constructor(private fb:FormBuilder,private exchange_service:DataExchangeService) { }
   @Input() name_of_filter:any;

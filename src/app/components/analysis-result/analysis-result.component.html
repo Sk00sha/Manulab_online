@@ -1,6 +1,5 @@
 <app-navigation></app-navigation>
-<div class="data-result" *ngIf="results.length< 1">NO DATA
-</div>
+<div class="data-result" *ngIf="results.length < 1">NO DATA</div>
 <div class="data-result" *ngIf="results.length > 0">
-    <div  *ngFor="let result of results"> {{result}} </div>
+  <div *ngFor="let result of results">{{ result }}</div>
 </div>

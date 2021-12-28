@@ -1,7 +1,8 @@
 <form [formGroup]="form">
   Value: {{ form.value | json }}
   <br />
-  <input
+  <div class="form-group">
+  <input class="form-control"
     *ngIf="
       name_of_filter.name == 'Shannons entropy' ||
       name_of_filter.name == 'Text element distance' ||
@@ -14,7 +15,7 @@
     formControlName="delimiter"
   />
 
-  <input
+  <input class="form-control"
     *ngIf="
       name_of_filter.name == 'Shannons entropy' ||
       name_of_filter.name == 'Text element distances' ||
@@ -25,7 +26,7 @@
     placeholder="number"
     formControlName="n"
   />
-  <input
+  <input class="form-control"
     *ngIf="name_of_filter.name == 'Pattern search'"
     type="text"
     placeholder="pattern"
@@ -33,26 +34,28 @@
   />
 
   <label *ngIf="name_of_filter.name == 'Index of coincidence'" for="normalize">Do you want to normalize?</label>
-  <input
+  <input 
     *ngIf="name_of_filter.name == 'Index of coincidence'"
     type="checkbox"
     name="normalize"
     formControlName="normalize"
   />
   <label *ngIf="name_of_filter.name == 'Index of coincidence'" for="approx">Do you want to use approx.?</label>
-  <input
+  <input 
   *ngIf="name_of_filter.name == 'Index of coincidence'"
   type="checkbox"
   name="approx"
   formControlName="approx"
 />
 <label *ngIf="name_of_filter.name == 'Remove accents'" for="spaces">Do you want to keep spaces?</label>
-  <input
+  <input 
     *ngIf="name_of_filter.name == 'Remove accents'"
     type="checkbox"
     placeholder="pattern"
     name="spaces"
     formControlName="Spaces"
   />
+  <button class="btn btn-outline-primary"(click)="send_notification()">Save Settings</button>
+</div>
 </form>
-<button (click)="send_notification()">ADD AND SAVE MORE LOCATIONS</button>
+

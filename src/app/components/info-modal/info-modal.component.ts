@@ -3,6 +3,7 @@ import {faCalculator} from '@fortawesome/free-solid-svg-icons';
 import {faTextWidth}from '@fortawesome/free-solid-svg-icons';
 import {faChartArea}from '@fortawesome/free-solid-svg-icons';
 import {faInfo}from '@fortawesome/free-solid-svg-icons';
+import {faTimes}from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class InfoModalComponent implements OnInit {
   faTextWidth=faTextWidth;
   faChartarea=faChartArea;
 faInfo=faInfo;
+faTimes=faTimes;
   constructor() { }
 
   ngOnInit(): void {

@@ -6,8 +6,18 @@ li{
     list-style: none;
 }
 .btn.btn-primary{
+    padding: 1%;
+    position: absolute;
+    bottom: 70%;
+    width: 5%;
+    left:3%;
+}
+.btn.btn-primary.inmodal{
+    width: 10%;
+    display: block;
 
-    display: flex;
-    float: right;
-    margin-bottom: 0;
+}
+.close{
+border: none;
+background:none;
 }

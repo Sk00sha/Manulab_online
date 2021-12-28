@@ -29,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Form1Component } from './components/form1/form1.component';
 import { AnalysisResultComponent } from './components/analysis-result/analysis-result.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -49,6 +50,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     InputModalComponent,
     Form1Component,
     AnalysisResultComponent,
+    FooterComponent,
 
   ],
   imports: [
@@ -71,6 +73,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     FormsModule,
     ReactiveFormsModule,
     MatTooltipModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],
