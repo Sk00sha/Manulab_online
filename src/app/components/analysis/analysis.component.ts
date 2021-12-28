@@ -80,9 +80,8 @@ make_analysis(){
     
 }
   drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container && this.list_bool_toggle===true ) {
+    if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    
       
     } else if(event.previousContainer.id!="cdk-drop-list-1") {
       transferArrayItem(event.previousContainer.data,
