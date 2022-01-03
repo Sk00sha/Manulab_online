@@ -12,12 +12,20 @@ export class AnalysisResultComponent implements OnInit {
   display_results:any[]=[];
   display_result_keys:any;
   results:any[]=[];
+  all_data:any[]=[];
   residual_results:any[];
   ngOnInit(): void {
     this.display_results=this.exchange.analysis_results;
-    this.display_result_keys=this.display_results.keys();
-    
-  
+    this.display_result_keys=[];
+    this.all_data=[];
+    for (const key in this.display_results) {
+      console.log(key);
+      this.display_results[key].forEach((element:any) => {
+        this.display_result_keys.push(element);
+      });
+      
+    }
+  /*
     this.display_results.forEach(element => {
       var pages=Object.keys(element);
       pages.forEach((page)=>{
@@ -30,7 +38,7 @@ export class AnalysisResultComponent implements OnInit {
         this.residual_results.forEach(element =>{
           const values:string[] = Object.values(element);
           const keys=Object.keys(element);
-          console.log(keys+" "+values);
+         
           var data:any=keys.concat(values);
 
           this.results.push(data);
@@ -40,7 +48,7 @@ export class AnalysisResultComponent implements OnInit {
       });
         
        
-    });
+    });*/
     
   }
 

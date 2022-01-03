@@ -1,6 +1,6 @@
 <form [formGroup]="form">
-  Value: {{ form.value | json }}
-  <br />
+  <!--Value: {{ form.value | json }}
+  <br />-->
   <div class="form-group">
   <input class="form-control"
     *ngIf="
@@ -54,6 +54,14 @@
     placeholder="pattern"
     name="spaces"
     formControlName="Spaces"
+  />
+  <label *ngIf="name_of_filter.name == 'Frequency of text elements'" for="relative">Relative/Absolute</label>
+  <input 
+    *ngIf="name_of_filter.name == 'Frequency of text elements'"
+    type="checkbox"
+    placeholder="pattern"
+    id="relative"
+    formControlName="relative"
   />
   <button class="btn btn-outline-primary"(click)="send_notification()">Save Settings</button>
 </div>

@@ -57,7 +57,7 @@ function sum(obj:any) {
   }
 
 export function indexOfCoincidenceDirect(normalize:boolean,pages:Pages[],delimiter:string,n:number) {
-    var res:any = {};
+    var res:any = [];
     var frequency  = getAbsoluteNGrams(pages, delimiter,n);
     var page_index=0;
     frequency.forEach((element:any)=>{
@@ -78,10 +78,41 @@ export function indexOfCoincidenceDirect(normalize:boolean,pages:Pages[],delimit
             if(normalize){
                 ic /= tot;
             }
-            res["Page"+page_index]=ic;
+            res.push({Page:"Page"+page_index,Index_of_coincidence:ic});
           });
         
     })
+    if(pages.length>1){
+        var allinone="";
+        pages.forEach((element:any)=>{
+          allinone+=(element.page_text);
+        });
+        var pages:Pages[]=[];
+        pages.push(new Pages(0,"NONE",allinone,"Allinone",true));
+        var frequency = getAbsoluteNGrams(pages,delimiter,n);
+        frequency.forEach((element:any)=>{
+            var ic = 0;
+            var elements = 0;
+            var tot = 0;
+            page_index++;
+            Object.keys(element).forEach(function(key, index) {
+                var localdata=element[key];
+                
+                Object.keys(localdata).forEach((key,index)=>{
+                    var val=localdata[key];
+                    ic+=val*(val-1)
+                    elements+=val;
+                    tot++;
+                })
+                ic /= elements * (elements -1);
+                if(normalize){
+                    ic /= tot;
+                }
+                res.push({Page:"All",Index_of_coincidence:ic});
+              });
+            
+        })
+    }
     return res;
 }
 
@@ -103,10 +134,37 @@ export function indexOfCoincidenceApprox(normalize:boolean,pages:Pages[],delimit
             if(normalize){
                 ic /= tot;
             }
-            res["Page"+page_index]=ic;
+            res.push({Page:"Page"+page_index,Index_of_coincidence:ic});
           });
         
     })
+    if(pages.length>1){
+        var allinone="";
+        pages.forEach((element:any)=>{
+          allinone+=(element.page_text);
+        });
+        var mypages:Pages[]=[];
+        mypages.push(new Pages(0,"NONE",allinone,"Allinone",true));
+        var frequency = getRelativeNgrams(mypages,delimiter,n);   
+        frequency.forEach((element:any)=>{
+            var ic = 0;
+            var tot = 0;
+            Object.keys(element).forEach(function(key, index) {
+                var localdata=element[key];
+                page_index++;
+                Object.keys(localdata).forEach((key,index)=>{
+                    var val=localdata[key];
+                    ic+=val*val;
+                    tot++;
+                })
+                if(normalize){
+                    ic /= tot;
+                }
+                res.push({Page:"All",Index_of_coincidence:ic});
+              });
+            
+        })
+    }
     return res;
 }
 
@@ -137,7 +195,7 @@ export function CountContacts(page:string,delimiter:string){
              pieces_all = page.split(delimiter);
         }
         
-        for(let i=0;i<pieces_all.length-n-1;i++){
+        for(let i=0;i<pieces_all.length-(n-1);i++){
             var piece=pieces_all[i] + pieces_all[i+1];
     
             if(ord(pieces_all[i])>ord(pieces_all[i+1])){

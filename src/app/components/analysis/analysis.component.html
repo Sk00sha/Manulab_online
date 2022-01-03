@@ -5,24 +5,24 @@
       <div class="col-md-6 border rounded bg-white">
         <div cdkDropListGroup>
           <div class="example-container">
-            <h2>Available</h2>
+            <h2 style="text-align:center">Available</h2>
         
-            <div
+            <div style="margin-left: auto; margin-right: auto;"
               cdkDropList
               [cdkDropListData]="filters"
               class="example-list"
               (cdkDropListDropped)="drop($event)">
-              <div class="example-box" *ngFor="let item of filters;let i = index" cdkDrag>{{item.name}}<button (click)="add($event,i)">Add</button></div>
+              <div class="example-box" *ngFor="let item of filters;let i = index" cdkDrag>{{item.name}}<button class="btn btn-outline-success"  (click)="add($event,i)"><fa-icon [icon]="faPlus"></fa-icon></button></div>
             </div>
           </div>
-          <div class="example-container">
-            <h2>Applied</h2>
-            <div
+          <div class="example-container-applied">
+            <h2 style="text-align:center">Applied</h2>
+            <div style="margin-left: auto; margin-right: auto;"
               cdkDropList
               [cdkDropListData]="applied"
               class="example-list"
               (cdkDropListDropped)="drop($event)">
-              <div class="example-box" *ngFor="let item of applied ; let i = index" cdkDrag [cdkDragDisabled]="list_bool_toggle">{{item.name}}<div><app-input-modal (disable)="recieve_disable($event)" [number_of_input]="i" [name_of_input]="item"></app-input-modal><button (click)="delete($event,i)">Delete</button></div></div>
+              <div class="example-box-applied" *ngFor="let item of applied ; let i = index" cdkDrag [cdkDragDisabled]="list_bool_toggle">{{item.name}}<div class="data-box"><app-input-modal (disable)="recieve_disable($event)" [number_of_input]="i" [name_of_input]="item"></app-input-modal><button class="btn btn-outline-danger" (click)="delete($event,i)"><fa-icon [icon]="faTimes" style="color:red;"></fa-icon></button></div></div>
             </div>
           </div>
         </div>

@@ -1,12 +1,16 @@
 .data-result{
-width: 70%;
+width: 80%;
 min-height: 300px;
 height: auto;
 background-color: rgb(255, 255, 255);
 border: solid 1px black;
 margin: auto;
-margin-bottom: 3px;
+//margin-bottom: 3px;
 border-radius: 5px;
-box-shadow: 5px 5px rgb(99, 99, 99);
-margin-top: 10%;
+//box-shadow: 5px 5px rgb(99, 99, 99);
+margin-top: 5%;
+}
+.scrollable-div{
+    overflow-y: scroll; 
+    height:400px;
 }

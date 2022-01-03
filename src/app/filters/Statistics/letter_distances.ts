@@ -11,7 +11,7 @@ export class LetterDistances{
         this.n=n;
     }
     activate(pages:Pages[]){
-        var result:any = {};
+        var result:any = [];
         var allInOne = "";
         var n = 1;
         var page_index=0;
@@ -19,8 +19,11 @@ export class LetterDistances{
             page_index++;
             var frequency=countNGram(element.page_text,this.delimiter,n);
             var distances = findDistances(element.page_text,"unique",this.delimiter);
+            distances.forEach(element=>element.Page="Page"+page_index);
+            console.log(distances);
+            
             if (distances.length!=0) {
-                result["Page"+page_index]=distances;
+                result.push(...distances);
             }
         });
         if(pages.length>1){
@@ -29,11 +32,13 @@ export class LetterDistances{
             });
             var frequency=countNGram(allInOne,this.delimiter,1);
                 var distances = findDistances(allInOne,"unique",this.delimiter);
+                distances.forEach(element=>element.Page="All");
+                console.log(distances);
                 if (distances.length!=0) {
-                    result["All Pages"]=distances;
+                    result.push(...distances);
                 }
         }
-    
+       
         return result;
     }
 }

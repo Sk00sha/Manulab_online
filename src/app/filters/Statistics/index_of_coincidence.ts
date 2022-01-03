@@ -7,7 +7,7 @@ export class index_of_coincidence {
   normalize:boolean;
    delimiter: string;
     n: number;
-  constructor( approx: boolean,normalize:boolean, delimiter: string, n: number) {
+  constructor(approx: boolean,normalize:boolean, delimiter: string, n: number) {
     this.delimiter=delimiter;
     this.approx=approx;
     this.n=n;

@@ -21,7 +21,31 @@ export class AdjacentContacts{
                     allInOne+=element.page_text;
                 })
             }
-            result["All Pages"]=([CountContacts(allInOne,this.delimiter)]);
-            return result;
+            result["All"]=([CountContacts(allInOne,this.delimiter)]);
+
+            var huge_object:any=[];
+            var object_keys=(Object.keys(result));
+            object_keys.forEach(my_key=>{
+              if(my_key=="All"){
+              
+                var ngram_keys=(Object.keys(result[my_key][0]));
+                var ngram_values=(Object.values(result[my_key][0]));
+                for(var i=0;i<ngram_keys.length;i++){
+                    huge_object.push({Page:my_key,element:ngram_keys[i],frequency:ngram_values[i]})
+                }
+               
+              }
+              else{
+              
+              var ngram_keys=(Object.keys(result[my_key][0]));
+              var ngram_values=(Object.values(result[my_key][0]));
+              for(var i=0;i<ngram_keys.length;i++){
+                huge_object.push({Page:my_key,element:ngram_keys[i],frequency:ngram_values[i]})
+            }
+              
+            }
+            })
+            return huge_object;
+
         }
     }

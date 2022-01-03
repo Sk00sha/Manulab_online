@@ -23,6 +23,7 @@
       margin-top: 1%;
       height: auto;
     }
+
   
     
     .btn.btn-success{
@@ -51,4 +52,13 @@
       .nav-item{
         margin:2%;
 
+      }
+
+      @media only screen and (max-width:576px){
+        .nav-item{
+          width: 70%;
+          margin-right: auto;
+          margin-left: auto;
+  
+        }
       }

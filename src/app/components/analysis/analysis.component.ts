@@ -19,7 +19,10 @@ import { AdjacentContacts } from 'src/app/filters/Statistics/adjacent_contacts';
 import { findDistances } from 'src/app/filters/Statistics/helpers';
 import { LetterDistances } from 'src/app/filters/Statistics/letter_distances';
 import { FilterController } from 'src/app/filters/Controller/Filter_Controller';
-
+import { LanguageGuess } from 'src/app/filters/Cryptanalysis/language_guess';
+import {faTimes}from '@fortawesome/free-solid-svg-icons';
+import {faCog}from '@fortawesome/free-solid-svg-icons';
+import {faPlus}from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-analysis',
   templateUrl: './analysis.component.html',
@@ -32,7 +35,9 @@ export class AnalysisComponent implements OnInit {
     this.pages=this.data_load.get_pages();
     this.applied=this.exchange.applied_filters_array;
   }
- 
+  faTimes=faTimes;
+  faCog=faCog;
+  faPlus=faPlus;
   applied:any[] = [];
   filters:any[] = [];
   pages:Array<Pages>=[];
@@ -58,7 +63,9 @@ make_analysis(){
       controller.add_multiple_filters(this.applied);
       var result=controller.start_analysis();
       this.exchange.analysis_result_set(result);
+      console.log("ANALYSIS RESULTS");
       console.log(result);
+      
 }
 
   

@@ -9,6 +9,7 @@ import {faFileDownload}from '@fortawesome/free-solid-svg-icons';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Filter_JSON } from 'src/app/models/filter'; 
+import {faArrowDown}from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-filter-groups',
@@ -21,6 +22,7 @@ export class FilterGroupsComponent implements OnInit {
   faChartarea=faChartArea;
   faFile=faFile;
   faFileDownload=faFileDownload;
+  faArrowDown=faArrowDown;
 
   constructor(private exchange:DataExchangeService,private loader:DataloaderService,private sanitizer: DomSanitizer) { }
   local_filters:string[]=[];

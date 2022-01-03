@@ -12,6 +12,7 @@ import { CountContacts } from 'src/app/filters/Statistics/helpers';
 import { AdjacentContacts } from 'src/app/filters/Statistics/adjacent_contacts';
 import { findDistances } from 'src/app/filters/Statistics/helpers';
 import { LetterDistances } from 'src/app/filters/Statistics/letter_distances';
+import { LanguageGuess } from 'src/app/filters/Cryptanalysis/language_guess';
 
 
 export class FilterController{
@@ -63,7 +64,8 @@ export class FilterController{
 
         }
         if(filter_name.name=="Language guess"){
-
+            var l_g=new LanguageGuess();
+            this.filters.push({name:filter_name,function:l_g});
         }
     }
     add_multiple_filters(array_of_filters:any[]){

@@ -9,7 +9,7 @@ export class shannons_entropy {
       this.n=n;
     }
       activate(text:Pages[]):any {
-        var res:any = {};
+        var res:any = [];
         var page_index=0;
         var frequency = getRelativeNgrams(text,this.delimiter,this.n);
         frequency.forEach((element:any)=>{
@@ -22,7 +22,8 @@ export class shannons_entropy {
                     entropy -= val * Math.log(val) / Math.log(2);
                 })
               });
-            res["Page"+page_index]=(entropy);
+              res.push({Page:"Page"+page_index,Entropy:entropy});
+            
         })
         if(text.length>1){
           var allinone="";
@@ -41,7 +42,7 @@ export class shannons_entropy {
                       entropy -= val * Math.log(val) / Math.log(2);
                   })
                 });
-              res["All"]=(entropy);
+                res.push({Page:"All",Entropy:entropy});
           })
         }
             

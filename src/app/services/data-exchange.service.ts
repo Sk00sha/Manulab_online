@@ -48,7 +48,7 @@ export class DataExchangeService {
       this.available_filters = [
         { name: 'Anagram detection' },
         { name: 'Vowel detection' },
-        { name: 'Language guess' },
+        new FilterObject("Language guess","",false,false,false,1,false,"")
       ];
     }
   

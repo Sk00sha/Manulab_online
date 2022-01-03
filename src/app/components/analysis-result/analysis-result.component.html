@@ -1,5 +1,22 @@
 <app-navigation></app-navigation>
-<div class="data-result" *ngIf="results.length < 1">NO DATA</div>
-<div class="data-result" *ngIf="results.length > 0">
-  <div *ngFor="let result of results">{{ result }}</div>
+<div class="data-result" *ngIf="display_results.length < 1">NO DATA</div>
+<div class="data-result" *ngFor="let item of display_results">
+<div class="scrollable-div">
+  <table class="table table-bordered" cellspacing="0">
+    <thead>
+    <tr>
+        <th class="th-sm">Page</th>
+        <th class="th-sm">Element</th>
+        <th class="th-sm">Frequency</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let data of item">
+        <th  scope="row">{{data.Page }}</th>
+        <td> {{data.element }}</td>
+        <td> {{data.frequency}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>

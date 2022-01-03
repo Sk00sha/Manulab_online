@@ -17,13 +17,13 @@ export class remove_accents {
       }
 
       remove_accents(text:string,keep_space:boolean) {
-        var text_analysis=text.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-       
+        var text_analysis=text.normalize("NFD").replace(/[^a-z ]/gi, "")
+      
         if(keep_space===false){
             text_analysis=text_analysis.split(' ').join('');
         }
-   
-        return text_analysis
+      
+        return text_analysis.toLowerCase();
       }
      
   }

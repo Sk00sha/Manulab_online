@@ -36,10 +36,10 @@ export class PageLoaderComponent implements OnInit {
     this.Pages.splice(i,1);
     this.dataService.pages=this.Pages;
   }
-
   uploadPage() {
     if (this.text && this.Page_texts.length>0 || this.text_name) {
       if(this.bulk_upload){
+        this.url='assets/images/placeholder.jpg';
         if(this.Pages.length >0){
           this.id_generator=this.Pages[this.Pages.length-1].id;
         }
@@ -47,16 +47,17 @@ export class PageLoaderComponent implements OnInit {
               this.id_generator++;
                 this.Pages.push(new Pages(this.id_generator,this.url,this.Page_texts[i].page_text,this.Page_texts[i].name,true));   
       }
+    
       for(let j=0;j<this.Pages.length;j++){
         this.Pages[j].page_text=this.Pages[j].page_text.replace(/\r\n/g,"\n");
         for(let i=0;i<this.Page_pictures.length;i++){
-          if(this.Page_pictures[i].name==this.Pages[j].name){
-            this.Pages[j].img=this.Page_pictures[i].img;
-            
+          if(this.Page_pictures[i].name===this.Pages[j].name){
+            console.log(this.Page_pictures[i].name+" "+this.Pages[j].name);
+            this.Pages[j].img=this.Page_pictures[i].img; 
+          
           }
         }
     }
-
       this.url = 'assets/images/placeholder.jpg';
       this.text = '';
       this.Page_pictures=[];
@@ -69,7 +70,7 @@ export class PageLoaderComponent implements OnInit {
         this.id_generator=this.Pages[this.Pages.length-1].id;
       }
       this.id_generator++;
-      //TUTO sa meni text - simple regex
+      //TUTO sa meni text - simple regex aby eliminovalo niektore neviditelne znaky v txt subore
       this.text=this.text.replace(/\r\n/g,"\n");
       this.Pages.push(new Pages(this.id_generator,this.url,this.text,this.text_name,true));
       this.url = 'assets/images/placeholder.jpg';
@@ -84,7 +85,7 @@ export class PageLoaderComponent implements OnInit {
     }
     this.url = 'assets/images/placeholder.jpg';
     this.text = '';
-    console.log(this.Pages);
+
     
   }
   selectfile(e: any): void {
@@ -95,7 +96,7 @@ export class PageLoaderComponent implements OnInit {
       if(e.target.files.length>1){
         this.bulk_upload=true;
       }
-      console.log(this.bulk_upload);
+     
       
     for(let i=0;i<e.target.files.length;i++){
       var reader = new FileReader();
@@ -110,6 +111,7 @@ export class PageLoaderComponent implements OnInit {
           this.text_name = name_split[0];
           this.text = event.target.result;
           this.Page_texts.push(new Pages(this.id_generator,'assets/images/placeholder.jpg',this.text,this.text_name,true));
+         
           };
       }
      // this.reset_vars();

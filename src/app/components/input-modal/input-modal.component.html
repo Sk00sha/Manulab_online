@@ -1,6 +1,6 @@
 <!-- The Modal -->
-<button type="button" (click)="send_disable_flag()" data-toggle="modal"(click)="showModal=true" data-target="#myModal" data-backdrop="static" data-keyboard="false">
-    Edit
+<button class="btn btn-outline-warning" type="button" (click)="send_disable_flag()" data-toggle="modal"(click)="showModal=true" data-target="#myModal" data-backdrop="static" data-keyboard="false">
+  <fa-icon [icon]="faCog"></fa-icon>
   </button>
 
 <div class="modal" id="myModal" [ngClass]="{'show':showModal}">
