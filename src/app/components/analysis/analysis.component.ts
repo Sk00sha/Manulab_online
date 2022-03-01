@@ -23,6 +23,7 @@ import { LanguageGuess } from 'src/app/filters/Cryptanalysis/language_guess';
 import {faTimes}from '@fortawesome/free-solid-svg-icons';
 import {faCog}from '@fortawesome/free-solid-svg-icons';
 import {faPlus}from '@fortawesome/free-solid-svg-icons';
+import {VowelDetection} from 'src/app/filters/Cryptanalysis/vowel_detection'
 @Component({
   selector: 'app-analysis',
   templateUrl: './analysis.component.html',
@@ -63,9 +64,10 @@ make_analysis(){
       controller.add_multiple_filters(this.applied);
       var result=controller.start_analysis();
       this.exchange.analysis_result_set(result);
-      console.log("ANALYSIS RESULTS");
       console.log(result);
       
+     // var vd=new VowelDetection("Sukhotin");
+      //vd.activate(this.pages);
 }
 
   
@@ -95,13 +97,15 @@ make_analysis(){
                         event.container.data,
                         event.previousIndex,
                         event.currentIndex);
-
+                       
       this.exchange.applied_filters(this.applied);
-                        
-      this.filters.push(event.container.data[event.currentIndex]);
+      console.log(event.currentIndex+""+event.previousIndex);
+      
+      this.filters.splice(event.previousIndex,0,event.container.data[event.currentIndex]);
                   
     }
   
   }
+  
 
 }

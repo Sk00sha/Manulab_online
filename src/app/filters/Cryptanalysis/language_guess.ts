@@ -40,7 +40,8 @@ export class LanguageGuess{
         console.log(updated_pages[0].page_text);
         var index_of_c=this.ic.activate(updated_pages);
         for (const property in index_of_c) {
-            var ic=index_of_c[property];
+          
+            var ic=index_of_c[property].Index_of_coincidence;
             for (const lang in this.IC_LANGUAGES) {
                 var value=this.IC_LANGUAGES[lang];
                 var diff=Math.abs(value-ic).toFixed(4);

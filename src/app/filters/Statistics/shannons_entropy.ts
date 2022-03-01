@@ -22,7 +22,7 @@ export class shannons_entropy {
                     entropy -= val * Math.log(val) / Math.log(2);
                 })
               });
-              res.push({Page:"Page"+page_index,Entropy:entropy});
+              res.push({Page:"Page"+page_index,Entropy:entropy,name:"Entropy"});
             
         })
         if(text.length>1){
@@ -42,7 +42,7 @@ export class shannons_entropy {
                       entropy -= val * Math.log(val) / Math.log(2);
                   })
                 });
-                res.push({Page:"All",Entropy:entropy});
+                res.push({Page:"All",Entropy:entropy,name:"Entropy"});
           })
         }
             

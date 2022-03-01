@@ -8,11 +8,17 @@ export class DataloaderService {
 
   constructor() { }
   pages:Array<Pages>=[];
+  db_import_pages:any=[];
   Json_data=[];
 
 add_page(array_of_pages:Array<Pages>){
 this.pages=array_of_pages;
-
+}
+set_db_data(data:any){
+  this.db_import_pages=data;
+}
+get_db_data(){
+  return this.db_import_pages;
 }
 get_pages():Array<Pages>{
   var temp:Array<Pages>=[];

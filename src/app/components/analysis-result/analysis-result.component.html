@@ -1,20 +1,38 @@
 <app-navigation></app-navigation>
-<div class="data-result" *ngIf="display_results.length < 1">NO DATA</div>
-<div class="data-result" *ngFor="let item of display_results">
+<div style="text-align:center;"class="data-result" *ngIf="display_results.length < 1"><img style="max-height:150px;width:auto;margin-top: 5%;"[src]="url" alt="None"></div>
+<div class="data-result shadow p-3 mb-5 bg-white rounded" *ngFor="let item of display_results;let i=index;">
 <div class="scrollable-div">
+  <h2>{{item[0].name}}</h2>
+  <select id='dropdown' style="width:100%; height:30px; display: block;"
+        name='dropdown'>
+          <option *ngFor="let item of filtering_data" [value]="item">
+            {{item}}
+          </option>    
+      </select>
+  <button (click)="Export_data(i)">Export data</button>
   <table class="table table-bordered" cellspacing="0">
     <thead>
     <tr>
         <th class="th-sm">Page</th>
-        <th class="th-sm">Element</th>
-        <th class="th-sm">Frequency</th>
+        <th *ngIf="item[0].name=='Entropy'" class="th-sm">Entropy</th>
+        <th *ngIf="item[0].name=='Frequency of text' || item[0].name=='Adjacent contacts' || item[0].name=='Letter distances'" class="th-sm">Element</th>
+        <th *ngIf="item[0].name=='Frequency of text' || item[0].name=='Adjacent contacts'" class="th-sm">Frequency</th>
+        <th *ngIf="item[0].name=='Index of coincidence'" class="th-sm">Index of coincidence</th>
+        <th *ngIf="item[0].name=='Letter distances'" class="th-sm">Min</th>
+        <th *ngIf="item[0].name=='Letter distances'" class="th-sm">Max</th>
+        <th *ngIf="item[0].name=='Letter distances'" class="th-sm">Average</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let data of item">
-        <th  scope="row">{{data.Page }}</th>
-        <td> {{data.element }}</td>
-        <td> {{data.frequency}}</td>
+        <th scope="row">{{data.Page}}</th>
+        <td *ngIf="data.name=='Entropy'"> {{data.Entropy }}</td>
+        <td *ngIf="data.name=='Frequency of text' || data.name=='Adjacent contacts' || data.name=='Letter distances'"> {{data.element}}</td>
+        <td *ngIf="data.name=='Frequency of text' || data.name=='Adjacent contacts'">{{data.frequency}}</td>
+        <td *ngIf="data.name=='Index of coincidence'"> {{data.Index_of_coincidence}}</td>
+        <td *ngIf="data.name=='Letter distances'"> {{data.min}}</td>
+        <td *ngIf="data.name=='Letter distances'"> {{data.max}}</td>
+        <td *ngIf="data.name=='Letter distances'"> {{data.avg}}</td>
     </tr>
   </tbody>
 </table>

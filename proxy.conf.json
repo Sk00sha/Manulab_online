@@ -1,0 +1,10 @@
+{
+    "/api": {
+      "target": "https://cryptograms.hcportal.eu/api/rest/getCryptogramRecordsForManulab.php",
+      "secure": true,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api": ""
+      }
+    }
+  }

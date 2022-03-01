@@ -40,7 +40,7 @@ export function getRelativeNgrams(pages:Pages[],delimiter:string,n:number):any {
     var result:any = [];
    pages.forEach((element)=>{
     const sumValues = sum(countNGram(element.page_text,delimiter,n));
-    console.log(sumValues);
+
     
     const data=countNGram(element.page_text,delimiter,n)
     Object.keys(data).map(function(key, index) {
@@ -117,7 +117,7 @@ export function indexOfCoincidenceDirect(normalize:boolean,pages:Pages[],delimit
 }
 
 export function indexOfCoincidenceApprox(normalize:boolean,pages:Pages[],delimiter:string,n:number) {
-    var res:any = {};
+    var res:any = [];
     var frequency =getRelativeNgrams(pages, delimiter,n);
     var page_index=0;
     frequency.forEach((element:any)=>{
@@ -134,7 +134,7 @@ export function indexOfCoincidenceApprox(normalize:boolean,pages:Pages[],delimit
             if(normalize){
                 ic /= tot;
             }
-            res.push({Page:"Page"+page_index,Index_of_coincidence:ic});
+            res.push({Page:"Page"+page_index,Index_of_coincidence:ic,name:"Index of coincidence"});
           });
         
     })
@@ -160,7 +160,7 @@ export function indexOfCoincidenceApprox(normalize:boolean,pages:Pages[],delimit
                 if(normalize){
                     ic /= tot;
                 }
-                res.push({Page:"All",Index_of_coincidence:ic});
+                res.push({Page:"All",Index_of_coincidence:ic,name:"Index of coincidence"});
               });
             
         })

@@ -41,6 +41,34 @@ export class VowelDetection{
 
             var ac=new AdjacentContacts(delimiter);
             var contacts=ac.activate(new_pages);
-            contacts.forEach((element:any)=>console.log(element));
+            contacts.forEach((element:any)=>{
+                if(element.element[0]==element.element[1]){
+                    delete contacts[element];
+                }
+            });
+            var rowSum:any = {};
+            contacts.forEach((element:any)=>{
+                rowSum[element.element[0]]=!(element.element[0] in rowSum)?element.frequency:rowSum[element.element[0]]+element.frequency;
+                rowSum[element.element[1]]=!(element.element[1] in rowSum)?element.frequency:rowSum[element.element[1]]+element.frequency;
+            });
+           var vowels:any={};
+           do{
+            var maxKey=Object.keys(rowSum).reduce((a, b) => rowSum[a] > rowSum[b] ? a : b);
+           if( rowSum[maxKey]<= 0){
+            break;
         }
+        var maxKey=Object.keys(rowSum).reduce((a, b) => rowSum[a] > rowSum[b] ? a : b);
+        vowels[maxKey[0]]=0;
+        contacts.forEach((element:any)=>{
+            if (element.element[0] == maxKey[0]) {
+                rowSum[element.element[1]] -= 2 * element.frequency;
+            } else if(element.element[1] == maxKey[0]){
+                rowSum[element.element[0]] -= 2 * element.frequency;
+            }
+        });
+        console.log(vowels);
+        
+    }while(rowSum[maxKey] > 0);
+    return vowels;
+    }
 }

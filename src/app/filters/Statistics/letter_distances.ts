@@ -20,11 +20,12 @@ export class LetterDistances{
             var frequency=countNGram(element.page_text,this.delimiter,n);
             var distances = findDistances(element.page_text,"unique",this.delimiter);
             distances.forEach(element=>element.Page="Page"+page_index);
-            console.log(distances);
-            
+            distances.forEach(element=>element.name="Letter distances");
+           
             if (distances.length!=0) {
                 result.push(...distances);
             }
+            
         });
         if(pages.length>1){
             pages.forEach(element => {
@@ -33,7 +34,7 @@ export class LetterDistances{
             var frequency=countNGram(allInOne,this.delimiter,1);
                 var distances = findDistances(allInOne,"unique",this.delimiter);
                 distances.forEach(element=>element.Page="All");
-                console.log(distances);
+                distances.forEach(element=>element.name="Letter distances");
                 if (distances.length!=0) {
                     result.push(...distances);
                 }

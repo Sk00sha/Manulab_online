@@ -16,8 +16,10 @@ export class index_of_coincidence {
   activate(text: Pages[]): any {
     if (!this.approx) {
       var ic = indexOfCoincidenceDirect(this.normalize, text, this.delimiter, this.n);
+      ic.forEach((element:any)=>element.name="Index of coincidence");
     } else {
         var ic=indexOfCoincidenceApprox(this.normalize,text,this.delimiter,this.n);
+        ic.forEach((element:any)=>element.name="Index of coincidence");
     }
     return ic;
   }

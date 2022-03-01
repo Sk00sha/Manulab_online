@@ -1,5 +1,5 @@
 .inform-div{
-    height: 400px;
+    min-height: 400px;
     width: 80%;
     background-color: white;
     margin: auto;
@@ -12,4 +12,22 @@
     width: 80%;
     margin-left: 5%;
 }
-
+.flex-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .footer {
+    margin-top: auto;
+    background-color: #0058db;
+    min-height: 100px;
+    text-align: center;
+    color: white;
+  }
+  img{
+      height: 50px;
+      width: auto;
+      margin-top: 2%;
+  }

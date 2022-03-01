@@ -31,7 +31,7 @@ export class AdjacentContacts{
                 var ngram_keys=(Object.keys(result[my_key][0]));
                 var ngram_values=(Object.values(result[my_key][0]));
                 for(var i=0;i<ngram_keys.length;i++){
-                    huge_object.push({Page:my_key,element:ngram_keys[i],frequency:ngram_values[i]})
+                    huge_object.push({Page:my_key,element:ngram_keys[i],frequency:ngram_values[i],name:"Adjacent contacts"})
                 }
                
               }
@@ -40,7 +40,7 @@ export class AdjacentContacts{
               var ngram_keys=(Object.keys(result[my_key][0]));
               var ngram_values=(Object.values(result[my_key][0]));
               for(var i=0;i<ngram_keys.length;i++){
-                huge_object.push({Page:my_key,element:ngram_keys[i],frequency:ngram_values[i]})
+                huge_object.push({Page:my_key,element:ngram_keys[i],frequency:ngram_values[i],name:"Adjacent contacts"})
             }
               
             }

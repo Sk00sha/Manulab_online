@@ -5,7 +5,7 @@ import { faCloudUploadAlt } from '@fortawesome/free-solid-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { HttpClient } from '@angular/common/http';
 import {Metadata} from 'src/app/models/page_metadata'
-
+import { DbRequestService } from 'src/app/services/db-request.service';
 
 
 
@@ -17,9 +17,42 @@ import {Metadata} from 'src/app/models/page_metadata'
 export class PageLoaderComponent implements OnInit {
   constructor(
     private dataService: DataloaderService,
+    private db_connector:DbRequestService
   ) {}
 
-  ngOnInit(): void {this.Pages=this.dataService.pages}
+  ngOnInit(): void {
+    this.Pages=this.dataService.pages;
+    if(this.dataService.get_db_data().length==0){
+    console.log("fetching data...");
+    var data:Promise<any>=this.db_connector.fetch_db_data();
+    var db_pages:Array<Pages>=[];
+    data.then(value=>{
+      var data_pages:any=[];
+      var name_item="";
+      var id=0;
+      value["records"].forEach((manuscript:any)=>{
+         name_item=manuscript["name"];
+          manuscript["data"].forEach((item:any)=>{
+              if(item.filetype=="text"){
+                id++;
+                data_pages.push(name_item+" - "+item["description"]);
+                //var page:Pages=new Pages(value["id"],'assets/images/placeholder.jpg',item["blobb"],name_item+" - "+item["description"],false);
+                db_pages.push(new Pages(id,'assets/images/placeholder.jpg',item["blobb"],name_item+" - "+item["description"],false));
+              }
+          });
+        name_item="";
+      });
+      this.dataService.set_db_data(db_pages);
+      this.dropdown_list_data=this.dataService.get_db_data();
+    });
+  }else{
+    console.log("Already have data...");
+    this.dropdown_list_data=this.dataService.get_db_data();
+  }
+  }
+  display_loader:boolean=false;
+  any_data:any;
+  dropdown_list_data:any=[];
   faTimes = faCloudUploadAlt;
   faDelete=faTimes;
   url: string = 'assets/images/placeholder.jpg';
@@ -36,8 +69,22 @@ export class PageLoaderComponent implements OnInit {
     this.Pages.splice(i,1);
     this.dataService.pages=this.Pages;
   }
+  show_db_segment():void{
+    if(this.display_loader==false){
+      this.display_loader=true;
+    }
+    else{
+      this.display_loader=false;
+    }
+    
+  }
+  onOptionsSelected(event:any){
+    const value = event.target.value;
+    this.text=value;
+    console.log(value);
+}
   uploadPage() {
-    if (this.text && this.Page_texts.length>0 || this.text_name) {
+    if (this.text && this.Page_texts.length>0 || this.text_name || this.display_loader==true) {
       if(this.bulk_upload){
         this.url='assets/images/placeholder.jpg';
         if(this.Pages.length >0){
@@ -52,7 +99,7 @@ export class PageLoaderComponent implements OnInit {
         this.Pages[j].page_text=this.Pages[j].page_text.replace(/\r\n/g,"\n");
         for(let i=0;i<this.Page_pictures.length;i++){
           if(this.Page_pictures[i].name===this.Pages[j].name){
-            console.log(this.Page_pictures[i].name+" "+this.Pages[j].name);
+            
             this.Pages[j].img=this.Page_pictures[i].img; 
           
           }
