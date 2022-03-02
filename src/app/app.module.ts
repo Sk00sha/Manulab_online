@@ -30,10 +30,7 @@ import { Form1Component } from './components/form1/form1.component';
 import { AnalysisResultComponent } from './components/analysis-result/analysis-result.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { FooterComponent } from './components/footer/footer.component';
-
-
-
-
+import { NgxChartsModule }from '@swimlane/ngx-charts';
 
 
 @NgModule({
@@ -73,7 +70,8 @@ import { FooterComponent } from './components/footer/footer.component';
     SwiperModule,
     FormsModule,
     ReactiveFormsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    NgxChartsModule
 
   ],
   providers: [],

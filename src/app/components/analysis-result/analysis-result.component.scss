@@ -11,5 +11,28 @@ margin-top: 5%;
 }
 .scrollable-div{
     overflow-y: scroll; 
-    height:400px;
+    height:300px;
 }
+.wrapper-div{
+    height: 650px;
+}
+.chart-container{
+    margin-top: 30px;
+    height:250px;
+    overflow-x: scroll;
+    display: block;
+}
+:host {
+    height: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .spectre-pie-chart {
+      display: block;
+    height: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }

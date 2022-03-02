@@ -37,15 +37,15 @@ export class LanguageGuess{
         var result:any=[];
         var rem_accents=new remove_accents(this.keepSpace,text);
         var updated_pages=rem_accents.activate();
-        console.log(updated_pages[0].page_text);
         var index_of_c=this.ic.activate(updated_pages);
         for (const property in index_of_c) {
-          
             var ic=index_of_c[property].Index_of_coincidence;
+            console.log(index_of_c[property]);
+          
             for (const lang in this.IC_LANGUAGES) {
                 var value=this.IC_LANGUAGES[lang];
                 var diff=Math.abs(value-ic).toFixed(4);
-                var data={Page:property,Lang:lang,Lang_index:this.IC_LANGUAGES[lang],Difference:diff}
+                var data={Page:index_of_c[property].Page,Lang:lang,Lang_index:this.IC_LANGUAGES[lang],Difference:diff,name:"Language guess"}
                 result.push(data);
               }
           }

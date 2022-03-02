@@ -1,15 +1,18 @@
 <app-navigation></app-navigation>
 <div style="text-align:center;"class="data-result" *ngIf="display_results.length < 1"><img style="max-height:150px;width:auto;margin-top: 5%;"[src]="url" alt="None"></div>
 <div class="data-result shadow p-3 mb-5 bg-white rounded" *ngFor="let item of display_results;let i=index;">
+  <div class="wrapper-div">
+    <h2>{{item[0].name}}</h2>
+    <select [(ngModel)]="page_name" id='dropdown' style="width:100%; height:30px; display: block;"
+          name='dropdown'>
+            <option *ngFor="let item of filtering_data" [value]="item">
+              {{item}}
+            </option>    
+        </select>
+    <button (click)="Export_data(i)">Export data</button>
+    <button (click)="print()">print data</button>
 <div class="scrollable-div">
-  <h2>{{item[0].name}}</h2>
-  <select id='dropdown' style="width:100%; height:30px; display: block;"
-        name='dropdown'>
-          <option *ngFor="let item of filtering_data" [value]="item">
-            {{item}}
-          </option>    
-      </select>
-  <button (click)="Export_data(i)">Export data</button>
+ 
   <table class="table table-bordered" cellspacing="0">
     <thead>
     <tr>
@@ -21,6 +24,10 @@
         <th *ngIf="item[0].name=='Letter distances'" class="th-sm">Min</th>
         <th *ngIf="item[0].name=='Letter distances'" class="th-sm">Max</th>
         <th *ngIf="item[0].name=='Letter distances'" class="th-sm">Average</th>
+        <th *ngIf="item[0].name=='Language guess'" class="th-sm">Language</th>
+        <th *ngIf="item[0].name=='Language guess'" class="th-sm">Reference IC</th>
+        <th *ngIf="item[0].name=='Language guess'" class="th-sm">IC Difference</th>
+        <th *ngIf="item[0].name=='Pattern search'" class="th-sm">Position</th>
     </tr>
     </thead>
     <tbody>
@@ -33,8 +40,27 @@
         <td *ngIf="data.name=='Letter distances'"> {{data.min}}</td>
         <td *ngIf="data.name=='Letter distances'"> {{data.max}}</td>
         <td *ngIf="data.name=='Letter distances'"> {{data.avg}}</td>
+        <td *ngIf="data.name=='Language guess'"> {{data.Lang}}</td>
+        <td *ngIf="data.name=='Language guess'"> {{data.Lang_index}}</td>
+        <td *ngIf="data.name=='Language guess'"> {{data.Difference}}</td>
+        <td *ngIf="data.name=='Pattern search'"> {{data.positions}}</td>
     </tr>
   </tbody>
 </table>
+</div>
+<div class="chart-container">
+  <div class="spectre-pie-chart">
+  <ngx-charts-bar-vertical 
+    [view]="[900,210]"
+    [results]="saleData"
+    [xAxisLabel]="'Products'"
+    [legendTitle]="'Product Sale Chart'"
+    [yAxisLabel]="'Sale'"
+    [xAxis]="true"
+    [yAxis]="true"
+    >
+</ngx-charts-bar-vertical>
+</div>
+</div>
 </div>
 </div>
