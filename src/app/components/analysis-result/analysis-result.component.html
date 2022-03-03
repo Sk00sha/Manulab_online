@@ -10,7 +10,7 @@
             </option>    
         </select>
     <button (click)="Export_data(i)">Export data</button>
-    <button (click)="print()">print data</button>
+    <button (click)="click(i)">print data</button>
 <div class="scrollable-div">
  
   <table class="table table-bordered" cellspacing="0">
@@ -52,7 +52,7 @@
   <div class="spectre-pie-chart">
   <ngx-charts-bar-vertical 
     [view]="[900,210]"
-    [results]="saleData"
+    [results]="saleData[i]"
     [xAxisLabel]="'Products'"
     [legendTitle]="'Product Sale Chart'"
     [yAxisLabel]="'Sale'"

@@ -44,15 +44,27 @@ export class PageLoaderComponent implements OnInit {
       });
       this.dataService.set_db_data(db_pages);
       this.dropdown_list_data=this.dataService.get_db_data();
+      this.repartition_select();
+      
     });
   }else{
     console.log("Already have data...");
     this.dropdown_list_data=this.dataService.get_db_data();
+    this.repartition_select();
+    console.log(this.dropdown_partitions);
+    console.log(this.dropdown_list_data);
+    
+    
+    
+    
+    
   }
   }
   display_loader:boolean=false;
   any_data:any;
+  scroller:number=0;
   dropdown_list_data:any=[];
+  dropdown_partitions:any[]=[];
   faTimes = faCloudUploadAlt;
   faDelete=faTimes;
   url: string = 'assets/images/placeholder.jpg';
@@ -76,6 +88,37 @@ export class PageLoaderComponent implements OnInit {
     else{
       this.display_loader=false;
     }
+    
+  }
+  next_page(){
+    var desired_length=this.dropdown_partitions.length-1;
+    if(this.scroller<desired_length){
+        this.scroller++;
+    }else{
+      this.scroller=0;
+    }
+    
+  }
+  previous_page(){
+    var desired_length=0;
+    if(this.scroller>desired_length){
+        this.scroller--
+    }else{
+      this.scroller=this.dropdown_partitions.length-1;
+    }
+  }
+  repartition_select(){
+    var temp_list:any[]=[];
+    var i,j, chunk = 25;
+    for (i = 0,j = this.dropdown_list_data.length; i < j; i += chunk) {
+    temp_list = this.dropdown_list_data.slice(i, i + chunk);
+    this.dropdown_partitions.push(temp_list);
+    temp_list=[];
+}
+      
+  
+
+      
     
   }
   onOptionsSelected(event:any){

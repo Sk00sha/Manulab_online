@@ -10,17 +10,9 @@ import { CsvDataServiceService } from 'src/app/services/csv-data-service.service
 export class AnalysisResultComponent implements OnInit {
 
   constructor(private exchange:DataExchangeService,private csv_creator:CsvDataServiceService) { }
-  saleData = [
-    { name: "Mobiles", value: 105000 },
-    { name: "Laptop", value: 55000 },
-    { name: "AC", value: 15000 },
-    { name: "Headset", value: 150000 },
-    { name: "Fridge", value: 20000 },
-    { name: "Fridge", value: 20000 },
-    { name: "Fridge", value: 20000 }
-  ];
+  saleData:any = [];
   result_data=[];
-  page_name:string;
+  page_name:string="Page1";
   url: string = 'assets/images/Noitems.png';
   display_results:any[]=[];
   display_result_keys:any;
@@ -32,6 +24,7 @@ export class AnalysisResultComponent implements OnInit {
     this.display_results=this.exchange.analysis_results;
     if (this.display_results.length>0){
     this.filtering_data=this.get_list_data(this.display_results[0]);
+    this.print();
   console.log(this.display_results);
     }
     this.display_result_keys=[];
@@ -41,6 +34,10 @@ export class AnalysisResultComponent implements OnInit {
         this.display_result_keys.push(element);
       });
     }
+    
+  }
+  click(indice:number){
+    console.log(indice);
     
   }
   print(){
@@ -57,14 +54,14 @@ export class AnalysisResultComponent implements OnInit {
         graph_data.push({ name: element.Page, value: element.Entropy });
       })
      
-      this.saleData=graph_data;
+      this.saleData.push(graph_data);
     }
     if(filtered[0].name=="Frequency of text"){
       filtered.forEach((element:any)=>{
         graph_data.push({ name: element.element, value: element.frequency });
       })
      
-      this.saleData=graph_data;
+      this.saleData.push(graph_data);
     }
     
    }
