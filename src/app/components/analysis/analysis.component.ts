@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
 import { DataExchangeService } from 'src/app/services/data-exchange.service';
 import { DataloaderService } from 'src/app/services/dataloader.service';
 import { Pages } from 'src/app/models/pages';
@@ -20,92 +24,92 @@ import { findDistances } from 'src/app/filters/Statistics/helpers';
 import { LetterDistances } from 'src/app/filters/Statistics/letter_distances';
 import { FilterController } from 'src/app/filters/Controller/Filter_Controller';
 import { LanguageGuess } from 'src/app/filters/Cryptanalysis/language_guess';
-import {faTimes}from '@fortawesome/free-solid-svg-icons';
-import {faCog}from '@fortawesome/free-solid-svg-icons';
-import {faPlus}from '@fortawesome/free-solid-svg-icons';
-import {VowelDetection} from 'src/app/filters/Cryptanalysis/vowel_detection'
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { VowelDetection } from 'src/app/filters/Cryptanalysis/vowel_detection';
+import { AnagramDetection } from 'src/app/filters/Cryptanalysis/anagram_detection';
 @Component({
   selector: 'app-analysis',
   templateUrl: './analysis.component.html',
-  styleUrls: ['./analysis.component.scss']
+  styleUrls: ['./analysis.component.scss'],
 })
 export class AnalysisComponent implements OnInit {
-
-  constructor(private exchange:DataExchangeService,private data_load:DataloaderService) { }
+  constructor(
+    private exchange: DataExchangeService,
+    private data_load: DataloaderService
+  ) {}
   ngOnInit(): void {
-    this.pages=this.data_load.get_pages();
-    this.applied=this.exchange.applied_filters_array;
+    this.pages = this.data_load.get_pages();
+    this.applied = this.exchange.applied_filters_array;
   }
-  faTimes=faTimes;
-  faCog=faCog;
-  faPlus=faPlus;
-  applied:any[] = [];
-  filters:any[] = [];
-  pages:Array<Pages>=[];
-  list_bool_toggle:boolean=false;
+  faTimes = faTimes;
+  faCog = faCog;
+  faPlus = faPlus;
+  applied: any[] = [];
+  filters: any[] = [];
+  pages: Array<Pages> = [];
+  list_bool_toggle: boolean = false;
 
-  receiveData($event:any){
-    this.filters=$event;
-   
-    }
+  receiveData($event: any) {
+    this.filters = $event;
+  }
 
-  delete_filters(){
-    this.applied=[];
+  delete_filters() {
+    this.applied = [];
     this.exchange.applied_filters(this.applied);
   }
-    
-recieve_disable(event:boolean){
-this.list_bool_toggle=event;
 
-}
-make_analysis(){  
-      var controller=new FilterController(this.pages);
-      this.applied=this.exchange.getapplied_filters();
-      controller.add_multiple_filters(this.applied);
-      var result=controller.start_analysis();
-      this.exchange.analysis_result_set(result);
-      console.log(result);
-      
-     // var vd=new VowelDetection("Sukhotin");
-      //vd.activate(this.pages);
-}
+  recieve_disable(event: boolean) {
+    this.list_bool_toggle = event;
+  }
+  make_analysis() {
+    var controller = new FilterController(this.pages);
+    this.applied = this.exchange.getapplied_filters();
+    controller.add_multiple_filters(this.applied);
+    var result = controller.start_analysis();
+    this.exchange.analysis_result_set(result);
+    console.log(result);
+/*
+    var vd = new VowelDetection('VowelSolution');
+    console.log(vd.activate(this.pages));*/
+  }
 
-  
+  receive_applied_filterData($event: any) {
+    this.applied = $event;
+  }
 
-  receive_applied_filterData($event:any){
-    this.applied=$event;
-    
-    }
-
-  add(event: any,i:number){    
-
+  add(event: any, i: number) {
     this.applied.push(this.filters[i]);
     this.exchange.applied_filters(this.applied);
-      
   }
-  delete(event: any,i:number){
-    this.applied.splice(i,1);
+  delete(event: any, i: number) {
+    this.applied.splice(i, 1);
     this.exchange.applied_filters(this.applied);
-    
-}
+  }
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-      
-    } else if(event.previousContainer.id!="cdk-drop-list-1") {
-      transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
-                       
-      this.exchange.applied_filters(this.applied);
-      console.log(event.currentIndex+""+event.previousIndex);
-      
-      this.filters.splice(event.previousIndex,0,event.container.data[event.currentIndex]);
-                  
-    }
-  
-  }
-  
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else if (event.previousContainer.id != 'cdk-drop-list-1') {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
 
+      this.exchange.applied_filters(this.applied);
+      console.log(event.currentIndex + '' + event.previousIndex);
+
+      this.filters.splice(
+        event.previousIndex,
+        0,
+        event.container.data[event.currentIndex]
+      );
+    }
+  }
 }

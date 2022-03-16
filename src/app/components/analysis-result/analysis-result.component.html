@@ -10,7 +10,7 @@
             </option>    
         </select>
     <button (click)="Export_data(i)">Export data</button>
-    <button (click)="click(i)">print data</button>
+    <button (click)="redo_graph(i)">Filter graph</button>
 <div class="scrollable-div">
  
   <table class="table table-bordered" cellspacing="0">
@@ -28,6 +28,7 @@
         <th *ngIf="item[0].name=='Language guess'" class="th-sm">Reference IC</th>
         <th *ngIf="item[0].name=='Language guess'" class="th-sm">IC Difference</th>
         <th *ngIf="item[0].name=='Pattern search'" class="th-sm">Position</th>
+        <th *ngIf="item[0].name=='Vowel detection'" class="th-sm">Vowels</th>
     </tr>
     </thead>
     <tbody>
@@ -44,11 +45,13 @@
         <td *ngIf="data.name=='Language guess'"> {{data.Lang_index}}</td>
         <td *ngIf="data.name=='Language guess'"> {{data.Difference}}</td>
         <td *ngIf="data.name=='Pattern search'"> {{data.positions}}</td>
+        <td *ngIf="data.name=='Anagram detection'">{{data.Anagram}}</td>
+        <td *ngIf="data.name=='Vowel detection'">{{data.vowel}}</td>
     </tr>
   </tbody>
 </table>
 </div>
-<div class="chart-container">
+<div *ngIf="item[0].name!='Anagram detection'" class="chart-container">
   <div class="spectre-pie-chart">
   <ngx-charts-bar-vertical 
     [view]="[900,210]"

@@ -55,10 +55,22 @@
       }
 
       @media only screen and (max-width:576px){
-        .nav-item{
-          width: 70%;
+        .nav-item button{
+          width: 10%;
           margin-right: auto;
           margin-left: auto;
-  
+          display: block;
+        }
+        .nav-item a{
+          width: 10%;
+          margin-right: auto;
+          margin-left: auto;
+          display: block;
+        }
+        .nav-item label{
+          width: 10%;
+          margin-right: auto;
+          margin-left: auto;
+          display: block;
         }
       }

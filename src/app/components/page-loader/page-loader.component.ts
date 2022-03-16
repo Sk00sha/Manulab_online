@@ -60,6 +60,7 @@ export class PageLoaderComponent implements OnInit {
     
   }
   }
+  display_partitioner:boolean=true;
   display_loader:boolean=false;
   any_data:any;
   scroller:number=0;
@@ -114,12 +115,21 @@ export class PageLoaderComponent implements OnInit {
     temp_list = this.dropdown_list_data.slice(i, i + chunk);
     this.dropdown_partitions.push(temp_list);
     temp_list=[];
-}
-      
-  
-
-      
     
+}
+   
+  }
+  swap_lists(event:any):void{
+    var backup=this.dropdown_partitions;
+      if(event.currentTarget.checked){
+          this.display_partitioner=false;
+          console.log(this.dropdown_list_data);
+      }
+      else{
+        this.display_partitioner=true;
+        console.log(this.dropdown_list_data);
+      }
+      
   }
   onOptionsSelected(event:any){
     const value = event.target.value;
@@ -128,6 +138,7 @@ export class PageLoaderComponent implements OnInit {
 }
   uploadPage() {
     if (this.text && this.Page_texts.length>0 || this.text_name || this.display_loader==true) {
+      this.any_data=null;
       if(this.bulk_upload){
         this.url='assets/images/placeholder.jpg';
         if(this.Pages.length >0){

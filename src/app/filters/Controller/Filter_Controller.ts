@@ -13,7 +13,8 @@ import { AdjacentContacts } from 'src/app/filters/Statistics/adjacent_contacts';
 import { findDistances } from 'src/app/filters/Statistics/helpers';
 import { LetterDistances } from 'src/app/filters/Statistics/letter_distances';
 import { LanguageGuess } from 'src/app/filters/Cryptanalysis/language_guess';
-
+import { AnagramDetection } from "../Cryptanalysis/anagram_detection";
+import { VowelDetection } from "../Cryptanalysis/vowel_detection";
 
 export class FilterController{
     pages_for_analysis:Pages[]=[];
@@ -58,14 +59,16 @@ export class FilterController{
         }
         
         if(filter_name.name=="Anagram detection"){
-
+            var anag_detection=new AnagramDetection(filter_name.pattern);
+            this.filters.push({name:filter_name,function:anag_detection});
         }
         if(filter_name.name=="Vowel detection"){
-
+                var vow_detection=new VowelDetection(filter_name.vowel_option);
+                this.filters.push({name:vow_detection,function:vow_detection});
         }
         if(filter_name.name=="Language guess"){
             var l_g=new LanguageGuess();
-            this.filters.push({name:filter_name,function:l_g});
+            this.filters.push({name:filter_name.name,function:l_g});
         }
     }
     add_multiple_filters(array_of_filters:any[]){

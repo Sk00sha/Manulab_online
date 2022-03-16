@@ -21,6 +21,7 @@ margin-top: 5%;
     height:250px;
     overflow-x: scroll;
     display: block;
+    width: 100%;
 }
 :host {
     height: 100%;
@@ -30,7 +31,7 @@ margin-top: 5%;
   }
   
   .spectre-pie-chart {
-      display: block;
+    display: block;
     height: 100%;
     width: 100%;
     margin-left: auto;

@@ -64,6 +64,14 @@ input[type="file"] {
 #bottom-row{
   margin-bottom: 10%;
 }
+#mydrop::after{
+  content: none;
+}
+.checkbox_container{
+  display: flex;
+  white-space: nowrap;
+}
+
 
 
 

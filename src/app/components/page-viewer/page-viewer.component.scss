@@ -3,7 +3,6 @@
 .swiper {
   width: 100%;
   height: 400px;
-  overflow-y: scroll;
   background-color: white;
 }
 .swiper-slide{
@@ -39,4 +38,11 @@ float: left;
   float: right;
   object-fit: cover;
 
+}
+.textarea_right{
+  height: 100%;
+  width: 100%;
+  border: none;
+  overflow-y: scroll;
+  
 }

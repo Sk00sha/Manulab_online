@@ -7,7 +7,9 @@
     }"
     class="mySwiper"
   >
-    <ng-template *ngFor="let page of pages" swiperSlide><div class="swiper-slide"><div class="left"><img [src]="page.img" alt="page.page_text"></div><div class="right"><p>{{page.page_text}}</p></div></div></ng-template>
+    <ng-template *ngFor="let page of pages" swiperSlide>
+      <div class="swiper-slide"><div class="left"><img [src]="page.img" alt="page.page_text">
+      </div><div class="right"><textarea disabled class="textarea_right" [value]="page.page_text"></textarea></div></div></ng-template>
     
     
   </swiper>

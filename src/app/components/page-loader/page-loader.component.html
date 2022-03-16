@@ -6,17 +6,27 @@
       <div class="col-md border rounded" [style.display]="display_loader ? 'block' : 'none'">
         <h2 style="width:100%;display: block;">Database import</h2>
       <br/>
-     <select id='manuscripts' style="width:100%; height:100px; display: block;"
-        name='manuscripts' 
-        [(ngModel)]="any_data"
-        (change)="onOptionsSelected($event)">
-          <option *ngFor="let item of dropdown_partitions[scroller]" [value]="item.page_text">
-            {{item.name}}
-          </option>    
-      </select>
+      <div class="checkbox_container">
+      <h4><label for="page_swap">Partition pages </label>
+      <input class="form-check-input" (change)="swap_lists($event)" type="checkbox" name="page_swap" id="page_swap">
+    </h4>
+    </div>
+      <div [style.display]="display_partitioner ? 'none' : 'block'">
+      <input id="mydrop"[(ngModel)]="any_data" class="form-control" list="menace" name="menace" style="width:100%; height:50px; display:block;" (change)="onOptionsSelected($event)">
+      <datalist id="menace"  (change)="onOptionsSelected($event)">
+     <option *ngFor="let item of dropdown_partitions[scroller]" [value]="item.page_text">{{item.name}} </option>
+      </datalist>
       <button (click)="previous_page()">Previous</button>
       <button (click)="next_page()" >Next</button>
       <p>Page: {{scroller+1}}/{{dropdown_partitions.length}}</p>
+      </div>
+      <div [style.display]="display_partitioner ? 'block' : 'none'">
+        <input id="mydrop2" [(ngModel)]="any_data" class="form-control" list="menace2" name="menace2" style="width:100%; height:50px; display:block;" (change)="onOptionsSelected($event)">
+        <datalist id="menace2"  (change)="onOptionsSelected($event)">
+       <option *ngFor="let data of dropdown_list_data" [value]="data.page_text">{{data.name}} </option>
+        </datalist>
+        </div>
+      
       </div>
       <div class="col-md border rounded">
         <textarea class="inputtextarea" name="textarea" id="textarea" [(ngModel)]="text"></textarea>

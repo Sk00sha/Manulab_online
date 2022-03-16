@@ -4,11 +4,12 @@
           <li class="nav-item" *ngFor="let filter of filter_groups">
             <button class="btn btn-outline-primary" name="dayOfTheWeek"
             value="{{filter.id}}"
-            (click)="radioChangeHandler($event)"><fa-icon [icon]="filter.icon" matTooltip="{{filter.value}}"></fa-icon><!--{{filter.value}}--></button>
+            matTooltip="{{filter.value}}"
+            (click)="radioChangeHandler($event)"><fa-icon style="pointer-events: none;" [icon]="filter.icon"></fa-icon><!--{{filter.value}}--></button>
           </li>
           <li class="nav-item">
             <form class="form-inline my-2 my-lg-0">
-                <input (change)="searcheChangeHandler($event)" class="form-control mr-sm-2" name="filtername"type="text" placeholder="Search">
+                <input (change)="searcheChangeHandler($event)" class="form-control mr-sm-2" id ="search" name="filtername"type="text" placeholder="Search">
               </form>
             </li>
           <li class="nav-item">

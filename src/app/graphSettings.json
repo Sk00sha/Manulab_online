@@ -1,0 +1,55 @@
+[{
+    "id": 1,
+    "name": "Entropy",
+    "x":"Page",
+    "y":"Entropy"
+},
+{
+    "id": 2,
+    "name": "Frequency of text",
+    "x":"element",
+    "y":"frequency"
+},
+{
+    "id": 3,
+    "name": "Index of coincidence",
+    "x":"Page",
+    "y":"Index_of_coincidence"
+},
+{
+    "id": 4,
+    "name": "Letter distances",
+    "x":"element",
+    "y":"avg"
+},
+{
+    "id": 5,
+    "name": "Language guess",
+    "x":"Lang",
+    "y":"Difference"
+},
+{
+    "id": 6,
+    "name": "Adjacent contacts",
+    "x":"element",
+    "y":"frequency"
+},
+{
+    "id": 7,
+    "name": "Pattern search",
+    "x":"Page",
+    "y":"positions"
+},
+{
+    "id": 8,
+    "name": "Anagram detection",
+    "x":"Page",
+    "y":"Anagram"
+},
+{
+    "id": 9,
+    "name": "Vowel detection",
+    "x":"vowel",
+    "y":"vowel_count"
+}
+]

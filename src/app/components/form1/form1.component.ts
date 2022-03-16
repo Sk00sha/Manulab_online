@@ -29,7 +29,8 @@ export class Form1Component implements OnInit {
       Spaces:exchange_service_list[this.number_of_filter].Spaces,
       approx:exchange_service_list[this.number_of_filter].approx,
       normalize:exchange_service_list[this.number_of_filter].normalize,
-      relative:exchange_service_list[this.number_of_filter].relative
+      relative:exchange_service_list[this.number_of_filter].relative,
+      vowel:exchange_service_list[this.number_of_filter].vowel_option
     });
   
   }
@@ -52,7 +53,8 @@ export class Form1Component implements OnInit {
         this.form.get('relative')?.value,
         this.form.get('n')?.value,
         this.form.get('Spaces')?.value,
-        this.form.get('pattern')?.value)   
+        this.form.get('pattern')?.value,
+        this.form.get('vowel')?.value)   
   }
 
 }
