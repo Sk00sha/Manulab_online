@@ -122,7 +122,7 @@ export class VowelDetection {
       var final_result = [];
       
       
-      console.log( Object.keys(result).map(function (key) {return [key, result[key]]}));
+      //( Object.keys(result).map(function (key) {return [key, result[key]]}));
       
        while (counter < 6) {
         let arr:any = Object.values(result);
@@ -132,7 +132,7 @@ export class VowelDetection {
         result[maxKey_max]=0;
         counter++;
       }
-      console.log(final_result);
+      
       
       for (let index = 0; index < final_result.length; index++) {
         final_results.push({

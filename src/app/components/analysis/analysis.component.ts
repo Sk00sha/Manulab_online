@@ -42,6 +42,7 @@ export class AnalysisComponent implements OnInit {
   ngOnInit(): void {
     this.pages = this.data_load.get_pages();
     this.applied = this.exchange.applied_filters_array;
+    this.filters=this.exchange.get_all_filter();
   }
   faTimes = faTimes;
   faCog = faCog;
@@ -103,7 +104,7 @@ export class AnalysisComponent implements OnInit {
       );
 
       this.exchange.applied_filters(this.applied);
-      console.log(event.currentIndex + '' + event.previousIndex);
+     
 
       this.filters.splice(
         event.previousIndex,

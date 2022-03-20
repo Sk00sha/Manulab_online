@@ -2,15 +2,16 @@
 <div style="text-align:center;"class="data-result" *ngIf="display_results.length < 1"><img style="max-height:150px;width:auto;margin-top: 5%;"[src]="url" alt="None"></div>
 <div class="data-result shadow p-3 mb-5 bg-white rounded" *ngFor="let item of display_results;let i=index;">
   <div class="wrapper-div">
+    <div class="header-wrapper">
     <h2>{{item[0].name}}</h2>
-    <select [(ngModel)]="page_name" id='dropdown' style="width:100%; height:30px; display: block;"
+    <button class="btn btn-success" (click)="Export_data(i)"><fa-icon [icon]="fafiledownload"></fa-icon></button>
+  </div>
+    <select [(ngModel)]="page_name" id='dropdown' style="width:100%; height:30px; display: block;" (change)="redo_graph(i)"
           name='dropdown'>
-            <option *ngFor="let item of filtering_data" [value]="item">
+            <option *ngFor="let item of filtering_data" [value]="item" >
               {{item}}
             </option>    
         </select>
-    <button (click)="Export_data(i)">Export data</button>
-    <button (click)="redo_graph(i)">Filter graph</button>
 <div class="scrollable-div">
  
   <table class="table table-bordered" cellspacing="0">
@@ -54,7 +55,7 @@
 <div *ngIf="item[0].name!='Anagram detection'" class="chart-container">
   <div class="spectre-pie-chart">
   <ngx-charts-bar-vertical 
-    [view]="[900,210]"
+    [view]="[1300,210]"
     [results]="saleData[i]"
     [xAxisLabel]="'Products'"
     [legendTitle]="'Product Sale Chart'"

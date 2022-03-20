@@ -26,7 +26,7 @@ export class DragDropComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
-    console.log(this.movies);
+    
   }
 
 }

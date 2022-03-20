@@ -20,7 +20,7 @@ export class InputModalComponent implements OnInit {
   ngOnInit(): void {
   }
   set_name($event:any){
-    console.log($event);
+   
   }
   send_disable_flag(){
     this.disable.emit(this.disable_input);

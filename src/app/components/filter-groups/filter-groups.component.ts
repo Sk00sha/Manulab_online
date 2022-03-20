@@ -11,6 +11,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Filter_JSON } from 'src/app/models/filter'; 
 import {faArrowDown}from '@fortawesome/free-solid-svg-icons';
 
+
 @Component({
   selector: 'app-filter-groups',
   templateUrl: './filter-groups.component.html',
@@ -84,7 +85,7 @@ export class FilterGroupsComponent implements OnInit {
           
           var cUser = JSON.parse(resSTR);
           var return_array:string[]=[];
-          console.log('cUser: ', cUser);
+         
           cUser.forEach(function(e:any){
             return_array.push(e);
           })

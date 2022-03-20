@@ -7,42 +7,65 @@
         <h2 style="width:100%;display: block;">Database import</h2>
       <br/>
       <div class="checkbox_container">
-      <h4><label for="page_swap">Partition pages </label>
-      <input class="form-check-input" (change)="swap_lists($event)" type="checkbox" name="page_swap" id="page_swap">
-    </h4>
+      <h5><label for="page_swap">Use pagination: </label>
+      <input  class="form-check-input" (change)="swap_lists($event)" type="checkbox" name="page_swap" id="page_swap">
+    </h5>
     </div>
-      <div [style.display]="display_partitioner ? 'none' : 'block'">
-      <input id="mydrop"[(ngModel)]="any_data" class="form-control" list="menace" name="menace" style="width:100%; height:50px; display:block;" (change)="onOptionsSelected($event)">
-      <datalist id="menace"  (change)="onOptionsSelected($event)">
-     <option *ngFor="let item of dropdown_partitions[scroller]" [value]="item.page_text">{{item.name}} </option>
-      </datalist>
-      <button (click)="previous_page()">Previous</button>
-      <button (click)="next_page()" >Next</button>
+      <input placeholder="Search" id="mydrop" [(ngModel)]="any_data" (change)="onOptionsSelected($event)" class="form-control" list="menace" name="menace" style="width:100%; height:50px; display:block;">
+     <div [style.display]="display_partitioner ? 'none' : 'block'">
+       <div class="paginator-wrapper">
+         <div class="button-holder">
+      <button (click)="previous_page()"><</button>
+      <button (click)="next_page()" >></button>
+    </div>
       <p>Page: {{scroller+1}}/{{dropdown_partitions.length}}</p>
+    </div>
       </div>
-      <div [style.display]="display_partitioner ? 'block' : 'none'">
-        <input id="mydrop2" [(ngModel)]="any_data" class="form-control" list="menace2" name="menace2" style="width:100%; height:50px; display:block;" (change)="onOptionsSelected($event)">
-        <datalist id="menace2"  (change)="onOptionsSelected($event)">
-       <option *ngFor="let data of dropdown_list_data" [value]="data.page_text">{{data.name}} </option>
-        </datalist>
-        </div>
+     <div class="table_holder" *ngIf="display_partitioner!==true">
+       <table class="table">
+         <thead>
+          <tr><th>Name</th><th>Add</th></tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of dropdown_partitions[scroller];let i=index">
+            <td>{{item.name}}</td>
+            <td><Button (click)="choose_page(i)">Add</Button></td>
+          </tr>
+        </tbody>
+       </table>
+     </div>
+     <div class="table_holder_two" *ngIf="display_partitioner==true">
+      <table class="table">
+        <thead>
+         <tr><th>Name</th><th>Add</th></tr>
+       </thead>
+       <tbody>
+         <tr *ngFor="let item of dropdown_list_data;let i=index">
+           <td>{{item.name}}</td>
+           <td><Button (click)="choose_page(i)">Add</Button></td>
+         </tr>
+       </tbody>
+      </table>
+    </div>
       
       </div>
       <div class="col-md border rounded">
         <textarea class="inputtextarea" name="textarea" id="textarea" [(ngModel)]="text"></textarea>
       </div>
       <div class="col-md border rounded helo">
-        <table class="table">
+        <table cdkDropList class="table" (cdkDropListDropped)="drop($event)">
           <tbody>
               <tr>
-                <td scope="col">Page Name</td>
+                <td scope="col">Page</td>
+                <td scope="col">Name</td>
                 <td scope="col">Delete page</td>
                 <td scope="col">Use all <input class="form-check-input" type="checkbox" [checked]="true" (change)="check_all($event)"></td>
               </tr>
-            <tr *ngFor="let item of Pages ;let i = index">
-              <td scope="row" >Page {{item.id}}</td>
+            <tr (click)="check_pages(i)" class="example-box" *ngFor="let item of Pages ;let i = index" cdkDrag>
+              <td scope="row" >Page {{i+1}}</td>
+              <td scope="row" class="textcontainer">{{ (item.name.length>10)? (item.name  | slice:0:15)+'...':(item.name ) }}</td>
               <td scope="row">
-                <Button (click)="delete_page($event,i)" style="border:none;background: none;display: block;margin: auto;color: red;"><fa-icon [icon]="faDelete"></fa-icon></Button>
+                <Button (click)="delete_page($event,i)" style="border:none;background: none;display: block;margin: auto;color: rgb(0, 0, 0);"><fa-icon [icon]="faDelete"></fa-icon></Button>
               </td>
               <td scope="row">
                 <input class="form-check-input" type="checkbox" (change)="used_pages($event)" [value]="item.id"[checked]="item.checked">
@@ -53,10 +76,12 @@
       </div>
     </div>
     <div class="row" >
-      <div class="col">
+      <div class="col" id="col-wrapper">
       <label class="btn btn-outline-primary" style="margin-right:1%"><input  type="file" multiple="multiple" accept="image/*,.txt,.zip" (change)="selectfile($event)">Choose file</label>
       <button class="btn btn-outline-primary" (click)="uploadPage()"><fa-icon [icon]="faTimes"></fa-icon> Upload file</button>
       <button class="btn btn-outline-primary" (click)="show_db_segment()" style="margin-left:1%" ><fa-icon [icon]="faTimes"></fa-icon> Load Data from db</button>
-      </div>
+      <a id="link-wrap" class="btn btn-primary" routerLink="/analysis" >Go to analysis</a>
+    </div>
   </div>
+</div>
   

@@ -7,7 +7,8 @@ import { HttpClient } from '@angular/common/http';
 import {Metadata} from 'src/app/models/page_metadata'
 import { DbRequestService } from 'src/app/services/db-request.service';
 
-
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-page-loader',
@@ -23,7 +24,7 @@ export class PageLoaderComponent implements OnInit {
   ngOnInit(): void {
     this.Pages=this.dataService.pages;
     if(this.dataService.get_db_data().length==0){
-    console.log("fetching data...");
+  
     var data:Promise<any>=this.db_connector.fetch_db_data();
     var db_pages:Array<Pages>=[];
     data.then(value=>{
@@ -48,18 +49,15 @@ export class PageLoaderComponent implements OnInit {
       
     });
   }else{
-    console.log("Already have data...");
+   
     this.dropdown_list_data=this.dataService.get_db_data();
     this.repartition_select();
-    console.log(this.dropdown_partitions);
-    console.log(this.dropdown_list_data);
-    
-    
-    
-    
-    
   }
   }
+  search:any=faSearch;
+  object:any={};
+  edit_indice:number=-1;
+  edit_flag:boolean=false;
   display_partitioner:boolean=true;
   display_loader:boolean=false;
   any_data:any;
@@ -117,27 +115,56 @@ export class PageLoaderComponent implements OnInit {
     temp_list=[];
     
 }
-   
+  }
+  choose_page(i:number){
+    if(this.display_partitioner){
+      this.text=this.dropdown_list_data[i].page_text;
+      this.text_name=this.dropdown_list_data[i].name;
+    }
+    if(!this.display_partitioner){
+      this.text=this.dropdown_partitions[this.scroller][i].page_text;
+      this.text_name=this.dropdown_partitions[this.scroller][i].name;
+    }
+
+  }
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.Pages, event.previousIndex, event.currentIndex);
+    console.log(this.Pages);
+    
   }
   swap_lists(event:any):void{
     var backup=this.dropdown_partitions;
       if(event.currentTarget.checked){
           this.display_partitioner=false;
-          console.log(this.dropdown_list_data);
       }
       else{
         this.display_partitioner=true;
-        console.log(this.dropdown_list_data);
+        
       }
       
   }
   onOptionsSelected(event:any){
-    const value = event.target.value;
-    this.text=value;
-    console.log(value);
+    const matches = this.dataService.get_db_data().filter((s:any) =>
+    s.name.includes(event.target.value)
+  );
+  this.dropdown_list_data=matches;
+  this.display_partitioner=true;
+    
 }
+
   uploadPage() {
-    if (this.text && this.Page_texts.length>0 || this.text_name || this.display_loader==true) {
+    this.dropdown_list_data=this.dataService.get_db_data();
+    if( this.edit_flag==true &&this.edit_indice!==-1){
+      this.Pages[this.edit_indice].page_text=this.text;
+      this.Pages[this.edit_indice].img=this.url;
+      this.edit_flag=false;
+      this.edit_indice=-1;
+      this.url = 'assets/images/placeholder.jpg';
+      this.text="";
+      this.text_name="placeholder";
+    }
+    else{
+    if (this.text.length>0 && this.Page_texts.length>0  || this.display_loader==true && this.text.length>0  ) {
       this.any_data=null;
       if(this.bulk_upload){
         this.url='assets/images/placeholder.jpg';
@@ -186,8 +213,7 @@ export class PageLoaderComponent implements OnInit {
     }
     this.url = 'assets/images/placeholder.jpg';
     this.text = '';
-
-    
+  }
   }
   selectfile(e: any): void {
     if (e.target.files) {
@@ -198,7 +224,6 @@ export class PageLoaderComponent implements OnInit {
         this.bulk_upload=true;
       }
      
-      
     for(let i=0;i<e.target.files.length;i++){
       var reader = new FileReader();
       let input_type: Array<string> = e.target.files[i].type.split('/');
@@ -230,7 +255,14 @@ export class PageLoaderComponent implements OnInit {
       }
       }  
     }
-
+check_pages(int:number){
+  this.edit_flag=true;
+  this.edit_indice=int;
+  this.text=this.Pages[int].page_text;
+  this.url= this.Pages[int].img;
+  this.display_loader=false;
+  
+}
   check_all($event:any){
     var id = $event.target.value;
     var checked = $event.target.checked;

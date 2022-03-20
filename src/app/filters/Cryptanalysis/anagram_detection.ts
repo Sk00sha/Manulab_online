@@ -33,7 +33,7 @@ export class AnagramDetection{
         page_iterator++;
             }
         })
-        console.log(result);
+       
         
        return result;
     }

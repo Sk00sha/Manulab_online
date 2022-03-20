@@ -72,4 +72,7 @@ export class DataExchangeService {
   analysis_result_set(list:any){
     this.analysis_results=list;
   }
+  get_all_filter(){
+    return this.all_filters;
+  }
 }

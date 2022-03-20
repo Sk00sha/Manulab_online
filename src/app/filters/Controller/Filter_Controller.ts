@@ -83,12 +83,12 @@ export class FilterController{
         this.filters.forEach((filter:any)=>{
             
             if(filter.name=="Remove accents"){
-                console.log("Removing accents");
+               // console.log("Removing accents");
                 new_pages=filter.function.activate();
                 transformation=true;
             }
             if(transformation && filter.name!="Remove accents"){
-                console.log("Removing accents pages used");
+               // console.log("Removing accents pages used");
                 result.push(filter.function.activate(new_pages));
             }
             else if(filter.name!="Remove accents"){
