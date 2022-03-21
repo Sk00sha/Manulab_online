@@ -1,5 +1,6 @@
 <app-navigation></app-navigation>
 <div style="text-align:center;"class="data-result" *ngIf="display_results.length < 1"><img style="max-height:150px;width:auto;margin-top: 5%;"[src]="url" alt="None"></div>
+<div *ngIf="ready">
 <div class="data-result shadow p-3 mb-5 bg-white rounded" *ngFor="let item of display_results;let i=index;">
   <div class="wrapper-div">
     <div class="header-wrapper">
@@ -13,23 +14,22 @@
             </option>    
         </select>
 <div class="scrollable-div">
- 
-  <table class="table table-bordered" cellspacing="0">
+  <table class="table table-bordered" cellspacing="0" matSort (matSortChange)="sortData($event,i)">
     <thead>
     <tr>
-        <th class="th-sm">Page</th>
-        <th *ngIf="item[0].name=='Entropy'" class="th-sm">Entropy</th>
-        <th *ngIf="item[0].name=='Frequency of text' || item[0].name=='Adjacent contacts' || item[0].name=='Letter distances'" class="th-sm">Element</th>
-        <th *ngIf="item[0].name=='Frequency of text' || item[0].name=='Adjacent contacts'" class="th-sm">Frequency</th>
-        <th *ngIf="item[0].name=='Index of coincidence'" class="th-sm">Index of coincidence</th>
-        <th *ngIf="item[0].name=='Letter distances'" class="th-sm">Min</th>
-        <th *ngIf="item[0].name=='Letter distances'" class="th-sm">Max</th>
-        <th *ngIf="item[0].name=='Letter distances'" class="th-sm">Average</th>
-        <th *ngIf="item[0].name=='Language guess'" class="th-sm">Language</th>
-        <th *ngIf="item[0].name=='Language guess'" class="th-sm">Reference IC</th>
-        <th *ngIf="item[0].name=='Language guess'" class="th-sm">IC Difference</th>
-        <th *ngIf="item[0].name=='Pattern search'" class="th-sm">Position</th>
-        <th *ngIf="item[0].name=='Vowel detection'" class="th-sm">Vowels</th>
+        <th mat-sort-header="Page" class="th-sm">Page</th>
+        <th mat-sort-header="Entropy" *ngIf="item[0].name=='Entropy'" class="th-sm">Entropy</th>
+        <th mat-sort-header="element" *ngIf="item[0].name=='Frequency of text' || item[0].name=='Adjacent contacts' || item[0].name=='Letter distances'" class="th-sm">Element</th>
+        <th mat-sort-header="frequency" *ngIf="item[0].name=='Frequency of text' || item[0].name=='Adjacent contacts'" class="th-sm">Frequency</th>
+        <th mat-sort-header="Index_of_coincidence" *ngIf="item[0].name=='Index of coincidence'" class="th-sm">Index of coincidence</th>
+        <th mat-sort-header="min" *ngIf="item[0].name=='Letter distances'" class="th-sm">Min</th>
+        <th mat-sort-header="max" *ngIf="item[0].name=='Letter distances'" class="th-sm">Max</th>
+        <th mat-sort-header="avg" *ngIf="item[0].name=='Letter distances'" class="th-sm">Average</th>
+        <th mat-sort-header="Lang" *ngIf="item[0].name=='Language guess'" class="th-sm">Language</th>
+        <th mat-sort-header="Lang_index" *ngIf="item[0].name=='Language guess'" class="th-sm">Reference IC</th>
+        <th mat-sort-header="Difference" *ngIf="item[0].name=='Language guess'" class="th-sm">IC Difference</th>
+        <th mat-sort-header="Anagram" *ngIf="item[0].name=='Pattern search'" class="th-sm">Position</th>
+        <th mat-sort-header="vowel" *ngIf="item[0].name=='Vowel detection'" class="th-sm">Vowels</th>
     </tr>
     </thead>
     <tbody>
@@ -64,6 +64,7 @@
     [yAxis]="true"
     >
 </ngx-charts-bar-vertical>
+</div>
 </div>
 </div>
 </div>

@@ -3,6 +3,7 @@ import { DataExchangeService } from 'src/app/services/data-exchange.service';
 import { CsvDataServiceService } from 'src/app/services/csv-data-service.service';
 import * as data  from '../../graphSettings.json';
 import {faFileDownload}from '@fortawesome/free-solid-svg-icons';
+import {Sort} from '@angular/material/sort';
 @Component({
   selector: 'app-analysis-result',
   templateUrl: './analysis-result.component.html',
@@ -12,6 +13,7 @@ export class AnalysisResultComponent implements OnInit {
 
   constructor(private exchange:DataExchangeService,private csv_creator:CsvDataServiceService) { }
   graph_settings:any=(data as any).default;
+  ready:boolean=false;
   saleData:any = [];
   result_data=[];
   page_name:string="Page1";
@@ -40,6 +42,58 @@ export class AnalysisResultComponent implements OnInit {
     }
     
   }
+  ngAfterViewInit(){
+    setTimeout(()=>{
+      this.ready=true;
+    },0) 
+  }
+  //SORTING STARTS
+  sortData(sort: Sort,i:number) {
+      this.display_results[i] = this.display_results[i].sort((a:any, b:any) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'Page':
+          return this.compare(a.Page,b.Page,isAsc);
+          case 'Entropy':
+            return this.compare(a.Entropy,b.Entropy,isAsc);
+            case 'frequency':
+              return this.compare(a.frequency,b.frequency,isAsc);
+              case 'element':
+              return this.compare(a.element,b.element,isAsc);
+              case 'min':
+              return this.compare(a.min,b.min,isAsc);
+              case 'max':
+                return this.compare(a.max,b.max,isAsc);
+                case 'avg':
+                  return this.compare(a.avg,b.avg,isAsc);
+                  case 'Index_of_coincidence':
+                    return this.compare(a.Index_of_coincidence,b.Index_of_coincidence,isAsc);
+                    case 'Lang':
+                    return this.compare(a.Lang,b.Lang,isAsc);
+                    case 'Lang_index':
+                    return this.compare(a.Lang_index,b.Lang_index,isAsc);
+                    case 'Difference':
+                    return this.compare(a.Difference,b.Difference,isAsc);
+                    case 'Anagram':
+                    return this.compare(a.Anagram,b.Anagram,isAsc);
+                    case 'vowel':
+                    return this.compare(a.vowel,b.vowel,isAsc);
+          default:
+        return 0;
+      }
+    });
+      }
+
+  
+
+
+compare(a: number | string, b: number | string, isAsc: boolean) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+}
+
+//SORTING ENDS
+
+//WORKER INIT METHOD
   init_worker(){    
     if (typeof Worker !== 'undefined') {
       // Create a new
@@ -47,13 +101,11 @@ export class AnalysisResultComponent implements OnInit {
       worker.onmessage = ({ data }) => {
         this.saleData=data.response;
       };
-      //(data.page,data.display_resuts,data.graph_settings)
       worker.postMessage({page:"Page1",display_results:this.display_results,graph_settings:this.graph_settings});
     } else {
-      console.log("YES");
+   
       this.init_graph();
-      // Web Workers are not supported in this environment.
-      // You should add a fallback so that your program still executes correctly.
+      
     }
   }
   redo_graph(indice:number){
@@ -108,4 +160,6 @@ export class AnalysisResultComponent implements OnInit {
 
 
 }
+
+
  

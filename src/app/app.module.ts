@@ -32,6 +32,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import { FooterComponent } from './components/footer/footer.component';
 import { NgxChartsModule }from '@swimlane/ngx-charts';
 import {SelectPaginationModule} from 'ngx-select-pagination';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import {SelectPaginationModule} from 'ngx-select-pagination';
     ReactiveFormsModule,
     MatTooltipModule,
     NgxChartsModule,
-    SelectPaginationModule
+    SelectPaginationModule,
+    MatSortModule
 
   ],
   providers: [],
