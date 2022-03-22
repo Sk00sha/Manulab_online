@@ -8,7 +8,6 @@ import {faFile}from '@fortawesome/free-solid-svg-icons';
 import {faFileDownload}from '@fortawesome/free-solid-svg-icons';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { Filter_JSON } from 'src/app/models/filter'; 
 import {faArrowDown}from '@fortawesome/free-solid-svg-icons';
 
 

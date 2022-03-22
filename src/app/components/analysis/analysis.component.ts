@@ -50,6 +50,7 @@ export class AnalysisComponent implements OnInit {
   applied: any[] = [];
   filters: any[] = [];
   pages: Array<Pages> = [];
+  //setting list moving
   list_bool_toggle: boolean = false;
 
   receiveData($event: any) {
@@ -89,13 +90,13 @@ export class AnalysisComponent implements OnInit {
     this.exchange.applied_filters(this.applied);
   }
   drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
+    if (event.previousContainer === event.container) { 
       moveItemInArray(
         event.container.data,
         event.previousIndex,
         event.currentIndex
       );
-    } else if (event.previousContainer.id != 'cdk-drop-list-1') {
+    } else {
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,

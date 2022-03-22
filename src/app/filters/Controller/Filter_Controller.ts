@@ -86,6 +86,7 @@ export class FilterController{
                // console.log("Removing accents");
                 new_pages=filter.function.activate();
                 transformation=true;
+                result.push([{name:"Remove accents"}]);
             }
             if(transformation && filter.name!="Remove accents"){
                // console.log("Removing accents pages used");
