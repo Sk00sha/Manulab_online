@@ -116,7 +116,13 @@
     align-items: center;
   }
   .example-list{
-    max-height: 380px;
+    max-height: 360px;
     overflow: hidden;
     overflow-y: scroll;
+  }
+  .row.buttons{
+    margin-top: 1%;
+  }
+  .btn.btn-danger{
+    margin-left: 1%;
   }

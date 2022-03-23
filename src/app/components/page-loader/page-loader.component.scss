@@ -98,8 +98,11 @@ input[type="file"] {
 .cdk-drag-placeholder {
   opacity: 0;
 }
+h2{
+  text-align: center;
+}
 .table_holder{
-  height: 300px;
+  height: 320px;
   overflow: hidden;
   overflow-y: scroll;
 }
@@ -109,14 +112,35 @@ input[type="file"] {
   overflow-y: scroll;
 }
 .paginator-wrapper{
+  margin-top: 1%;
+  margin-bottom: 1%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
+.button-holder{
+  width: 20%;
+}
 .button-holder button{
   padding: 4px;
 }
-
+.btn.btn-outline-success{
+padding-left: 3px;
+padding-right: 3px;
+}
+.btn.btn-outline-primary{
+  
+  padding-left: 3px;
+  padding-right: 3px;
+}
+#right-button{
+  float: right;
+  width: 45%;
+}
+#left-button{
+  float: left;
+  width: 45%;
+}
 
 
 

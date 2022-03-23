@@ -77,3 +77,9 @@ margin-top: 5%;
     font-size: 2rem;
     color: grey;
 }
+@media (max-width: 480px) {
+    .data-pointer{
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+ }

@@ -27,8 +27,10 @@ import { LanguageGuess } from 'src/app/filters/Cryptanalysis/language_guess';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { VowelDetection } from 'src/app/filters/Cryptanalysis/vowel_detection';
 import { AnagramDetection } from 'src/app/filters/Cryptanalysis/anagram_detection';
+
 @Component({
   selector: 'app-analysis',
   templateUrl: './analysis.component.html',
@@ -47,6 +49,7 @@ export class AnalysisComponent implements OnInit {
   faTimes = faTimes;
   faCog = faCog;
   faPlus = faPlus;
+  faPlay=faPlay;
   applied: any[] = [];
   filters: any[] = [];
   pages: Array<Pages> = [];

@@ -15,8 +15,8 @@
      <div [style.display]="display_partitioner ? 'none' : 'block'">
        <div class="paginator-wrapper">
          <div class="button-holder">
-      <button (click)="previous_page()"><</button>
-      <button (click)="next_page()" >></button>
+      <button id="left-button" class="btn btn-outline-primary"(click)="previous_page()"><fa-icon [icon]="faArrowLeft"></fa-icon></button>
+      <button id="right-button" class="btn btn-outline-primary"(click)="next_page()" ><fa-icon [icon]="faArrowRight"></fa-icon></button>
     </div>
       <p>Page: {{scroller+1}}/{{dropdown_partitions.length}}</p>
     </div>
@@ -29,7 +29,7 @@
         <tbody>
           <tr *ngFor="let item of dropdown_partitions[scroller];let i=index">
             <td>{{item.name}}</td>
-            <td><Button (click)="choose_page(i)">Add</Button></td>
+            <td><Button class="btn btn-outline-success" (click)="choose_page(i)"><fa-icon [icon]="faplus"></fa-icon></Button></td>
           </tr>
         </tbody>
        </table>
@@ -42,7 +42,7 @@
        <tbody>
          <tr *ngFor="let item of dropdown_list_data;let i=index">
            <td>{{item.name}}</td>
-           <td><Button (click)="choose_page(i)">Add</Button></td>
+           <td><Button class="btn btn-outline-success" (click)="choose_page(i)"><fa-icon [icon]="faplus"></fa-icon></Button></td>
          </tr>
        </tbody>
       </table>
@@ -79,7 +79,7 @@
       <div class="col" id="col-wrapper">
       <label class="btn btn-outline-primary" style="margin-right:1%"><input  type="file" multiple="multiple" accept="image/*,.txt,.zip" (change)="selectfile($event)">Choose file</label>
       <button class="btn btn-outline-primary" (click)="uploadPage()"><fa-icon [icon]="faTimes"></fa-icon> Upload file</button>
-      <button class="btn btn-outline-primary" (click)="show_db_segment()" style="margin-left:1%" ><fa-icon [icon]="faTimes"></fa-icon> Load Data from db</button>
+      <button class="btn btn-outline-primary" (click)="show_db_segment()" style="margin-left:1%" ><fa-icon [icon]="fadb"></fa-icon> Load Data from db</button>
       <a id="link-wrap" class="btn btn-primary" routerLink="/analysis" >Go to analysis</a>
     </div>
   </div>

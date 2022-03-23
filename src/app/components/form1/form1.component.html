@@ -61,20 +61,22 @@
     formControlName="Spaces"
   />
   <!--TODO :CHAGNE TO CHECK BUTTON-->
-  <label *ngIf="name_of_filter.name == 'Frequency of text elements'" for="relative">Relative/Absolute</label>
-  <input 
-    *ngIf="name_of_filter.name == 'Frequency of text elements'"
-    type="checkbox"
-    placeholder="pattern"
-    id="relative"
-    formControlName="relative"
-  />
+  <label *ngIf="name_of_filter.name == 'Frequency of text elements'" for="relative">Relative or Absolute?</label>
+  <mat-slide-toggle  *ngIf="name_of_filter.name == 'Frequency of text elements'"
+  type="checkbox"
+  placeholder="pattern"
+  id="relative"
+  formControlName="relative"
+  (change)="set_label()">{{label}}</mat-slide-toggle>
+
   <select name="" id="" formControlName="vowel" *ngIf="name_of_filter.name == 'Vowel detection'">
     <option value="Sukhotin">Sukhotin</option>
     <option value="VowelSolution">VowelSolution</option>
     <option value="ConsonantLine">Consonant Line</option>
   </select>
+  <div class="save-align">
   <button class="btn btn-outline-primary"(click)="send_notification()">Save Settings</button>
+</div>
 </div>
 </form>
 

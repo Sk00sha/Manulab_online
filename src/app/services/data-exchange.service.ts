@@ -18,6 +18,7 @@ export class DataExchangeService {
         new FilterObject("Pattern search","",false,false,false,1,false,"","Sukhotin"),
         new FilterObject("Adjacent contacts","",false,false,false,1,false,"","Sukhotin"),
         new FilterObject("Text element distances","",false,false,false,1,false,"","Sukhotin"),
+        new FilterObject("Remove accents","",false,false,false,1,false,"","Sukhotin"),
         new FilterObject(  'Anagram detection',"",false,false,false,1,false,"","Sukhotin" ),
         new FilterObject( 'Vowel detection',"",false,false,false,1,false,"","Sukhotin" ),
         new FilterObject(  'Language guess' ,"",false,false,false,1,false,"","Sukhotin")

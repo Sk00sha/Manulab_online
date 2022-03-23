@@ -6,9 +6,12 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { HttpClient } from '@angular/common/http';
 import {Metadata} from 'src/app/models/page_metadata'
 import { DbRequestService } from 'src/app/services/db-request.service';
-
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faDatabase } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-page-loader',
@@ -61,11 +64,16 @@ export class PageLoaderComponent implements OnInit {
   display_partitioner:boolean=true;
   display_loader:boolean=false;
   any_data:any;
+  //vars used in pagination
   scroller:number=0;
   dropdown_list_data:any=[];
   dropdown_partitions:any[]=[];
+  //icons
   faTimes = faCloudUploadAlt;
   faDelete=faTimes;
+  faArrowLeft=faArrowLeft;
+  faArrowRight=faArrowRight;
+  //all meintenance variables for upload
   url: string = 'assets/images/placeholder.jpg';
   text: string = '';
   img_name:string='placeholder';
@@ -73,9 +81,14 @@ export class PageLoaderComponent implements OnInit {
   bulk_upload:boolean=false;
   id_generator: number = 0;
   Pages: Pages[] = [];
+  //partitions for grouping
   Page_pictures:Pages[]=[];
   Page_texts:Pages[]=[];
   filepath_data:Metadata[]=[];
+  //icons
+  faplus=faPlus;
+  fadb=faDatabase;
+  
   delete_page(event:any,i:number){
     this.Pages.splice(i,1);
     this.dataService.pages=this.Pages;

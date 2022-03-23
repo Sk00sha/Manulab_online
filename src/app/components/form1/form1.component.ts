@@ -13,6 +13,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 })
 export class Form1Component implements OnInit {
   fatimes=faTimes;
+  label:string="Absolute";
   form:FormGroup;
   constructor(private fb:FormBuilder,private exchange_service:DataExchangeService) { }
   @Input() name_of_filter:any;
@@ -39,12 +40,18 @@ export class Form1Component implements OnInit {
     this.message.emit(false);
     this.set_filter_specs();
   }
+  set_label(){
+   if((this.form.get('relative')?.value)==false){
+     this.label="Absolute";
+   }
+   this.label="Relative";
+    
+  }
   
 
   set_filter_specs(){
     var exchange_service_list:any=this.exchange_service.getapplied_filters();
   
-    
       exchange_service_list[this.number_of_filter]=new FilterObject(
         exchange_service_list[this.number_of_filter].name,
         this.form.get('delimiter')?.value,

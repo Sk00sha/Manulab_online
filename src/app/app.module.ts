@@ -33,6 +33,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NgxChartsModule }from '@swimlane/ngx-charts';
 import {SelectPaginationModule} from 'ngx-select-pagination';
 import {MatSortModule} from '@angular/material/sort';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 
 @NgModule({
   declarations: [
@@ -74,7 +76,8 @@ import {MatSortModule} from '@angular/material/sort';
     MatTooltipModule,
     NgxChartsModule,
     SelectPaginationModule,
-    MatSortModule
+    MatSortModule,
+    MatSlideToggleModule
 
   ],
   providers: [],
