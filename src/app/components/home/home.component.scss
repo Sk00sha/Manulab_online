@@ -21,16 +21,15 @@
   
   .footer {
     margin-top: auto;
-    background-color: #0058db;
-    min-height: 100px;
-    text-align: center;
-    color: white;
+  background-color: #0058db;
+  min-height: 50px;
+  text-align: center;
+  color: white;
   }
-  img{
-      height: 50px;
-      width: auto;
-      margin-top: 2%;
+  .footer p{
+      margin-top: 1%
   }
+  
   .col-md-6{
       text-align: center;
   }

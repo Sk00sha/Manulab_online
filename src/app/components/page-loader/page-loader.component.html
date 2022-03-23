@@ -1,3 +1,4 @@
+<div class="flex-wrapper">
 <div class="container">
     <div class="row">
       <div class="col-md border rounded" [style.display]="display_loader ? 'none' : 'flex'">
@@ -62,7 +63,7 @@
                 <td scope="col">Use all <input class="form-check-input" type="checkbox" [checked]="true" (change)="check_all($event)"></td>
               </tr>
             <tr (click)="check_pages(i)" class="example-box" *ngFor="let item of Pages ;let i = index" cdkDrag>
-              <td scope="row" >Page {{i+1}}</td>
+              <td scope="row" >Page{{i+1}}</td>
               <td scope="row" class="textcontainer">{{ (item.name.length>10)? (item.name  | slice:0:15)+'...':(item.name ) }}</td>
               <td scope="row">
                 <Button (click)="delete_page($event,i)" style="border:none;background: none;display: block;margin: auto;color: rgb(0, 0, 0);"><fa-icon [icon]="faDelete"></fa-icon></Button>
@@ -76,12 +77,15 @@
       </div>
     </div>
     <div class="row" >
-      <div class="col" id="col-wrapper">
+      <div class="col-md-8" id="col-wrapper">
       <label class="btn btn-outline-primary" style="margin-right:1%"><input  type="file" multiple="multiple" accept="image/*,.txt,.zip" (change)="selectfile($event)">Choose file</label>
       <button class="btn btn-outline-primary" (click)="uploadPage()"><fa-icon [icon]="faTimes"></fa-icon> Upload file</button>
       <button class="btn btn-outline-primary" (click)="show_db_segment()" style="margin-left:1%" ><fa-icon [icon]="fadb"></fa-icon> Load Data from db</button>
-      <a id="link-wrap" class="btn btn-primary" routerLink="/analysis" >Go to analysis</a>
     </div>
+      <div class="col-md-4">
+      <a id="link-wrap" class="btn btn-primary" routerLink="/analysis" >Go to analysis</a></div>
   </div>
+</div>
+<div class="footer"><p>@ManuLab team 2022</p></div>
 </div>
   

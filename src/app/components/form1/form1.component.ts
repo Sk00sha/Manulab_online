@@ -18,11 +18,13 @@ export class Form1Component implements OnInit {
   constructor(private fb:FormBuilder,private exchange_service:DataExchangeService) { }
   @Input() name_of_filter:any;
   @Input() number_of_filter:number;
+  name_number:string;
   //output objektu, ktory definuje data pre filter do input modalu a emitter
   @Output() message=new EventEmitter<boolean>();
 
   ngOnInit(): void {
     var exchange_service_list:any=this.exchange_service.getapplied_filters();
+    this.name_number=""+this.number_of_filter;
     this.form=this.fb.group({
       delimiter:exchange_service_list[this.number_of_filter].delimiter,
       n:exchange_service_list[this.number_of_filter].n,
@@ -33,26 +35,16 @@ export class Form1Component implements OnInit {
       relative:exchange_service_list[this.number_of_filter].relative,
       vowel:exchange_service_list[this.number_of_filter].vowel_option
     });
-  
-  }
 
+  }
   send_notification(){
     this.message.emit(false);
     this.set_filter_specs();
   }
-  set_label(){
-   if((this.form.get('relative')?.value)==false){
-     this.label="Absolute";
-   }
-   this.label="Relative";
-    
-  }
-  
 
   set_filter_specs(){
     var exchange_service_list:any=this.exchange_service.getapplied_filters();
-  
-      exchange_service_list[this.number_of_filter]=new FilterObject(
+      let data=new FilterObject(
         exchange_service_list[this.number_of_filter].name,
         this.form.get('delimiter')?.value,
         this.form.get('approx')?.value,
@@ -61,7 +53,20 @@ export class Form1Component implements OnInit {
         this.form.get('n')?.value,
         this.form.get('Spaces')?.value,
         this.form.get('pattern')?.value,
-        this.form.get('vowel')?.value)   
+        this.form.get('vowel')?.value);  
+        exchange_service_list[this.number_of_filter]=data;
+        this.form.setValue({
+          delimiter:'',
+          n:1,
+          pattern:'',
+          Spaces:false,
+          approx:false,
+          normalize:false,
+          relative:false,
+          vowel:'Sukhotin'
+        });
   }
+  
+  
 
 }

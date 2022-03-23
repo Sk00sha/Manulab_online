@@ -65,9 +65,10 @@
   <mat-slide-toggle  *ngIf="name_of_filter.name == 'Frequency of text elements'"
   type="checkbox"
   placeholder="pattern"
-  id="relative"
+  [id]="name_number"
   formControlName="relative"
-  (change)="set_label()">{{label}}</mat-slide-toggle>
+  >Data item</mat-slide-toggle>
+
 
   <select name="" id="" formControlName="vowel" *ngIf="name_of_filter.name == 'Vowel detection'">
     <option value="Sukhotin">Sukhotin</option>
