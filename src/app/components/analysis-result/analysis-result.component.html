@@ -34,6 +34,10 @@
         <th mat-sort-header="Difference" *ngIf="item[0].name=='Language guess'" class="th-sm">IC Difference</th>
         <th mat-sort-header="Anagram" *ngIf="item[0].name=='Pattern search'" class="th-sm">Position</th>
         <th mat-sort-header="vowel" *ngIf="item[0].name=='Vowel detection'" class="th-sm">Vowels</th>
+        <th mat-sort-header="Special" *ngIf="item[0].name=='Letter Count'" class="th-sm">Special</th>
+        <th mat-sort-header="Numbers" *ngIf="item[0].name=='Letter Count'" class="th-sm">Numbers</th>
+        <th mat-sort-header="Characters" *ngIf="item[0].name=='Letter Count'" class="th-sm">Characters</th>
+        <th mat-sort-header="Total" *ngIf="item[0].name=='Letter Count'" class="th-sm">Total</th>
     </tr>
     </thead>
     <tbody>
@@ -52,11 +56,15 @@
         <td *ngIf="data.name=='Pattern search'"> {{data.positions}}</td>
         <td *ngIf="data.name=='Anagram detection'">{{data.Anagram}}</td>
         <td *ngIf="data.name=='Vowel detection'">{{data.vowel}}</td>
+        <td *ngIf="data.name=='Letter Count'"> {{data.Special}}</td>
+        <td *ngIf="data.name=='Letter Count'">{{data.Numbers}}</td>
+        <td *ngIf="data.name=='Letter Count'">{{data.Characters}}</td>
+        <td *ngIf="data.name=='Letter Count'">{{data.Total}}</td>
     </tr>
   </tbody>
 </table>
 </div>
-<div *ngIf="item[0].name!='Remove accents' && item[0].name!='Anagram detection' && item[0].name!='Entropy' && item[0].name!='Index of coincidence'" class="chart-container">
+<div *ngIf="item[0].name!='Letter Count' && item[0].name!='Remove accents' && item[0].name!='Anagram detection' && item[0].name!='Entropy' && item[0].name!='Index of coincidence'" class="chart-container">
   <div class="spectre-pie-chart">
   <ngx-charts-bar-vertical 
     [view]="[1300,210]"

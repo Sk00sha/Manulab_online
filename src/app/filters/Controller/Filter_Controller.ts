@@ -15,6 +15,7 @@ import { LetterDistances } from 'src/app/filters/Statistics/letter_distances';
 import { LanguageGuess } from 'src/app/filters/Cryptanalysis/language_guess';
 import { AnagramDetection } from "../Cryptanalysis/anagram_detection";
 import { VowelDetection } from "../Cryptanalysis/vowel_detection";
+import { LetterCount } from "../Statistics/Letters_count";
 
 export class FilterController{
     pages_for_analysis:Pages[]=[];
@@ -70,6 +71,10 @@ export class FilterController{
             var l_g=new LanguageGuess();
             this.filters.push({name:filter_name.name,function:l_g});
         }
+        if(filter_name.name=="Letter Count"){
+            var l_c=new LetterCount();
+            this.filters.push({name:filter_name.name,function:l_c});
+        }
     }
     add_multiple_filters(array_of_filters:any[]){
         for(var item in array_of_filters){
@@ -83,13 +88,12 @@ export class FilterController{
         this.filters.forEach((filter:any)=>{
             
             if(filter.name=="Remove accents"){
-               // console.log("Removing accents");
                 new_pages=filter.function.activate();
                 transformation=true;
                 result.push([{name:"Remove accents"}]);
             }
             if(transformation && filter.name!="Remove accents"){
-               // console.log("Removing accents pages used");
+            
                 result.push(filter.function.activate(new_pages));
             }
             else if(filter.name!="Remove accents"){

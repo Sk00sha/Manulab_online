@@ -16,6 +16,7 @@ export class DataExchangeService {
         new FilterObject("Index of coincidence","",false,false,false,1,false,"","Sukhotin"),
         new FilterObject("Shannons entropy","",false,false,false,1,false,"","Sukhotin"),
         new FilterObject("Pattern search","",false,false,false,1,false,"","Sukhotin"),
+        new FilterObject("Letter Count","",false,false,false,1,false,"","Sukhotin"),
         new FilterObject("Adjacent contacts","",false,false,false,1,false,"","Sukhotin"),
         new FilterObject("Text element distances","",false,false,false,1,false,"","Sukhotin"),
         new FilterObject("Remove accents","",false,false,false,1,false,"","Sukhotin"),
@@ -45,7 +46,8 @@ export class DataExchangeService {
         new FilterObject("Shannons entropy","",false,false,false,1,false,"","Sukhotin"),
         new FilterObject("Pattern search","",false,false,false,1,false,"","Sukhotin"),
         new FilterObject("Adjacent contacts","",false,false,false,1,false,"","Sukhotin"),
-        new FilterObject("Text element distances","",false,false,false,1,false,"","Sukhotin")
+        new FilterObject("Text element distances","",false,false,false,1,false,"","Sukhotin"),
+        new FilterObject("Letter Count","",false,false,false,1,false,"","Sukhotin")
       ];
     }
     if (name_filter_group == 3) {

@@ -220,6 +220,7 @@ export class PageLoaderComponent implements OnInit {
       this.Page_texts=[];
       this.filepath_data=[];
     }
+    
     } 
     else {
       alert('Upload textfile please!');

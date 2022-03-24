@@ -30,6 +30,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { VowelDetection } from 'src/app/filters/Cryptanalysis/vowel_detection';
 import { AnagramDetection } from 'src/app/filters/Cryptanalysis/anagram_detection';
+import { LetterCount } from 'src/app/filters/Statistics/Letters_count';
 
 @Component({
   selector: 'app-analysis',
@@ -69,12 +70,14 @@ export class AnalysisComponent implements OnInit {
     this.list_bool_toggle = event;
   }
   make_analysis() {
-    var controller = new FilterController(this.pages);
+   var controller = new FilterController(this.pages);
     this.applied = this.exchange.getapplied_filters();
     controller.add_multiple_filters(this.applied);
     var result = controller.start_analysis();
     this.exchange.analysis_result_set(result);
     console.log(result);
+    
+  
 /*
     var vd = new VowelDetection('VowelSolution');
     console.log(vd.activate(this.pages));*/
