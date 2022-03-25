@@ -1,11 +1,15 @@
 <div class="flex-wrapper">
 <app-navigation></app-navigation>
-<div style="text-align:center;"class="data-result-nodata" *ngIf="display_results.length < 1"><img style="max-height:150px;width:auto;margin-top: 5%;"[src]="url" alt="None"></div>
+<div style="text-align:center;"class="data-result-nodata shadow rounded" *ngIf="display_results.length < 1"><img style="max-height:150px;width:auto;margin-top: 5%;"[src]="url" alt="None"></div>
 <div *ngIf="ready">
 <div *ngFor="let item of display_results;let i=index;">
   <div class="data-pointer shadow p-3 bg-white"><h3>{{i+1}}</h3></div>
-<div class="data-result shadow p-3 bg-white rounded" >
-  <div class="wrapper-div">
+  <div *ngIf=" item[0].name=='Remove accents'"class="data-result-noresults shadow p-1 bg-white rounded"><div class="header-wrapper">
+    <h2>{{item[0].name}}</h2>
+  </div>
+</div>
+<div *ngIf=" item[0].name!='Remove accents'" class="data-result shadow p-3 bg-white rounded" >
+  <div  class="wrapper-div">
     <div class="header-wrapper">
     <h2>{{item[0].name}}</h2>
     <button *ngIf=" item[0].name!='Remove accents'" class="btn btn-success" (click)="Export_data(i)"><fa-icon [icon]="fafiledownload"></fa-icon></button>
@@ -17,7 +21,7 @@
               {{item}}
             </option>    
         </select>
-<div class="scrollable-div">
+<div *ngIf="item[0].name!='Remove accents'" class="scrollable-div">
   <table *ngIf="item[0].name!='Remove accents'" class="table table-bordered" cellspacing="0" matSort (matSortChange)="sortData($event,i)">
     <thead>
     <tr>

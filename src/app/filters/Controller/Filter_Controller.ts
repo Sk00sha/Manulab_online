@@ -16,6 +16,7 @@ import { LanguageGuess } from 'src/app/filters/Cryptanalysis/language_guess';
 import { AnagramDetection } from "../Cryptanalysis/anagram_detection";
 import { VowelDetection } from "../Cryptanalysis/vowel_detection";
 import { LetterCount } from "../Statistics/Letters_count";
+import { DataExchangeService } from "src/app/services/data-exchange.service";
 
 export class FilterController{
     pages_for_analysis:Pages[]=[];
@@ -82,26 +83,29 @@ export class FilterController{
         }
     }
     start_analysis(){
+        var pages_used:any[]=[];
         var result:any[]=[];
         var transformation:boolean=false;
         var new_pages:Pages[]=[];
         this.filters.forEach((filter:any)=>{
             
             if(filter.name=="Remove accents"){
+                pages_used.push(this.pages_for_analysis);
                 new_pages=filter.function.activate();
                 transformation=true;
                 result.push([{name:"Remove accents"}]);
             }
             if(transformation && filter.name!="Remove accents"){
-            
                 result.push(filter.function.activate(new_pages));
+                pages_used.push(new_pages);
             }
             else if(filter.name!="Remove accents"){
                 result.push(filter.function.activate(this.pages_for_analysis));
+                pages_used.push(this.pages_for_analysis);
             }
             
             });
-            return result;
+            return [result,pages_used];
     }
 
 

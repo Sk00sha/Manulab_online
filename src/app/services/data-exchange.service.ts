@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FilterObject } from '../models/filter_object';
+import { Pages } from '../models/pages';
 @Injectable({
   providedIn: 'root',
 })
@@ -9,6 +10,7 @@ export class DataExchangeService {
   available_filters: any[] = [];
   applied_filters_array:any[]=[];
   analysis_results:any[]=[];
+  analysis_results_pages:any[]=[];
   //all filters are use when using search, in analysis pages,returns filters from this list
   all_filters: any[] = [
     //this is representation of a filter that represents all filters in the app refference-> import { FilterObject } from '../models/filter_object';
@@ -20,9 +22,9 @@ export class DataExchangeService {
         new FilterObject("Adjacent contacts","",false,false,false,1,false,"","Sukhotin"),
         new FilterObject("Text element distances","",false,false,false,1,false,"","Sukhotin"),
         new FilterObject("Remove accents","",false,false,false,1,false,"","Sukhotin"),
-        new FilterObject(  'Anagram detection',"",false,false,false,1,false,"","Sukhotin" ),
-        new FilterObject( 'Vowel detection',"",false,false,false,1,false,"","Sukhotin" ),
-        new FilterObject(  'Language guess' ,"",false,false,false,1,false,"","Sukhotin")
+        new FilterObject('Anagram detection',"",false,false,false,1,false,"","Sukhotin" ),
+        new FilterObject('Vowel detection',"",false,false,false,1,false,"","Sukhotin" ),
+        new FilterObject('Language guess' ,"",false,false,false,1,false,"","Sukhotin")
   ];
   //searches for filter in all filters when using search bar analysis page
   filter_from_data(string_search: string): string[] {
@@ -57,6 +59,9 @@ export class DataExchangeService {
         new FilterObject("Language guess","",false,false,false,1,false,"","Sukhotin")
       ];
     }
+    if(name_filter_group == 4){
+      this.available_filters=this.all_filters;
+    }
   
   }
   //just setters and getters
@@ -77,5 +82,12 @@ export class DataExchangeService {
   }
   get_all_filter(){
     return this.all_filters;
+  }
+  //result pages as inputs for analysis results component to display
+  set_result_pages(pages_array:any[]){
+    this.analysis_results_pages=pages_array;
+  }
+  get_result_pages(){
+    return this.analysis_results_pages;
   }
 }

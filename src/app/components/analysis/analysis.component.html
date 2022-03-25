@@ -2,20 +2,24 @@
 <app-filter-groups (messageEvent)="receiveData($event)" (emit_applied_filter)="receive_applied_filterData($event)" [get_applied]="applied"></app-filter-groups>
   <div class="container">
     <div class="row">
-      <div id="left-row" class="col-md-6 border rounded bg-white">
+    
+      <div class="col-lg-5 bg-white border rounded">
+        <app-page-viewer></app-page-viewer>
+      </div>
+      <div id="left-row" class="col-lg-6 border rounded bg-white">
         <div cdkDropListGroup>
-          <div class="example-container">
+          <div class="example-container" cdkScrollable>
             <h2 style="text-align:center">Available</h2>
-        
             <div style="margin-left: auto; margin-right: auto;"
               cdkDropList
               [cdkDropListData]="filters"
               class="example-list"
+              [cdkDropListEnterPredicate]="noReturnPredicate"
               (cdkDropListDropped)="drop($event)">
               <div class="example-box" *ngFor="let item of filters;let i = index" cdkDrag>{{item.name}}<button class="btn btn-outline-success"  (click)="add($event,i)"><fa-icon [icon]="faPlus"></fa-icon></button></div>
             </div>
           </div>
-          <div class="example-container-applied">
+          <div class="example-container-applied" cdkScrollable>
             <h2 style="text-align:center">Applied</h2>
             <div style="margin-left: auto; margin-right: auto;"
               cdkDropList
@@ -27,14 +31,11 @@
           </div>
         </div>
       </div>
-      <div class="col-md-5 bg-white border rounded">
-        <app-page-viewer></app-page-viewer>
-      </div>
     </div>
     <div class="row buttons">
-      <div class="col-md"><button class="btn btn-success" (click)="make_analysis()"><fa-icon [icon]="faPlay"></fa-icon>Analysis</button>
+      <div class="col-lg-5 "><button class="btn btn-success" (click)="make_analysis()"><fa-icon [icon]="faPlay"></fa-icon>Analysis</button>
       <button class="btn btn-danger"(click)="delete_filters()">Delete all filters</button></div>
-      <div class="col-md"></div>
+      <div class="col-lg-6"><a id="link-wrap" class="btn btn-primary" routerLink="/analysis results" >Go to results</a></div>
     </div>
   </div>
   

@@ -74,15 +74,13 @@ export class AnalysisComponent implements OnInit {
     this.applied = this.exchange.getapplied_filters();
     controller.add_multiple_filters(this.applied);
     var result = controller.start_analysis();
-    this.exchange.analysis_result_set(result);
-    console.log(result);
-    
-  
-/*
-    var vd = new VowelDetection('VowelSolution');
-    console.log(vd.activate(this.pages));*/
-  }
+    this.exchange.analysis_result_set(result[0]);
+    this.exchange.set_result_pages(result[1]);    
 
+  }
+  noReturnPredicate() {
+    return false;
+  }
   receive_applied_filterData($event: any) {
     this.applied = $event;
   }

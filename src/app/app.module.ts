@@ -34,6 +34,7 @@ import { NgxChartsModule }from '@swimlane/ngx-charts';
 import {SelectPaginationModule} from 'ngx-select-pagination';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { PageDisplayModalComponent } from './components/page-display-modal/page-display-modal.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     Form1Component,
     AnalysisResultComponent,
     FooterComponent,
+    PageDisplayModalComponent,
 
   ],
   imports: [
