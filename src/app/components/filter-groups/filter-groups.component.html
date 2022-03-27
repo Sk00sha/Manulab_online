@@ -11,7 +11,7 @@
       (click)="radioChangeHandler($event)"
       >
       <fa-icon style="pointer-events: none;" [icon]="filter.icon"></fa-icon><!--{{filter.value}}--></button>
-      <label class="btn btn-warning" matTooltip="Upload applied filters"><input type="file" 
+      <label class="btn btn-warning" matTooltip="Upload filters"><input type="file" 
         (change)="selectfile($event)"> <fa-icon [icon]="faFile"></fa-icon></label>
       <a class="btn btn-success" title="Download JSON" (click)="download_filter()" [href]="downloadJsonHref" download="download.json" matTooltip="Download applied filters">
         <fa-icon [icon]="faFileDownload"></fa-icon></a>
@@ -25,28 +25,6 @@
 
 </div>
 </div>
-<!--
-<div class="form-check d-inline-flex mt-1 mb-1 w-100">
-<div class="custommargin" *ngFor="let filter of filter_groups">
-    <input
-    class="form-check-input"
-    type="radio" 
-    name="dayOfTheWeek"
-    value="{{filter.id}}"
-    (change)="radioChangeHandler($event)">
-    <span class="font-weight-bold">{{filter.value}}</span>
-    <fa-icon class="paddingicon" [icon]="filter.icon"></fa-icon>
-</div>
-<div class="custommargin2 form-inline waves-light">
-<form >
-    <div class="md-form mt-0">
-      <input (change)="searcheChangeHandler($event)" class="form-control mr-sm-2" type="text" placeholder="Search">
-    </div>
-  </form>
-  <label class="btn btn-outline-primary" style="margin-right:1%"><input  type="file" 
-     (change)="selectfile($event)">Choose file</label>
-  <a class="btn btn-outline-success" title="Download JSON" (click)="download_filter()" [href]="downloadJsonHref" download="download.json">Save filters</a>
-</div>
-</div>-->
+
 
 

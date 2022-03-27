@@ -27,6 +27,5 @@ function init_graph(page:string="Page1",display_results:any,graph_settings:any){
 
  addEventListener('message', ({ data }) => {
   const response = {response:init_graph(data.page,data.display_results,data.graph_settings)}
-  //const response={response:data.page}
   postMessage(response);
 });
