@@ -4,23 +4,28 @@
 <div *ngIf="ready">
 <div *ngFor="let item of display_results;let i=index;">
   <div class="data-pointer shadow p-3 bg-white"><h3>{{i+1}}</h3></div>
-  <div *ngIf=" item[0].name=='Remove accents'"class="data-result-noresults shadow p-1 bg-white rounded"><div class="header-wrapper">
+  <div *ngIf=" item[0].name=='Remove accents'"class="data-result-noresults shadow p-1 bg-white rounded">
+    <div class="header-wrapper">
+      <div class="header-text">
     <h2>{{item[0].name}}</h2>
+  </div>
+    <div class="button-wrapper">
+    <app-page-display-modal [pages_iterator]="i"></app-page-display-modal>
+    <button class="btn btn-success" (click)="Export_data(i)"><fa-icon [icon]="fafiledownload"></fa-icon></button>
+  </div>
   </div>
 </div>
 <div *ngIf=" item[0].name!='Remove accents'" class="data-result shadow p-3 bg-white rounded" >
   <div  class="wrapper-div">
     <div class="header-wrapper">
+      <div class="header-text">
     <h2>{{item[0].name}}</h2>
+  </div>
+    <div class="button-wrapper">
+    <app-page-display-modal [pages_iterator]="i"></app-page-display-modal>
     <button *ngIf=" item[0].name!='Remove accents'" class="btn btn-success" (click)="Export_data(i)"><fa-icon [icon]="fafiledownload"></fa-icon></button>
   </div>
-    <select *ngIf=" item[0].name!='Remove accents' && item[0].name!='Anagram detection' && item[0].name!='Entropy' && item[0].name!='Index of coincidence'" 
-    [(ngModel)]="page_name" id='dropdown' style="width:100%; height:30px; display: block;" (change)="redo_graph(i)"
-          name='dropdown'>
-            <option *ngFor="let item of filtering_data" [value]="item" >
-              {{item}}
-            </option>    
-        </select>
+  </div>
 <div *ngIf="item[0].name!='Remove accents'" class="scrollable-div">
   <table *ngIf="item[0].name!='Remove accents'" class="table table-bordered" cellspacing="0" matSort (matSortChange)="sortData($event,i)">
     <thead>
@@ -68,6 +73,13 @@
   </tbody>
 </table>
 </div>
+<select *ngIf=" item[0].name!='Remove accents' && item[0].name!='Anagram detection' && item[0].name!='Entropy' && item[0].name!='Index of coincidence'" 
+    [(ngModel)]="page_name" id='dropdown' style="width:100%; height:30px; display: block;" (change)="redo_graph(i)"
+          name='dropdown'>
+            <option *ngFor="let item of filtering_data" [value]="item" >
+              {{item}}
+            </option>    
+        </select>
 <div *ngIf="item[0].name!='Letter Count' && item[0].name!='Remove accents' && item[0].name!='Anagram detection' && item[0].name!='Entropy' && item[0].name!='Index of coincidence'" class="chart-container">
   <div class="spectre-pie-chart">
   <ngx-charts-bar-vertical 

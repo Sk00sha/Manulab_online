@@ -1,3 +1,32 @@
-.btn.btn-primary{
-   
+.modal.show{
+    display:block;
+    background-color:#00000080;
+  position: fixed;
 }
+  .modal{
+        cursor: default;
+  }
+    li{
+        list-style: none;
+    }
+    .btn.btn-outline-warning{
+      width: 100%;
+    }
+    .modal-body{
+      height: 300px;
+      overflow-y: scroll;
+    }
+    .paragraph-borderizer{
+      width: 80%;
+      white-space: normal;
+
+    }
+    .textarea_right{
+      height: 300px;
+      width: 100%;
+    }
+    p{
+      white-space: normal;
+
+    }
+    

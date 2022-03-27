@@ -1,5 +1,5 @@
 <!-- The Modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal"(click)="showModal=true" data-target="#myModal">
+<button type="button" class="btn btn-primary" data-toggle="modal"(click)="setModal()" data-target="#myModal">
     <fa-icon [icon]="faFile"></fa-icon>
     </button>
   
@@ -9,23 +9,18 @@
     
           <!-- Modal Header -->
           <div class="modal-header">
-            <h4 class="modal-title">Welcome</h4>
-            <button type="button" class="close" (click)="showModal=false" data-dismiss="modal"><fa-icon [icon]="faTimes" style="color:red;"></fa-icon></button>
+            <h4 class="modal-title">Input pages</h4>
+            <button type="button" class="close" (click)="showModal=false" data-dismiss="modal">X</button>
           </div>
     
           <!-- Modal body -->
           <div class="modal-body">
-              <ul>
-          <li class="d-flex">
-              <fa-icon [icon]="faCalculator"></fa-icon><p>-This icon represents filtergroup that calculate statistics on chosen pages.</p>
-          </li>
-          <li class="d-flex">
-              <fa-icon  [icon]="faChartarea"></fa-icon><p>-This icon represents filtergroup that does cryptanalysis on text</p>
-          </li>
-          <li class="d-flex">
-              <fa-icon  [icon]="faTextWidth"></fa-icon><p>-This icon represents filtergroup that does text manipulating operations on chosen pages</p>
-          </li>
-          </ul>
+            <div *ngFor="let page of pages_to_show;let i=index">
+              <h5>{{page.name}}</h5>
+              <div class="paragraph-borderizer">
+                <textarea disabled class="textarea_right" [value]="page.page_text"></textarea>
+            </div>
+            </div>
           </div>
     
           <!-- Modal footer -->

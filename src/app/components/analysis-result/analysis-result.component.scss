@@ -68,8 +68,16 @@ margin-top: 5%;
       position: relative;
       width: inherit;
   }
-  .header-wrapper button{
-
+  .header-text{
+      width: 50%;
+  }
+  .button-wrapper{
+      display: flex;
+  }
+  .button-wrapper button{
+    margin-left: 3%;
+}
+  .header-wrapper .button-wrapper{
     position: absolute;
     right: 0;
 }
@@ -92,6 +100,9 @@ margin-top: 5%;
     .data-pointer{
         margin-top: 5%;
         margin-bottom: 5%;
+    }
+    .header-wrapper{
+        flex-direction: column;
     }
  }
  .flex-wrapper {
