@@ -31,6 +31,9 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { VowelDetection } from 'src/app/filters/Cryptanalysis/vowel_detection';
 import { AnagramDetection } from 'src/app/filters/Cryptanalysis/anagram_detection';
 import { LetterCount } from 'src/app/filters/Statistics/Letters_count';
+import {faCalculator} from '@fortawesome/free-solid-svg-icons';
+import {faTextWidth}from '@fortawesome/free-solid-svg-icons';
+import {faChartArea}from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-analysis',
@@ -51,6 +54,14 @@ export class AnalysisComponent implements OnInit {
   faCog = faCog;
   faPlus = faPlus;
   faPlay=faPlay;
+  faCalculator=faCalculator;
+  faTextWidth=faTextWidth;
+  faChartarea=faChartArea;
+  filter_groups=[
+    {value:'Statistics',id:1,icon:this.faCalculator},
+    {value:'Text operations',id:2,icon:this.faTextWidth},
+    {value:'Cryptanalysis',id:3,icon:this.faChartarea}
+  ]
   applied: any[] = [];
   filters: any[] = [];
   pages: Array<Pages> = [];
@@ -58,6 +69,7 @@ export class AnalysisComponent implements OnInit {
   list_bool_toggle: boolean = false;
 
   receiveData($event: any) {
+    
     this.filters = $event;
   }
 

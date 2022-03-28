@@ -53,7 +53,8 @@ export class Form1Component implements OnInit {
         this.form.get('n')?.value,
         this.form.get('Spaces')?.value,
         this.form.get('pattern')?.value,
-        this.form.get('vowel')?.value);  
+        this.form.get('vowel')?.value,
+        exchange_service_list[this.number_of_filter].group_id);  
         exchange_service_list[this.number_of_filter]=data;
         this.form.setValue({
           delimiter:'',

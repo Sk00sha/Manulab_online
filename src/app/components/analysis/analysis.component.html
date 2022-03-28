@@ -16,7 +16,10 @@
               class="example-list"
               [cdkDropListEnterPredicate]="noReturnPredicate"
               (cdkDropListDropped)="drop($event)">
-              <div class="example-box" *ngFor="let item of filters;let i = index" cdkDrag>{{item.name}}<button class="btn btn-outline-success"  (click)="add($event,i)"><fa-icon [icon]="faPlus"></fa-icon></button></div>
+              <div class="example-box" *ngFor="let item of filters;let i = index" cdkDrag>
+                <fa-icon class="filter-icon" *ngIf="item.group_id==1" [icon]="faCalculator"></fa-icon>
+                <fa-icon class="filter-icon" *ngIf="item.group_id==2" [icon]="faTextWidth"></fa-icon>
+                <fa-icon class="filter-icon" *ngIf="item.group_id==3" [icon]="faChartarea"></fa-icon>{{item.name}}<button class="btn btn-outline-success"  (click)="add($event,i)"><fa-icon [icon]="faPlus"></fa-icon></button></div>
             </div>
           </div>
           <div class="example-container-applied" cdkScrollable>

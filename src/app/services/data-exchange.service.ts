@@ -14,17 +14,17 @@ export class DataExchangeService {
   //all filters are use when using search, in analysis pages,returns filters from this list
   all_filters: any[] = [
     //this is representation of a filter that represents all filters in the app refference-> import { FilterObject } from '../models/filter_object';
-    new FilterObject("Frequency of text elements","",false,false,false,1,false,"","Sukhotin"),
-        new FilterObject("Index of coincidence","",false,false,false,1,false,"","Sukhotin"),
-        new FilterObject("Shannons entropy","",false,false,false,1,false,"","Sukhotin"),
-        new FilterObject("Pattern search","",false,false,false,1,false,"","Sukhotin"),
-        new FilterObject("Letter Count","",false,false,false,1,false,"","Sukhotin"),
-        new FilterObject("Adjacent contacts","",false,false,false,1,false,"","Sukhotin"),
-        new FilterObject("Text element distances","",false,false,false,1,false,"","Sukhotin"),
-        new FilterObject("Remove accents","",false,false,false,1,false,"","Sukhotin"),
-        new FilterObject('Anagram detection',"",false,false,false,1,false,"","Sukhotin" ),
-        new FilterObject('Vowel detection',"",false,false,false,1,false,"","Sukhotin" ),
-        new FilterObject('Language guess' ,"",false,false,false,1,false,"","Sukhotin")
+        new FilterObject("Frequency of text elements","",false,false,false,1,false,"","Sukhotin",1),
+        new FilterObject("Index of coincidence","",false,false,false,1,false,"","Sukhotin",1),
+        new FilterObject("Shannons entropy","",false,false,false,1,false,"","Sukhotin",1),
+        new FilterObject("Pattern search","",false,false,false,1,false,"","Sukhotin",1),
+        new FilterObject("Letter Count","",false,false,false,1,false,"","Sukhotin",1),
+        new FilterObject("Adjacent contacts","",false,false,false,1,false,"","Sukhotin",1),
+        new FilterObject("Text element distances","",false,false,false,1,false,"","Sukhotin",1),
+        new FilterObject("Remove accents","",false,false,false,1,false,"","Sukhotin",2),
+        new FilterObject('Anagram detection',"",false,false,false,1,false,"","Sukhotin" ,3),
+        new FilterObject('Vowel detection',"",false,false,false,1,false,"","Sukhotin" ,3),
+        new FilterObject('Language guess' ,"",false,false,false,1,false,"","Sukhotin",3)
   ];
   //searches for filter in all filters when using search bar analysis page
   filter_from_data(string_search: string): string[] {
@@ -35,6 +35,18 @@ export class DataExchangeService {
   }
   //exhage list is used when clicking groups in analysis page(first 3 buttons above analysis component)
   exchangeList(name_filter_group: number): void {
+    if(name_filter_group==4){
+      console.log("yes");
+      
+      this.available_filters=this.all_filters;
+    }
+    else{
+    const filtered_data=this.all_filters;
+    this.available_filters=filtered_data.filter(function (el) {
+      return el.group_id==name_filter_group;
+    });
+  }
+    /*
     if (name_filter_group == 2) {
      
       this.available_filters = [
@@ -61,7 +73,7 @@ export class DataExchangeService {
     }
     if(name_filter_group == 4){
       this.available_filters=this.all_filters;
-    }
+    }*/
   
   }
   //just setters and getters

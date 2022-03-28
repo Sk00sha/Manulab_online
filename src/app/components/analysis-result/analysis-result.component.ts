@@ -24,7 +24,9 @@ export class AnalysisResultComponent implements OnInit {
   all_data:any[]=[];
   filtering_data:any[]=[];
   residual_results:any[];
+   //icons
   fafiledownload=faFileDownload;
+ 
   ngOnInit(): void {
     this.display_results=this.exchange.analysis_results;
    // var data:any=(,data.display_resuts,data.graph_settings)

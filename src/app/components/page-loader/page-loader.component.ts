@@ -142,7 +142,7 @@ export class PageLoaderComponent implements OnInit {
   }
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.Pages, event.previousIndex, event.currentIndex);
-    console.log(this.Pages);
+    
     
   }
   swap_lists(event:any):void{
