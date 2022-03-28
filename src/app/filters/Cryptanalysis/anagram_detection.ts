@@ -1,13 +1,14 @@
 import { remove_accents } from 'src/app/filters/text operations/remove_accents';
 import { Pages } from 'src/app/models/pages';
-
-export class AnagramDetection{
+import { Filter } from "../Filter";
+export class AnagramDetection extends Filter{
     compare_pattren:Pages[];
     constructor(compare_pattren:string){
+            super();
             this.compare_pattren=[new Pages(0,'placeholder',compare_pattren,'placeholder',true)];
     }
     activate(pages:Pages[]):any{
-        //TODO
+        
         var result:any=[];
         var page_iterator=1;
         var input_rem_accents=new remove_accents(false,this.compare_pattren);

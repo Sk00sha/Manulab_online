@@ -1,13 +1,14 @@
 import { Pages } from 'src/app/models/pages';
 import { indexOfCoincidenceDirect } from './helpers';
 import { indexOfCoincidenceApprox } from './helpers';
-
-export class index_of_coincidence {
+import { Filter } from "../Filter";
+export class index_of_coincidence extends Filter{
   approx: boolean;
   normalize:boolean;
    delimiter: string;
     n: number;
   constructor(approx: boolean,normalize:boolean, delimiter: string, n: number) {
+    super();
     this.delimiter=delimiter;
     this.approx=approx;
     this.n=n;

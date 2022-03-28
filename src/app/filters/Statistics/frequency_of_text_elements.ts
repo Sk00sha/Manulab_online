@@ -1,12 +1,14 @@
 import { getAbsoluteNGrams } from 'src/app/filters/Statistics/helpers';
 import { getRelativeNgrams } from 'src/app/filters/Statistics/helpers';
 import { Pages } from 'src/app/models/pages';
+import { Filter } from "../Filter";
 
-export class frequency_of_text_elements {
+export class frequency_of_text_elements extends Filter{
   relative:boolean;
   delimiter:string;
   n:number;
     constructor(relative:boolean,delimiter:string,n:number) {
+      super();
         this.relative=relative;
         this.delimiter=delimiter;
         this.n=n;

@@ -1,9 +1,11 @@
 import { Pages } from "src/app/models/pages";
 import { CountContacts } from "./helpers";
+import { Filter } from "../Filter";
 
-export class AdjacentContacts{
+export class AdjacentContacts extends Filter{
     delimiter:string;
     constructor(delimiter:string){
+        super();
         this.delimiter = delimiter;
     }
     activate(pages:Pages[]){

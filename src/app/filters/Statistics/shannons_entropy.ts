@@ -1,10 +1,12 @@
 import { getRelativeNgrams } from 'src/app/filters/Statistics/helpers';
 import { Pages } from 'src/app/models/pages';
+import { Filter } from '../Filter';
 
-export class shannons_entropy {
+export class shannons_entropy extends Filter{
   delimiter:string;
   n:number;
     constructor(delimiter:string,n:number) {
+      super();
       this.delimiter=delimiter;
       this.n=n;
     }

@@ -1,8 +1,8 @@
 import { Pages } from "src/app/models/pages";
-
-export class LetterCount{
+import { Filter } from "../Filter";
+export class LetterCount extends Filter{
     constructor(){
-
+        super();
     }
     isNumeric(s:any) {
         return !isNaN(s - parseFloat(s));

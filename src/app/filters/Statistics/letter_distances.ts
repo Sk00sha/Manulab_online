@@ -2,11 +2,12 @@
 import { Pages } from "src/app/models/pages";
 import { countNGram } from "./helpers";
 import { findDistances } from "./helpers";
-
-export class LetterDistances{
+import { Filter } from "../Filter";
+export class LetterDistances extends Filter{
     n:number;
     delimiter:string;
     constructor(delimiter:string,n:number){
+        super();
         this.delimiter=delimiter;
         this.n=n;
     }

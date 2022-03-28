@@ -1,9 +1,10 @@
 import { findPosition } from "./helpers";
 import { Pages } from "src/app/models/pages";
-
-export class pattern_search{
+import { Filter } from "../Filter";
+export class pattern_search extends Filter{
     pattern:string;
     constructor(pattern:string){
+        super();
         this.pattern=pattern;
     }
 

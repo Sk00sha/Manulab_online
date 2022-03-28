@@ -1,8 +1,8 @@
 import { index_of_coincidence } from 'src/app/filters/Statistics/index_of_coincidence';
 import { Pages } from 'src/app/models/pages';
 import { remove_accents } from 'src/app/filters/text operations/remove_accents';
-
-export class LanguageGuess{
+import { Filter } from "../Filter";
+export class LanguageGuess extends Filter{
     IC_LANGUAGES:any={
         "Italian" : 0.0738,
         "French" : 0.0694,
@@ -30,7 +30,7 @@ export class LanguageGuess{
     ic=new index_of_coincidence(this.approximate,this.normalize, this.delimiter,this.n);
     
     constructor(){
-       
+       super();
     }
     
     activate(text:Pages[]):any{

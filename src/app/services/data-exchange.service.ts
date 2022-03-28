@@ -35,9 +35,7 @@ export class DataExchangeService {
   }
   //exhage list is used when clicking groups in analysis page(first 3 buttons above analysis component)
   exchangeList(name_filter_group: number): void {
-    if(name_filter_group==4){
-      console.log("yes");
-      
+    if(name_filter_group==4){  
       this.available_filters=this.all_filters;
     }
     else{
@@ -46,34 +44,6 @@ export class DataExchangeService {
       return el.group_id==name_filter_group;
     });
   }
-    /*
-    if (name_filter_group == 2) {
-     
-      this.available_filters = [
-        new FilterObject("Remove accents","",false,false,false,1,false,"","Sukhotin")
-      ];
-    }
-    if (name_filter_group == 1) {
-      this.available_filters = [
-        new FilterObject("Frequency of text elements","",false,false,false,1,false,"","Sukhotin"),
-        new FilterObject("Index of coincidence","",false,false,false,1,false,"","Sukhotin"),
-        new FilterObject("Shannons entropy","",false,false,false,1,false,"","Sukhotin"),
-        new FilterObject("Pattern search","",false,false,false,1,false,"","Sukhotin"),
-        new FilterObject("Adjacent contacts","",false,false,false,1,false,"","Sukhotin"),
-        new FilterObject("Text element distances","",false,false,false,1,false,"","Sukhotin"),
-        new FilterObject("Letter Count","",false,false,false,1,false,"","Sukhotin")
-      ];
-    }
-    if (name_filter_group == 3) {
-      this.available_filters = [
-        new FilterObject('Anagram detection' ,"",false,false,false,1,false,"","Sukhotin"),
-        new FilterObject('Vowel detection',"",false,false,false,1,false,"","Sukhotin"),
-        new FilterObject("Language guess","",false,false,false,1,false,"","Sukhotin")
-      ];
-    }
-    if(name_filter_group == 4){
-      this.available_filters=this.all_filters;
-    }*/
   
   }
   //just setters and getters

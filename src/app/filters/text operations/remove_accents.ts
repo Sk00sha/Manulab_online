@@ -1,10 +1,11 @@
 import { Pages } from "src/app/models/pages";
+import { Filter } from "../Filter";
 
-
-export class remove_accents {
+export class remove_accents extends Filter {
   boolean:boolean;
   wanted_pages:Pages[];
     constructor(spaces:boolean,page:Pages[]) {
+        super();
         this.boolean=spaces;
         this.wanted_pages=page;
       }

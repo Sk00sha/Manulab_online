@@ -3,11 +3,12 @@ import { remove_accents } from 'src/app/filters/text operations/remove_accents';
 import { AdjacentContacts } from 'src/app/filters/Statistics/adjacent_contacts';
 import { getRelativeNgrams } from 'src/app/filters/Statistics/helpers';
 import { getAbsoluteNGrams } from 'src/app/filters/Statistics/helpers';
-
-export class VowelDetection {
+import { Filter } from "../Filter";
+export class VowelDetection extends Filter {
   method: string = '';
   keepSpace: boolean = false;
   constructor(method: string) {
+    super();
     this.method = method;
   }
   activate(pages: Pages[]) {
