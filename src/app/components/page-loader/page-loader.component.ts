@@ -12,7 +12,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faDatabase } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-page-loader',
   templateUrl: './page-loader.component.html',
@@ -21,7 +21,8 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 export class PageLoaderComponent implements OnInit {
   constructor(
     private dataService: DataloaderService,
-    private db_connector:DbRequestService
+    private db_connector:DbRequestService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -88,7 +89,9 @@ export class PageLoaderComponent implements OnInit {
   //icons
   faplus=faPlus;
   fadb=faDatabase;
-  
+  show_tast_failure(){
+    this.toastr.error('Upload text file please');
+  }
   delete_page(event:any,i:number){
     this.Pages.splice(i,1);
     this.dataService.pages=this.Pages;
@@ -223,7 +226,7 @@ export class PageLoaderComponent implements OnInit {
     
     } 
     else {
-      alert('Upload textfile please!');
+      this.show_tast_failure();
     }
     this.url = 'assets/images/placeholder.jpg';
     this.text = '';

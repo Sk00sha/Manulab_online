@@ -33,6 +33,7 @@
     "jquery": "^3.6.0",
     "jszip": "^3.7.1",
     "ngx-select-pagination": "^1.0.4",
+    "ngx-toastr": "^14.2.2",
     "rxjs": "~6.6.0",
     "swiper": "^7.0.9",
     "tslib": "^2.3.0",

@@ -34,6 +34,7 @@ import { LetterCount } from 'src/app/filters/Statistics/Letters_count';
 import {faCalculator} from '@fortawesome/free-solid-svg-icons';
 import {faTextWidth}from '@fortawesome/free-solid-svg-icons';
 import {faChartArea}from '@fortawesome/free-solid-svg-icons';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-analysis',
@@ -43,7 +44,8 @@ import {faChartArea}from '@fortawesome/free-solid-svg-icons';
 export class AnalysisComponent implements OnInit {
   constructor(
     private exchange: DataExchangeService,
-    private data_load: DataloaderService
+    private data_load: DataloaderService,
+    private toastr: ToastrService
   ) {}
   ngOnInit(): void {
     this.pages = this.data_load.get_pages();
@@ -77,8 +79,14 @@ export class AnalysisComponent implements OnInit {
   recieve_disable(event: boolean) {
     this.list_bool_toggle = event;
   }
+  show_toastr_success(){
+    this.toastr.success('Analysis finished!');
+  }
+  show_toastr_failure(){
+    this.toastr.error('First, upload pages!');
+  }
   make_analysis() {
-    if(this.pages.length==0){alert("First upload manuskript!")}
+    if(this.pages.length==0){this.show_toastr_failure();}
     else{
    var controller = new FilterController(this.pages);
     this.applied = this.exchange.getapplied_filters();
@@ -86,6 +94,7 @@ export class AnalysisComponent implements OnInit {
     var result = controller.start_analysis();
     this.exchange.analysis_result_set(result[0]);
     this.exchange.set_result_pages(result[1]);    
+    this.show_toastr_success();
   }
 
   }

@@ -35,6 +35,7 @@ import {SelectPaginationModule} from 'ngx-select-pagination';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { PageDisplayModalComponent } from './components/page-display-modal/page-display-modal.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -79,7 +80,11 @@ import { PageDisplayModalComponent } from './components/page-display-modal/page-
     NgxChartsModule,
     SelectPaginationModule,
     MatSortModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    ToastrModule.forRoot({
+      timeOut:1000,
+      progressBar:true
+    })
 
   ],
   providers: [],
