@@ -20,3 +20,13 @@ input.form-control{
 .dropdown-align select{
     width: 100%;
 }
+.form-group{
+    text-align: center;
+}
+label{
+    margin: 1%;
+}
+.column-dir{
+    display: flex;
+    flex-direction: column;
+}

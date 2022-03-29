@@ -83,7 +83,8 @@ import { ToastrModule } from 'ngx-toastr';
     MatSlideToggleModule,
     ToastrModule.forRoot({
       timeOut:1000,
-      progressBar:true
+      progressBar:true,
+      positionClass: 'toast-bottom-right'
     })
 
   ],

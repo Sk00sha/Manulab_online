@@ -9,8 +9,8 @@
   
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Inputs for {{name_of_input.name}}</h4>
-          <button type="button" class="close" (click)="showModal=false" data-dismiss="modal"  (click)="send_enable_flag()">&times;</button>
+          <h6 class="modal-title">Inputs for {{name_of_input.name}}</h6>
+          <button type="button" class="close" (click)="showModal=false" data-dismiss="modal"  (click)="send_enable_flag()"><fa-icon [icon]="faTimes"></fa-icon></button>
         </div>
       
         <app-form1 [name_of_filter]="name_of_input" [number_of_filter]="number_of_input" (message)="recieve_modal_close($event)"></app-form1>

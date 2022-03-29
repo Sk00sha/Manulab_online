@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit,ViewChild } from '@angular/core';
 import { Input,Output } from '@angular/core';
 import { Form1Component } from '../form1/form1.component';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-input-modal',
@@ -11,6 +12,7 @@ import { faCog } from '@fortawesome/free-solid-svg-icons';
 export class InputModalComponent implements OnInit {
   showModal:boolean=false;
   faCog=faCog;
+  faTimes=faTimes;
   disable_input:boolean=true;
   @Input() name_of_input:any;
   @Input() number_of_input:number;

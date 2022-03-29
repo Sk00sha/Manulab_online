@@ -1,3 +1,20 @@
 body{
     background-color: blue;
 }
+.flex-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .footer {
+    margin-top: auto;
+  background-color: #0058db;
+  min-height: 50px;
+  text-align: center;
+  color: white;
+  }
+  .footer p{
+      margin-top: 1%
+  }

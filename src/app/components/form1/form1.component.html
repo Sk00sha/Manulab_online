@@ -37,7 +37,8 @@
     placeholder="pattern"
     formControlName="pattern"
   />
-
+<div class="column-dir">
+  <div class="data-1">
   <label *ngIf="name_of_filter.name == 'Index of coincidence'" for="normalize">Do you want to normalize?</label>
   <input 
     *ngIf="name_of_filter.name == 'Index of coincidence'"
@@ -45,6 +46,8 @@
     name="normalize"
     formControlName="normalize"
   />
+</div>
+<div class="data-2">
   <label *ngIf="name_of_filter.name == 'Index of coincidence'" for="approx">Do you want to use approx.?</label>
   <input 
   *ngIf="name_of_filter.name == 'Index of coincidence'"
@@ -52,6 +55,8 @@
   name="approx"
   formControlName="approx"
 />
+</div>
+</div>
 <label *ngIf="name_of_filter.name == 'Remove accents'" for="spaces">Do you want to keep spaces?</label>
   <input 
     *ngIf="name_of_filter.name == 'Remove accents'"
@@ -61,13 +66,12 @@
     formControlName="Spaces"
   />
   
-  <label *ngIf="name_of_filter.name == 'Frequency of text elements'" for="relative">Relative or Absolute?</label>
+  <label *ngIf="name_of_filter.name == 'Frequency of text elements'" for="relative">Absolute or Relative?</label>
   <mat-slide-toggle  *ngIf="name_of_filter.name == 'Frequency of text elements'"
   type="checkbox"
-  placeholder="pattern"
   [id]="name_number"
   formControlName="relative"
-  >Data item</mat-slide-toggle>
+  ></mat-slide-toggle>
 
 <div  *ngIf="name_of_filter.name == 'Vowel detection'" class="dropdown-align">
   <label for="vowel-select">Choose vowel detection method:</label>

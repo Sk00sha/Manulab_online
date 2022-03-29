@@ -41,7 +41,7 @@ export class PageLoaderComponent implements OnInit {
               if(item.filetype=="text"){
                 id++;
                 data_pages.push(name_item+" - "+item["description"]);
-                //var page:Pages=new Pages(value["id"],'assets/images/placeholder.jpg',item["blobb"],name_item+" - "+item["description"],false);
+                
                 db_pages.push(new Pages(id,'assets/images/placeholder.jpg',item["blobb"],name_item+" - "+item["description"],false));
               }
           });
