@@ -57,11 +57,7 @@ export class AnalysisComponent implements OnInit {
   faCalculator=faCalculator;
   faTextWidth=faTextWidth;
   faChartarea=faChartArea;
-  filter_groups=[
-    {value:'Statistics',id:1,icon:this.faCalculator},
-    {value:'Text operations',id:2,icon:this.faTextWidth},
-    {value:'Cryptanalysis',id:3,icon:this.faChartarea}
-  ]
+ 
   applied: any[] = [];
   filters: any[] = [];
   pages: Array<Pages> = [];
@@ -82,12 +78,15 @@ export class AnalysisComponent implements OnInit {
     this.list_bool_toggle = event;
   }
   make_analysis() {
+    if(this.pages.length==0){alert("First upload manuskript!")}
+    else{
    var controller = new FilterController(this.pages);
     this.applied = this.exchange.getapplied_filters();
     controller.add_multiple_filters(this.applied);
     var result = controller.start_analysis();
     this.exchange.analysis_result_set(result[0]);
     this.exchange.set_result_pages(result[1]);    
+  }
 
   }
   noReturnPredicate() {
