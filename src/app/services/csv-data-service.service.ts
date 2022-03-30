@@ -16,8 +16,8 @@ export class CsvDataServiceService {
 
       for(let row of object){
         var items=csv_header.map((item:any) =>{
-          var replacable=(''+row[item]);
-          replacable=replacable.replace(/"/g, '\\"');
+        
+          var replacable=(''+row[item]).replace(/"/g, '\\"');
           replacable=replacable.replace('\n', '</br>');
             return `"${replacable}"`;
         })
