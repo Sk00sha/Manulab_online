@@ -32,8 +32,8 @@
     <tr>
         <th mat-sort-header="Page" class="th-sm">Page</th>
         <th mat-sort-header="Entropy" *ngIf="item[0].name=='Entropy'" class="th-sm">Entropy</th>
-        <th mat-sort-header="element" *ngIf="item[0].name=='Frequency of text' || item[0].name=='Adjacent contacts' || item[0].name=='Letter distances'" class="th-sm">Element</th>
-        <th mat-sort-header="frequency" *ngIf="item[0].name=='Frequency of text' || item[0].name=='Adjacent contacts'" class="th-sm">Frequency</th>
+        <th mat-sort-header="element" *ngIf="item[0].name=='Frequency of text elements' || item[0].name=='Adjacent contacts' || item[0].name=='Letter distances'" class="th-sm">Element</th>
+        <th mat-sort-header="frequency" *ngIf="item[0].name=='Frequency of text elements' || item[0].name=='Adjacent contacts'" class="th-sm">Frequency</th>
         <th mat-sort-header="Index_of_coincidence" *ngIf="item[0].name=='Index of coincidence'" class="th-sm">Index of coincidence</th>
         <th mat-sort-header="min" *ngIf="item[0].name=='Letter distances'" class="th-sm">Min</th>
         <th mat-sort-header="max" *ngIf="item[0].name=='Letter distances'" class="th-sm">Max</th>
@@ -53,8 +53,8 @@
     <tr *ngFor="let data of item">
         <th scope="row">{{data.Page}}</th>
         <td *ngIf="data.name=='Entropy'"> {{data.Entropy }}</td>
-        <td *ngIf="data.name=='Frequency of text' || data.name=='Adjacent contacts' || data.name=='Letter distances'"> {{data.element}}</td>
-        <td *ngIf="data.name=='Frequency of text' || data.name=='Adjacent contacts'">{{data.frequency}}</td>
+        <td *ngIf="data.name=='Frequency of text elements' || data.name=='Adjacent contacts' || data.name=='Letter distances'"> {{data.element}}</td>
+        <td *ngIf="data.name=='Frequency of text elements' || data.name=='Adjacent contacts'">{{data.frequency}}</td>
         <td *ngIf="data.name=='Index of coincidence'"> {{data.Index_of_coincidence}}</td>
         <td *ngIf="data.name=='Letter distances'"> {{data.min}}</td>
         <td *ngIf="data.name=='Letter distances'"> {{data.max}}</td>
@@ -83,7 +83,7 @@
 <div *ngIf="item[0].name!='Letter Count' && item[0].name!='Remove accents' && item[0].name!='Anagram detection' && item[0].name!='Entropy' && item[0].name!='Index of coincidence'" class="chart-container">
   <div class="spectre-pie-chart">
   <ngx-charts-bar-vertical 
-    [view]="[1300,210]"
+   
     [results]="saleData[i]"
     [xAxisLabel]="'Products'"
     [legendTitle]="'Product Sale Chart'"

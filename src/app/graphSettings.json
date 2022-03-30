@@ -6,7 +6,7 @@
 },
 {
     "id": 2,
-    "name": "Frequency of text",
+    "name": "Frequency of text elements",
     "x":"element",
     "y":"frequency"
 },

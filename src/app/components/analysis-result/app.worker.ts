@@ -17,8 +17,10 @@ function init_graph(page:string="Page1",display_results:any,graph_settings:any){
          var res=graph_settings.filter((data:any)=>{
                return data.name==array_data.name;
          })
-        
+ 
+         if(res.length!=0){
          temp_array.push({ name: array_data[res[0].x], value: array_data[res[0].y] });
+        }
      });
      saleData.push(temp_array);
   });

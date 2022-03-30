@@ -57,7 +57,7 @@ export class frequency_of_text_elements extends Filter{
             var ngram_keys=(Object.keys(result_wrapper[my_key][0][0]));
             var ngram_values=(Object.values(result_wrapper[my_key][0][0]));
             for(var i=0;i<ngram_keys.length;i++){
-                huge_object.push({Page:my_key,element:ngram_keys[i],frequency:ngram_values[i],name:"Frequency of text"})
+                huge_object.push({Page:my_key,element:ngram_keys[i],frequency:ngram_values[i],name:"Frequency of text elements"})
             }
            
           }
@@ -66,7 +66,7 @@ export class frequency_of_text_elements extends Filter{
           var ngram_keys=(Object.keys(result_wrapper[my_key][0]));
           var ngram_values=(Object.values(result_wrapper[my_key][0]));
           for(var i=0;i<ngram_keys.length;i++){
-            huge_object.push({Page:my_key,element:ngram_keys[i],frequency:ngram_values[i],name:"Frequency of text"})
+            huge_object.push({Page:my_key,element:ngram_keys[i],frequency:ngram_values[i],name:"Frequency of text elements"})
         }
           
         }

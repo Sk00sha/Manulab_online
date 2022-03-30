@@ -122,8 +122,9 @@ compare(a: number | string, b: number | string, isAsc: boolean) {
            var res=this.graph_settings.filter((data:any)=>{
                  return data.name==array_data.name;
            })
+           if(res.length!=0){
            temp_array.push({ name: array_data[res[0].x], value: array_data[res[0].y] });
-      
+          }
        this.saleData[indice]=temp_array;
     });
   }
