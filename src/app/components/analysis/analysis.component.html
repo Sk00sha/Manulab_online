@@ -1,3 +1,4 @@
+<div class="flex-wrapper">
 <app-navigation></app-navigation>
 <app-filter-groups (messageEvent)="receiveData($event)" (emit_applied_filter)="receive_applied_filterData($event)" [get_applied]="applied"></app-filter-groups>
   <div class="container">
@@ -41,5 +42,7 @@
       <div class="col-lg-6"><a id="link-wrap" class="btn btn-primary" routerLink="/analysis results" >Go to results</a></div>
     </div>
   </div>
+  <div class="footer"><p>@ManuLab team 2022</p></div>
+</div>
   
   
