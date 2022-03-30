@@ -30,12 +30,12 @@ export class FilterController{
     add_filter_to_stack(filter_name:any){
         
         if (filter_name.name=="Shannons entropy"){
-            console.log("Added shannons entropy")
+           
             var enth= new shannons_entropy(filter_name.delimiter,filter_name.n);
             this.filters.push({name:filter_name.name,function:enth});
         }
         if (filter_name.name=="Frequency of text elements elements"){
-            console.log("Added Frequency of text elements elements")
+          
             var freq= new frequency_of_text_elements(filter_name.relative,filter_name.delimiter,filter_name.n);
             this.filters.push({name:filter_name.name,function:freq});
         }

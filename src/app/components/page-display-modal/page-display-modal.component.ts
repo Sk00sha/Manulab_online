@@ -18,7 +18,7 @@ export class PageDisplayModalComponent implements OnInit {
     this.pages_to_show=this.exchange.get_result_pages()[this.pages_iterator];
   }
   setModal(){
-    console.log(this.pages_to_show);
+
     this.showModal=true;
   }
 
