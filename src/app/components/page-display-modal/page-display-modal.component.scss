@@ -22,7 +22,9 @@
 
     }
     .textarea_right{
-      height: 300px;
+      max-height: 300px;
+      min-height: 200px;
+      background: none;
       width: 100%;
     }
     p{
