@@ -6,6 +6,9 @@
     display: inline-block;
     vertical-align: top;
   }
+#upper-row{
+  height:500px
+}
   .example-container-applied {
     width: 40%;
     max-width: 100%;
@@ -13,6 +16,10 @@
     display: inline-block;
     vertical-align: top;
     float: right;
+  }
+  .row{
+    margin-top:4.5%;
+    
   }
   .filter-icon{
     margin-right: 5%;
@@ -26,7 +33,7 @@
     overflow: hidden;
     display: block;
   }
-  
+ 
   .example-box {
     padding: 15px 10px;
     border-bottom: solid 1px #ccc;
@@ -34,11 +41,11 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+  justify-content: space-between;
     box-sizing: border-box;
     cursor: move;
     background: white;
-    font-size: 0.70em;
+    font-size: 0.80em;
     transition: background 0.5s;
   }
   .example-box:last-child {

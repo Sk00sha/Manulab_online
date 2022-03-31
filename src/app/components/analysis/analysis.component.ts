@@ -35,7 +35,7 @@ import {faCalculator} from '@fortawesome/free-solid-svg-icons';
 import {faTextWidth}from '@fortawesome/free-solid-svg-icons';
 import {faChartArea}from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-analysis',
   templateUrl: './analysis.component.html',
@@ -45,7 +45,8 @@ export class AnalysisComponent implements OnInit {
   constructor(
     private exchange: DataExchangeService,
     private data_load: DataloaderService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
   ngOnInit(): void {
     this.pages = this.data_load.get_pages();
@@ -95,6 +96,10 @@ export class AnalysisComponent implements OnInit {
     this.exchange.analysis_result_set(result[0]);
     this.exchange.set_result_pages(result[1]);    
     this.show_toastr_success();
+    setTimeout(()=>{
+      this.router.navigateByUrl('/analysis results');
+    },1000) 
+   
   }
 
   }

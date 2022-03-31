@@ -81,3 +81,12 @@ width: 40%;
         margin:2%;
 
       }
+      .item-1{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5%;
+      }
+      .row{
+        display: flex;
+        flex-direction: column;
+      }

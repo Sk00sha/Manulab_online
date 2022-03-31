@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-3">
+<div class="row">
+    <div class="item-1">
       <button class="btn btn-outline-primary" 
       value="4"
       (click)="radioChangeHandler($event)"
@@ -16,8 +16,9 @@
       <a class="btn btn-success" title="Download JSON" (click)="download_filter()" [href]="downloadJsonHref" download="download.json" matTooltip="Download applied filters">
         <fa-icon [icon]="faFileDownload"></fa-icon></a>
 </div>
-    <div class="col-lg-6">
-<div class="search"> <form class="form-inline my-2 my-lg-0">
+<div class="item-2">
+<div class="search"> 
+  <form class="form-inline my-2 my-lg-0">
   <input (change)="searcheChangeHandler($event)" class="form-control mr-sm-2" id ="search" name="filtername"type="text" placeholder="Search" >
 </form>
 </div>

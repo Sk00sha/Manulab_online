@@ -23,9 +23,12 @@ h1{
              #000 0px 0px 1px,   #000 0px 0px 1px,   #000 0px 0px 1px;
   -webkit-font-smoothing: antialiased
 }
-.navbar {
-  background: none;
-}
+
 #navbar{
   background-color: #0058db;
+}
+ #navbar .nav-item.nav-link.active {
+  background: rgb(9, 1, 114);
+  border-radius: 5px;
+  color: white;
 }

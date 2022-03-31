@@ -1,13 +1,13 @@
 <div class="flex-wrapper">
 <app-navigation></app-navigation>
-<app-filter-groups (messageEvent)="receiveData($event)" (emit_applied_filter)="receive_applied_filterData($event)" [get_applied]="applied"></app-filter-groups>
+<!--<app-filter-groups (messageEvent)="receiveData($event)" (emit_applied_filter)="receive_applied_filterData($event)" [get_applied]="applied"></app-filter-groups>-->
   <div class="container">
     <div class="row">
-    
-      <div class="col-lg-5 bg-white border rounded">
+      <div class="col-lg-6 bg-white border rounded">
         <app-page-viewer></app-page-viewer>
       </div>
       <div id="left-row" class="col-lg-6 border rounded bg-white">
+        <app-filter-groups (messageEvent)="receiveData($event)" (emit_applied_filter)="receive_applied_filterData($event)" [get_applied]="applied"></app-filter-groups>
         <div cdkDropListGroup>
           <div class="example-container" cdkScrollable>
             <h2 style="text-align:center">Available</h2>
@@ -39,7 +39,7 @@
     <div class="row buttons">
       <div class="col-lg-5 "><button class="btn btn-success" (click)="make_analysis()"><fa-icon [icon]="faPlay"></fa-icon>Analysis</button>
       <button class="btn btn-danger"(click)="delete_filters()">Delete all filters</button></div>
-      <div class="col-lg-6"><a id="link-wrap" class="btn btn-primary" routerLink="/analysis results" >Go to results</a></div>
+     
     </div>
   </div>
   <div class="footer"><p>@ManuLab team 2022</p></div>

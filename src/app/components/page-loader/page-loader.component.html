@@ -1,10 +1,10 @@
 
 <div class="container">
     <div class="row">
-      <div class="col-lg-4 border rounded" [style.display]="display_loader ? 'none' : 'flex'">
+      <div class="col-lg-3 border rounded" [style.display]="display_loader ? 'none' : 'flex'">
         <img class="imgloader" [src]="url"/>
       </div>
-      <div class="col-lg-4 border rounded" [style.display]="display_loader ? 'block' : 'none'">
+      <div class="col-lg-3 border rounded" [style.display]="display_loader ? 'block' : 'none'">
         <h2 style="width:100%;display: block;">Database import</h2>
       <br/>
       <div class="checkbox_container">
@@ -50,7 +50,7 @@
     </div>
       
       </div>
-      <div class="col-lg-4 border rounded">
+      <div class="col-lg-3 border rounded">
         <textarea class="inputtextarea" name="textarea" id="textarea" [(ngModel)]="text"></textarea>
       </div>
       <div class="col-md border rounded helo" cdkScrollable>
@@ -77,7 +77,7 @@
       </div>
     </div>
     <div class="row" >
-      <div class="col-lg-8" id="col-wrapper">
+      <div class="col-lg-6" id="col-wrapper">
       <label class="btn btn-outline-primary" style="margin-right:1%"><input  type="file" multiple="multiple" accept="image/*,.txt,.zip" (change)="selectfile($event)">Choose file</label>
       <button class="btn btn-outline-primary" (click)="uploadPage()"><fa-icon [icon]="faTimes"></fa-icon> Upload file</button>
       <button class="btn btn-outline-primary" (click)="show_db_segment()" style="margin-left:1%" ><fa-icon [icon]="fadb"></fa-icon> Load Data from db</button>
