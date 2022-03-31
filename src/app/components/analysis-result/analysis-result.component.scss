@@ -65,11 +65,9 @@ margin-top: 5%;
   .header-wrapper{
       display: flex;
       flex-direction: row;
+      width: 100%;
       position: relative;
-      width: inherit;
-  }
-  .header-text{
-      width: 50%;
+      
   }
   .button-wrapper{
       display: flex;
