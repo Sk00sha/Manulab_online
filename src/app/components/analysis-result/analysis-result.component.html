@@ -73,14 +73,14 @@
   </tbody>
 </table>
 </div>
-<select *ngIf=" item[0].name!='Remove accents' && item[0].name!='Anagram detection' && item[0].name!='Entropy' && item[0].name!='Index of coincidence'" 
+<select *ngIf="item[0].name!='Pattern search' && item[0].name!='Letter Count' && item[0].name!='Remove accents' && item[0].name!='Anagram detection' && item[0].name!='Entropy' && item[0].name!='Index of coincidence'" 
     [(ngModel)]="page_name" id='dropdown' style="width:100%; height:30px; display: block;" (change)="redo_graph(i)"
           name='dropdown'>
             <option *ngFor="let item of filtering_data" [value]="item" >
               {{item}}
             </option>    
         </select>
-<div *ngIf="item[0].name!='Letter Count' && item[0].name!='Remove accents' && item[0].name!='Anagram detection' && item[0].name!='Entropy' && item[0].name!='Index of coincidence'" class="chart-container">
+<div *ngIf="item[0].name!='Pattern search' && item[0].name!='Letter Count' && item[0].name!='Remove accents' && item[0].name!='Anagram detection' && item[0].name!='Entropy' && item[0].name!='Index of coincidence'" class="chart-container">
   <div class="spectre-pie-chart">
   <ngx-charts-bar-vertical 
    
