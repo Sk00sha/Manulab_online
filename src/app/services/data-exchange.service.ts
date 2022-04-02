@@ -14,7 +14,7 @@ export class DataExchangeService {
   //all filters are use when using search, in analysis pages,returns filters from this list
   all_filters: any[] = [
     //this is representation of a filter that represents all filters in the app refference-> import { FilterObject } from '../models/filter_object';
-        new FilterObject("Frequency of text elements elements","",false,false,false,1,false,"","Sukhotin",1),
+        new FilterObject("Frequency of text elements","",false,false,false,1,false,"","Sukhotin",1),
         new FilterObject("Index of coincidence","",false,false,false,1,false,"","Sukhotin",1),
         new FilterObject("Shannons entropy","",false,false,false,1,false,"","Sukhotin",1),
         new FilterObject("Pattern search","",false,false,false,1,false,"","Sukhotin",1),

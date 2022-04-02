@@ -8,7 +8,7 @@
       name_of_filter.name == 'Text element distance' ||
       name_of_filter.name == 'Index of coincidence' ||
       name_of_filter.name == 'Adjacent contacts' ||
-      name_of_filter.name == 'Frequency of text elements elements'
+      name_of_filter.name == 'Frequency of text elements'
     "
     type="text"
     placeholder="delimiter"
@@ -25,7 +25,7 @@
       name_of_filter.name == 'Shannons entropy' ||
       name_of_filter.name == 'Text element distances' ||
       name_of_filter.name == 'Index of coincidence' ||
-      name_of_filter.name == 'Frequency of text elements elements'
+      name_of_filter.name == 'Frequency of text elements'
     "
     type="text"
     placeholder="number"
@@ -66,8 +66,8 @@
     formControlName="Spaces"
   />
   
-  <label *ngIf="name_of_filter.name == 'Frequency of text elements elements'" for="relative">Absolute or Relative?</label>
-  <mat-slide-toggle  *ngIf="name_of_filter.name == 'Frequency of text elements elements'"
+  <label *ngIf="name_of_filter.name == 'Frequency of text elements'" for="relative">Absolute or Relative?</label>
+  <mat-slide-toggle  *ngIf="name_of_filter.name == 'Frequency of text elements'"
   type="checkbox"
   [id]="name_number"
   formControlName="relative"

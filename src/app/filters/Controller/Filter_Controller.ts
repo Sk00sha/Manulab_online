@@ -24,7 +24,7 @@ export class FilterController{
     constructor(pages:Pages[]){
         this.pages_for_analysis=pages;
     }
-    all_filters:string[]=["Remove accents","Frequency of text elements elements",'Index of coincidence','Shannons entropy'
+    all_filters:string[]=["Remove accents","Frequency of text elements",'Index of coincidence','Shannons entropy'
   ,'Pattern search','Adjacent contacts','Text element distances',"Anagram detection",'Vowel detection','Language guess'];
 
     add_filter_to_stack(filter_name:any){
@@ -34,7 +34,7 @@ export class FilterController{
             var enth= new shannons_entropy(filter_name.delimiter,filter_name.n);
             this.filters.push({name:filter_name.name,function:enth});
         }
-        if (filter_name.name=="Frequency of text elements elements"){
+        if (filter_name.name=="Frequency of text elements"){
           
             var freq= new frequency_of_text_elements(filter_name.relative,filter_name.delimiter,filter_name.n);
             this.filters.push({name:filter_name.name,function:freq});
