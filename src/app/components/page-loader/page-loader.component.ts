@@ -167,17 +167,21 @@ export class PageLoaderComponent implements OnInit {
   this.display_partitioner=true;
     
 }
+edit_page(){
+  this.Pages[this.edit_indice].page_text=this.text;
+  this.Pages[this.edit_indice].img=this.url;
+  this.edit_flag=false;
+  this.edit_indice=-1;
+  this.url = 'assets/images/placeholder.jpg';
+  this.text="";
+  this.text_name="placeholder";
+
+}
 
   uploadPage() {
     this.dropdown_list_data=this.dataService.get_db_data();
     if( this.edit_flag==true &&this.edit_indice!==-1){
-      this.Pages[this.edit_indice].page_text=this.text;
-      this.Pages[this.edit_indice].img=this.url;
-      this.edit_flag=false;
-      this.edit_indice=-1;
-      this.url = 'assets/images/placeholder.jpg';
-      this.text="";
-      this.text_name="placeholder";
+     this.edit_page();
     }
     else{
     if (this.text.length>0 && this.Page_texts.length>0  || this.display_loader==true && this.text.length>0  ) {
