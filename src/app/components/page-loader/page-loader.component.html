@@ -63,9 +63,9 @@
                 <td scope="col">Use all <input class="form-check-input" type="checkbox" [checked]="true" (change)="check_all($event)"></td>
               </tr>
             <tr class="example-box" *ngFor="let item of Pages ;let i = index" cdkDrag>
-              <td (click)="check_pages(i)" scope="row" >{{i+1}}</td>
-              <td (click)="check_pages(i)" scope="row" class="textcontainer">{{ (item.name.length>10)? (item.name  | slice:0:15)+'...':(item.name ) }}</td>
-              <td (click)="check_pages(i)" scope="row">
+              <td (click)="check_pages(i)" matTooltip="Click to edit" scope="row" >{{i+1}}</td>
+              <td (click)="check_pages(i)" matTooltip="Click to edit" scope="row" class="textcontainer">{{ (item.name.length>10)? (item.name  | slice:0:15)+'...':(item.name ) }}</td>
+              <td (click)="check_pages(i)" matTooltip="Click to edit" scope="row">
                 <Button (click)="delete_page($event,i)" style="border:none;background: none;display: block;margin: auto;color: rgb(0, 0, 0);"><fa-icon [icon]="faDelete"></fa-icon></Button>
               </td>
               <td scope="row">
