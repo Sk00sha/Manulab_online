@@ -11,6 +11,8 @@ export class DataExchangeService {
   applied_filters_array:any[]=[];
   analysis_results:any[]=[];
   analysis_results_pages:any[]=[];
+  img_display_modal:string="";
+  boolean_show_modal:boolean=false;
   //all filters are use when using search, in analysis pages,returns filters from this list
   all_filters: any[] = [
     //this is representation of a filter that represents all filters in the app refference-> import { FilterObject } from '../models/filter_object';
@@ -26,6 +28,9 @@ export class DataExchangeService {
         new FilterObject('Vowel detection',"",false,false,false,1,false,"","Sukhotin" ,3),
         new FilterObject('Language guess' ,"",false,false,false,1,false,"","Sukhotin",3)
   ];
+  return_bool_display():boolean{
+    return this.boolean_show_modal;
+  }
   //searches for filter in all filters when using search bar analysis page
   filter_from_data(string_search: string): string[] {
     const matches = this.all_filters.filter((s) =>

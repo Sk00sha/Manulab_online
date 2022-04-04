@@ -36,6 +36,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { PageDisplayModalComponent } from './components/page-display-modal/page-display-modal.component';
 import { ToastrModule } from 'ngx-toastr';
+import { PictureModalComponent } from './components/picture-modal/picture-modal.component';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { ToastrModule } from 'ngx-toastr';
     AnalysisResultComponent,
     FooterComponent,
     PageDisplayModalComponent,
+    PictureModalComponent,
 
   ],
   imports: [

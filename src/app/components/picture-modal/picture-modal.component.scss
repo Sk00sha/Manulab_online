@@ -1,0 +1,31 @@
+.modal.show{
+    display:block;
+    background-color:#00000080;
+  position: fixed;
+}
+
+    li{
+        list-style: none;
+    }
+    .btn.btn-outline-warning{
+      width: 100%;
+    }
+    .modal-body{
+      max-height: 900px;
+      width: fit-content;
+    }
+    .paragraph-borderizer{
+      width: 80%;
+      white-space: normal;
+
+    }
+   .modal-content{
+    
+       max-width: 80%;
+       max-height: 100vw;
+   }
+    p{
+      white-space: normal;
+
+    }
+    

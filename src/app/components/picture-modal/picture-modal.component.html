@@ -1,0 +1,23 @@
+<div class="modal" id="myModal" [ngClass]="{'show':show_modal}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title"></h4>
+          <button type="button" style="background: none; border: none;"class="close" (click)="send_data()" data-dismiss="modal"><fa-icon style="color: red;" [icon]="faTimes"></fa-icon></button>
+        </div>
+  
+        <!-- Modal body -->
+        
+          <img [src]="image_src" alt="src">
+    
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <p class="text-center">Manulab 2022</p>
+        </div>
+  
+      </div>
+    </div>
+  </div>

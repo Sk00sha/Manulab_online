@@ -9,6 +9,7 @@ border-radius: 5px;
 //box-shadow: 5px 5px rgb(99, 99, 99);
 margin-top: 1%;
 margin-bottom:1%;
+padding: 5px;
 }
 .data-result-noresults{
     width: 80%;
@@ -67,6 +68,7 @@ margin-top: 5%;
       flex-direction: row;
       width: 100%;
       position: relative;
+      margin-bottom: 1%;
       
   }
   .button-wrapper{
@@ -78,6 +80,9 @@ margin-top: 5%;
   .header-wrapper .button-wrapper{
     position: absolute;
     right: 0;
+}
+.header-text{
+    width: 50%;
 }
 .data-pointer{
     width: 8rem;
@@ -102,6 +107,20 @@ margin-top: 5%;
     .header-wrapper{
         flex-direction: column;
     }
+    h2{
+        max-width: 70%;
+    }
+ }
+ 
+ h2{
+     font-size: 20px;
+ }
+ fa-icon{
+     width: 3vw;
+ }
+ .svg-inline--fa{
+    width: 3vw;
+    height: 3vh;
  }
  .flex-wrapper {
     display: flex;

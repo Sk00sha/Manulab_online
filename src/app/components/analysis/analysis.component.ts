@@ -53,6 +53,7 @@ export class AnalysisComponent implements OnInit {
     this.applied = this.exchange.applied_filters_array;
     this.filters=this.exchange.get_all_filter();
   }
+  showing_src:string="";
   faTimes = faTimes;
   faCog = faCog;
   faPlus = faPlus;
@@ -60,7 +61,7 @@ export class AnalysisComponent implements OnInit {
   faCalculator=faCalculator;
   faTextWidth=faTextWidth;
   faChartarea=faChartArea;
- 
+  boolean_show_modal:boolean=false;
   applied: any[] = [];
   filters: any[] = [];
   pages: Array<Pages> = [];
@@ -85,6 +86,14 @@ export class AnalysisComponent implements OnInit {
   }
   show_toastr_failure(){
     this.toastr.error('First, upload pages and choose filter!');
+  }
+  recieve_event_boolean($event:any){
+    this.boolean_show_modal=$event;
+  
+  }
+  recieve_src_modal($event:any){
+    this.showing_src=$event;
+    
   }
   make_analysis() {
     if(this.pages.length==0 || this.applied.length==0){
