@@ -31,7 +31,18 @@ export class AnalysisResultComponent implements OnInit {
     this.display_results=this.exchange.analysis_results;
    // var data:any=(,data.display_resuts,data.graph_settings)
     if (this.display_results.length>0){
-    this.filtering_data=this.get_list_data(this.display_results[0]);
+     for (let index = 0; index < this.display_results.length; index++) {
+       const element = this.display_results[index];
+       if(this.get_list_data(this.display_results[index])[0] === undefined)
+       {}
+    else{
+      this.filtering_data=this.get_list_data(this.display_results[index]);
+
+        break;
+}
+       
+     }
+    
     this.init_worker();
     }    
     this.display_result_keys=[];
@@ -153,6 +164,7 @@ compare(a: number | string, b: number | string, isAsc: boolean) {
   
   }
   get_list_data(data:any){
+ 
     var result=data.map((a:any)=>a.Page);
    var final=[... new Set(result)];
    return final;
