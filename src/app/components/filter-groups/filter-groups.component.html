@@ -1,14 +1,17 @@
 <div class="container">
 <div class="row">
     <div class="item-1">
-      <button class="btn btn-outline-primary" 
+      <button 
+      class="btn btn-outline-primary" 
       value="4"
       (click)="radioChangeHandler($event)"
+      (click)="click($event)"
       matTooltip="All filters">All</button>
       <button class="btn btn-outline-primary" name="dayOfTheWeek" *ngFor="let filter of filter_groups"
       value="{{filter.id}}"
       matTooltip="Filter group: {{filter.value}}"
       (click)="radioChangeHandler($event)"
+      (click)="click($event)"
       >
       <fa-icon style="pointer-events: none;" [icon]="filter.icon"></fa-icon><!--{{filter.value}}--></button>
       <label class="btn btn-warning" matTooltip="Upload filters"><input type="file" 

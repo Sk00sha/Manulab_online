@@ -23,7 +23,7 @@ export class FilterGroupsComponent implements OnInit {
   faFile=faFile;
   faFileDownload=faFileDownload;
   faArrowDown=faArrowDown;
-
+  previous_target:any=[];
   constructor(private exchange:DataExchangeService,private loader:DataloaderService,private sanitizer: DomSanitizer) { }
   local_filters:string[]=[];
   @Output() messageEvent=new EventEmitter<string[]>()
@@ -44,7 +44,19 @@ export class FilterGroupsComponent implements OnInit {
   applied_filters(element:string){
     this.filters_export.push(element);
   }
-
+  click(event:any){
+ 
+    if(this.previous_target.length==0){
+      event.target.style="border-color:red;"
+      this.previous_target.push(event.target);
+    }
+    else{
+      this.previous_target[0].style="border-color:none;";
+      event.target.style="border-color:red;"
+      this.previous_target[0]=event.target;
+    }
+   
+  }
   download_filter():void{
   //appending to export applied filters
   this.get_applied.forEach(element=>this.applied_filters(element));
@@ -60,6 +72,7 @@ export class FilterGroupsComponent implements OnInit {
     this.exchange.exchangeList(this.selectedDay);
     this.local_filters=this.exchange.available_filters;
     this.messageEvent.emit(this.local_filters);
+    
   }
   searcheChangeHandler(event:any){
     //this function handles searchbar

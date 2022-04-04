@@ -17,6 +17,18 @@
     margin-top: auto;
     margin-bottom: auto;
     }
+    .active{
+      border: 2px solid black;
+       }
+       btn.btn-outline-primary.advance{
+        height: 100%;
+        position: relative;
+        background: blue;
+        color: white;
+        margin-top: auto;
+        margin-bottom: auto;
+        border: 2px red solid;
+       }
     .btn.btn-warning{
       position: relative;
       color: white;

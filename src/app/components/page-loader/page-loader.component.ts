@@ -58,6 +58,7 @@ export class PageLoaderComponent implements OnInit {
     this.repartition_select();
   }
   }
+  previous_target:any[]=[];
   activeState:number = -1;
   search:any=faSearch;
   object:any={};
@@ -191,9 +192,26 @@ edit_page(){
   this.url = 'assets/images/placeholder.jpg';
   this.text="";
   this.text_name="placeholder";
+  this.previous_target[0].style="border-color:none;";
+  this.previous_target=[];
 
 }
-
+click(event:any){
+ 
+  if(this.previous_target.length==0){
+   
+    var parent=event.target.parentElement;
+    parent.style="border-color:orange;"
+    this.previous_target.push(parent);
+  }
+  else{
+    var parent=event.target.parentElement;
+    this.previous_target[0].style="border-color:none;";
+    parent.style="border-color:orange;"
+    this.previous_target[0]=parent;
+  }
+ 
+}
   uploadPage() {
     this.dropdown_list_data=this.dataService.get_db_data();
     if( this.edit_flag==true &&this.edit_indice!==-1){
