@@ -87,7 +87,10 @@ export class AnalysisComponent implements OnInit {
     this.toastr.error('First, upload pages and choose filter!');
   }
   make_analysis() {
-    if(this.pages.length==0 || this.applied.length==0){this.show_toastr_failure();}
+    if(this.pages.length==0 || this.applied.length==0){
+      this.show_toastr_failure();
+      this.exchange.analysis_result_set([]);
+      this.exchange.set_result_pages([]);}
     else{
    var controller = new FilterController(this.pages);
     this.applied = this.exchange.getapplied_filters();

@@ -9,20 +9,22 @@
       <br/>
       <div class="checkbox_container">
       <h5><label for="page_swap">Use pagination: </label>
-      <input  class="form-check-input" (change)="swap_lists($event)" type="checkbox" name="page_swap" id="page_swap">
+      <input  class="form-check-input" [(ngModel)]="display_partitioner" (change)="swap_lists($event)" type="checkbox" name="page_swap" id="page_swap">
     </h5>
     </div>
       <input placeholder="Search" id="mydrop" [(ngModel)]="any_data" (change)="onOptionsSelected($event)" class="form-control" list="menace" name="menace" style="width:100%; height:50px; display:block;">
-     <div [style.display]="display_partitioner ? 'none' : 'block'">
+     <div [style.display]="!display_partitioner ? 'none' : 'block'">
        <div class="paginator-wrapper">
          <div class="button-holder">
+           <button id="left-left-button" class="btn btn-outline-primary" (click)="first_page()">First</button>
       <button id="left-button" class="btn btn-outline-primary"(click)="previous_page()"><fa-icon [icon]="faArrowLeft"></fa-icon></button>
       <button id="right-button" class="btn btn-outline-primary"(click)="next_page()" ><fa-icon [icon]="faArrowRight"></fa-icon></button>
+      <button id="right-right-button"class="btn btn-outline-primary" (click)="last_page()">Last</button>
     </div>
       <p>Page: {{scroller+1}}/{{dropdown_partitions.length}}</p>
     </div>
       </div>
-     <div class="table_holder" *ngIf="display_partitioner!==true">
+     <div class="table_holder" *ngIf="display_partitioner!==false">
        <table class="table">
          <thead>
           <tr><th>Name</th><th>Add</th></tr>
@@ -35,7 +37,7 @@
         </tbody>
        </table>
      </div>
-     <div class="table_holder_two" *ngIf="display_partitioner==true">
+     <div class="table_holder_two" *ngIf="display_partitioner==false">
       <table class="table">
         <thead>
          <tr><th>Name</th><th>Add</th></tr>

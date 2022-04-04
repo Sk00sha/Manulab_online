@@ -58,11 +58,12 @@ export class PageLoaderComponent implements OnInit {
     this.repartition_select();
   }
   }
+  activeState:number = -1;
   search:any=faSearch;
   object:any={};
   edit_indice:number=-1;
   edit_flag:boolean=false;
-  display_partitioner:boolean=true;
+  display_partitioner:boolean=false;
   display_loader:boolean=false;
   any_data:any;
   //vars used in pagination
@@ -114,6 +115,14 @@ export class PageLoaderComponent implements OnInit {
     }
     
   }
+  first_page(){
+    var desired_length=this.dropdown_partitions.length-1;
+    this.scroller=0;
+  }
+  last_page(){
+    var desired_length=this.dropdown_partitions.length-1;
+    this.scroller=desired_length;
+  }
   previous_page(){
     var desired_length=0;
     if(this.scroller>desired_length){
@@ -122,6 +131,13 @@ export class PageLoaderComponent implements OnInit {
       this.scroller=this.dropdown_partitions.length-1;
     }
   }
+
+  //state when editing
+  setStateAsActive(i:number){
+    this.activeState=i;
+  }
+
+
   repartition_select(){
     var temp_list:any[]=[];
     var i,j, chunk = 25;
@@ -133,11 +149,11 @@ export class PageLoaderComponent implements OnInit {
 }
   }
   choose_page(i:number){
-    if(this.display_partitioner){
+    if(!this.display_partitioner){
       this.text=this.dropdown_list_data[i].page_text;
       this.text_name=this.dropdown_list_data[i].name;
     }
-    if(!this.display_partitioner){
+    if(this.display_partitioner){
       this.text=this.dropdown_partitions[this.scroller][i].page_text;
       this.text_name=this.dropdown_partitions[this.scroller][i].name;
     }
@@ -151,20 +167,20 @@ export class PageLoaderComponent implements OnInit {
   swap_lists(event:any):void{
     var backup=this.dropdown_partitions;
       if(event.currentTarget.checked){
-          this.display_partitioner=false;
+          this.display_partitioner=true;
       }
       else{
-        this.display_partitioner=true;
+        this.display_partitioner=false;
         
       }
       
   }
   onOptionsSelected(event:any){
     const matches = this.dataService.get_db_data().filter((s:any) =>
-    s.name.includes(event.target.value)
+    s.name.toLowerCase().includes(event.target.value.toLowerCase())
   );
   this.dropdown_list_data=matches;
-  this.display_partitioner=true;
+  this.display_partitioner=false;
     
 }
 edit_page(){
@@ -237,6 +253,7 @@ edit_page(){
   }
   }
   selectfile(e: any): void {
+    this.display_loader=false;
     if (e.target.files) {
       if (e.target.files.length==1) {
         this.bulk_upload=false;

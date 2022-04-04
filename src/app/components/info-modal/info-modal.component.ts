@@ -12,7 +12,7 @@ import {faTimes}from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./info-modal.component.scss']
 })
 export class InfoModalComponent implements OnInit {
-  showModal:boolean=true;
+  showModal:boolean=false;
   faCalculator=faCalculator;
   faTextWidth=faTextWidth;
   faChartarea=faChartArea;

@@ -29,7 +29,7 @@ export class DataExchangeService {
   //searches for filter in all filters when using search bar analysis page
   filter_from_data(string_search: string): string[] {
     const matches = this.all_filters.filter((s) =>
-      s.name.includes(string_search)
+    s.name.toLowerCase().includes(string_search.toLowerCase())
     );
     return matches;
   }

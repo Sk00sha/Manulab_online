@@ -126,7 +126,9 @@ h2{
   justify-content: space-between;
 }
 .button-holder{
-  width: 20%;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
 }
 .button-holder button{
   padding: 4px;
@@ -144,7 +146,15 @@ padding-right: 3px;
   float: right;
   width: 45%;
 }
+#right-right-button{
+  float: right;
+  width: 45%;
+}
 #left-button{
+  float: left;
+  width: 45%;
+}
+#left-left-button{
   float: left;
   width: 45%;
 }

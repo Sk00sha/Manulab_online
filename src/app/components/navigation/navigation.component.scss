@@ -9,13 +9,20 @@
   .nav-item.nav-link{
     font-weight: bold;
     color: white;
-    padding: 1%;
+    padding-left: 0.3%;
+    padding-top: 0.3%;
+    padding-right: 0.3%;
     margin: 1%;
   }
+  nav > ul > li > a {
+    text-decoration: none;
+}
   .nav-item.nav-link:hover {
-    background: rgb(9, 1, 114);
-    border-radius: 5px;
+   // background: rgb(9, 1, 114);
+    //border-radius: 5px;
     color: white;
+   padding-bottom: 0;
+    border-bottom: 3px solid rgb(9, 1, 114);;
 }
 
 h1{
@@ -28,7 +35,8 @@ h1{
   background-color: #0058db;
 }
  #navbar .nav-item.nav-link.active {
-  background: rgb(9, 1, 114);
-  border-radius: 5px;
   color: white;
+   bottom: 0;
+  padding-bottom: 0;
+    border-bottom: 3px solid rgb(9, 1, 114);
 }

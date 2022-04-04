@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {faInfo} from '@fortawesome/free-solid-svg-icons';
-
+import {faCalculator} from '@fortawesome/free-solid-svg-icons';
+import {faTextWidth}from '@fortawesome/free-solid-svg-icons';
+import {faChartArea}from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,6 +10,9 @@ import {faInfo} from '@fortawesome/free-solid-svg-icons';
 })
 export class HomeComponent implements OnInit {
 faInfo=faInfo;
+faCalculator=faCalculator;
+  faTextWidth=faTextWidth;
+  faChartarea=faChartArea;
   constructor() { }
 
   ngOnInit(): void {
