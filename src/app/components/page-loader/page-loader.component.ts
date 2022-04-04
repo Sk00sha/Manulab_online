@@ -311,18 +311,11 @@ check_pages(int:number){
     
   }
 
+
+  used_pages(event: number) {
+    var id = event;
+   this.Pages[id].checked=!this.Pages[id].checked;
   
-  used_pages($event: any) {
-    var id = $event.target.value;
-    var checked = $event.target.checked;
-    this.Pages.map((item) => {
-      if (item.id == id) {
-        item.checked = checked;
-        return item;
-      }
-      return item;
-    });
-    
     
     this.dataService.add_page(this.Pages);
   }

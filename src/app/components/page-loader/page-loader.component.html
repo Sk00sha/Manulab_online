@@ -71,7 +71,7 @@
                 <Button (click)="delete_page($event,i)" style="border:none;background: none;display: block;margin: auto;color: rgb(0, 0, 0);"><fa-icon [icon]="faDelete"></fa-icon></Button>
               </td>
               <td scope="row">
-                <input class="form-check-input" type="checkbox" (change)="used_pages($event)" [value]="item.id" [checked]="item.checked">
+                <input class="form-check-input" type="checkbox" (change)="used_pages(i)" [value]="item.id" [checked]="item.checked">
               </td>
             </tr>
           </tbody>
