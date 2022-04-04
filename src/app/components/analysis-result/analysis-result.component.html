@@ -1,5 +1,6 @@
 <div class="flex-wrapper">
 <app-navigation></app-navigation>
+<div class="container">
 <div style="text-align:center;"class="data-result-nodata shadow rounded" *ngIf="display_results.length < 1"><img style="max-height:150px;width:auto;margin-top: 5%;"[src]="url" alt="None"></div>
 <div *ngIf="ready">
 <div *ngFor="let item of display_results;let i=index;">
@@ -92,6 +93,7 @@
     [yAxis]="true"
     >
 </ngx-charts-bar-vertical>
+</div>
 </div>
 </div>
 </div>

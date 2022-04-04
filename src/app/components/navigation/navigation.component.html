@@ -1,4 +1,24 @@
-<nav class="navbar transparent navbar-inverse navbar-fixed-top navbar-expand-lg navbar-light justify-content-between" id="navbar">
+<nav>
+  <input type="checkbox"  id="checkbox">
+  <label for="checkbox" class="checkbtn"><fa-icon [icon]="faBars"></fa-icon></label>
+  <label class="logo">MANULAB</label>
+  <ul>
+  
+  <li>
+    <a class="nav-item nav-link" [routerLinkActive]="['active']" routerLink=""[routerLinkActiveOptions]="{exact:true}">About</a>
+  </li>
+  <li>
+    <a class="nav-item nav-link"[routerLinkActive]="['active']"  routerLink="/upload"[routerLinkActiveOptions]="{exact:true}">Upload</a>
+  </li>
+  <li>
+    <a class="nav-item nav-link"[routerLinkActive]="['active']" routerLink="/analysis"[routerLinkActiveOptions]="{exact:true}">Analysis</a>
+  </li>
+  <li>
+    <a class="nav-item nav-link" [routerLinkActive]="['active']" routerLink="/analysis results"[routerLinkActiveOptions]="{exact:true}">Results</a>
+  </li>
+</ul>
+</nav>
+<!--<nav class="navbar transparent navbar-inverse navbar-fixed-top navbar-expand-lg navbar-light justify-content-between" id="navbar">
   <a class="navbar-brand ml-1 font-weight-bold text-white" routerLink=""><h1>MANULAB</h1></a>
   <button class="navbar-toggler " data-bs-toggle="collapse" data-bs-target="#menuu" aria-controls="menuu" aria-expanded="true" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -9,5 +29,5 @@
     <a class="nav-item nav-link"[routerLinkActive]="['active']" routerLink="/analysis"[routerLinkActiveOptions]="{exact:true}">Analysis</a>
     <a class="nav-item nav-link" [routerLinkActive]="['active']" routerLink="/analysis results"[routerLinkActiveOptions]="{exact:true}">Results</a>
   </div>
-</nav>
+</nav>-->
 

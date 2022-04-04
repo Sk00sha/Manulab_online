@@ -31,7 +31,6 @@ export class AnalysisResultComponent implements OnInit {
     this.display_results=this.exchange.analysis_results;
    // var data:any=(,data.display_resuts,data.graph_settings)
     if (this.display_results.length>0){
-     
     this.filtering_data=this.get_list_data(this.display_results[0]);
     this.init_worker();
     }    
@@ -105,9 +104,7 @@ compare(a: number | string, b: number | string, isAsc: boolean) {
       };
       worker.postMessage({page:"Page1",display_results:this.display_results,graph_settings:this.graph_settings});
     } else {
-   
       this.init_graph();
-      
     }
   }
   redo_graph(indice:number){

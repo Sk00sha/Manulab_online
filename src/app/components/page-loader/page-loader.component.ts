@@ -200,7 +200,7 @@ edit_page(){
      this.edit_page();
     }
     else{
-    if (this.text.length>0 && this.Page_texts.length>0  || this.display_loader==true && this.text.length>0  ) {
+    if (this.text.length>0 /*&& this.Page_texts.length>0 */ || this.display_loader==true && this.text.length>0  ) {
       this.any_data=null;
       if(this.bulk_upload){
         this.url='assets/images/placeholder.jpg';
@@ -211,7 +211,6 @@ edit_page(){
               this.id_generator++;
                 this.Pages.push(new Pages(this.id_generator,this.url,this.Page_texts[i].page_text,this.Page_texts[i].name,true));   
       }
-    
       for(let j=0;j<this.Pages.length;j++){
         this.Pages[j].page_text=this.Pages[j].page_text.replace(/\r\n/g,"\n");
         for(let i=0;i<this.Page_pictures.length;i++){

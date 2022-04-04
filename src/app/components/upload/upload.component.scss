@@ -18,3 +18,8 @@ body{
   .footer p{
       margin-top: 1%
   }
+  @media (max-width:858px) {
+    app-page-loader{
+      margin-top: 80px;
+    }
+  }
