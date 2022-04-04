@@ -81,6 +81,10 @@ export class FilterGroupsComponent implements OnInit {
     var data=this.exchange.filter_from_data(this.filter_data);
     //emiting from child=>parent
     this.messageEvent.emit(data);
+    if(this.previous_target.length>0){
+      this.previous_target[0].style="border-color:none;";
+      this.previous_target=[];
+    }
     
   }
   
