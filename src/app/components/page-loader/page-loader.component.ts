@@ -13,6 +13,7 @@ import { faDatabase } from '@fortawesome/free-solid-svg-icons';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-page-loader',
   templateUrl: './page-loader.component.html',
@@ -80,7 +81,7 @@ export class PageLoaderComponent implements OnInit {
   url: string = 'assets/images/placeholder.jpg';
   text: string = '';
   img_name:string='placeholder';
-  text_name: string = '';
+  text_name: string = 'placeholder';
   bulk_upload:boolean=false;
   id_generator: number = 0;
   Pages: Pages[] = [];
@@ -191,7 +192,7 @@ edit_page(){
   this.edit_indice=-1;
   this.url = 'assets/images/placeholder.jpg';
   this.text="";
-  this.text_name="placeholder";
+  this.text_name="locally created text";
   this.previous_target[0].style="border-color:none;";
   this.previous_target=[];
 
@@ -245,6 +246,7 @@ click(event:any){
       this.Page_texts=[];
       this.filepath_data=[];
       this.bulk_upload=false;
+      this.text_name='locally created text';
     }
     else{
       if(this.Pages.length >0){
@@ -259,6 +261,7 @@ click(event:any){
       this.Page_pictures=[];
       this.Page_texts=[];
       this.filepath_data=[];
+      this.text_name='locally created text';
     }
     
     } 
