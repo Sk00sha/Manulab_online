@@ -17,7 +17,7 @@ export class DbRequestService {
   constructor(private http: HttpClient) {}
   fetch_db_data(): Promise<any> {
     return this.http
-      .get(this.ROOT_PROXY_URL)
+      .get(this.ROOT_URL)
       .pipe(map((res) => res))
       .toPromise();
   }

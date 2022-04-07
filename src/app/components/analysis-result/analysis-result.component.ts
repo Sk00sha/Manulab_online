@@ -43,7 +43,8 @@ export class AnalysisResultComponent implements OnInit {
        
      }
     
-    this.init_worker();
+    //this.init_worker();
+    this.init_graph();
     }    
     this.display_result_keys=[];
     this.all_data=[];
