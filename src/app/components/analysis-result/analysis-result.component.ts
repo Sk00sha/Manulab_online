@@ -42,9 +42,7 @@ export class AnalysisResultComponent implements OnInit {
 }
        
      }
-    
-    //this.init_worker();
-    this.init_graph();
+    this.init_worker();
     }    
     this.display_result_keys=[];
     this.all_data=[];
@@ -115,7 +113,8 @@ compare(a: number | string, b: number | string, isAsc: boolean) {
         this.saleData=data.response;
       };
       worker.postMessage({page:"Page1",display_results:this.display_results,graph_settings:this.graph_settings});
-    } else {
+    } 
+    else {
       this.init_graph();
     }
   }
