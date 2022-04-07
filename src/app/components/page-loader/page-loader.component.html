@@ -1,10 +1,11 @@
 
 <div class="container">
     <div class="row">
-      <div class="col-lg-3 border rounded" [style.display]="display_loader ? 'none' : 'flex'">
+      <div class="col-lg-6 border rounded" [style.display]="'flex'">
+        <div class="img-preview" [style.display]="display_loader ? 'none' : 'flex'">
         <img class="imgloader" [src]="url"/>
       </div>
-      <div class="col-lg-3 border rounded" [style.display]="display_loader ? 'block' : 'none'">
+      <div class="db-loader" [style.display]="display_loader ? 'block' : 'none'">
         <h2 style="width:100%;display: block;">Database import</h2>
       <br/>
       <div class="checkbox_container">
@@ -50,10 +51,10 @@
        </tbody>
       </table>
     </div>
-      
       </div>
-      <div class="col-lg-3 border rounded">
+      <div class="text-preview">
         <textarea class="inputtextarea" name="textarea" id="textarea" [(ngModel)]="text"></textarea>
+      </div>
       </div>
       <div class="col-md border rounded helo" cdkScrollable>
         <table cdkDropList class="table" (cdkDropListDropped)="drop($event)" cdkScrollable>

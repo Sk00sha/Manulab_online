@@ -37,12 +37,10 @@ export class AnalysisResultComponent implements OnInit {
        {}
     else{
       this.filtering_data=this.get_list_data(this.display_results[index]);
-
         break;
 }
-       
      }
-    this.init_worker();
+    //this.init_worker();
     }    
     this.display_result_keys=[];
     this.all_data=[];
@@ -56,6 +54,7 @@ export class AnalysisResultComponent implements OnInit {
   ngAfterViewInit(){
     setTimeout(()=>{
       this.ready=true;
+      this.init_worker();
     },0) 
   }
   //SORTING STARTS

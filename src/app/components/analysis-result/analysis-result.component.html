@@ -84,11 +84,10 @@
 <div *ngIf="item[0].name!='Pattern search' && item[0].name!='Letter Count' && item[0].name!='Remove accents' && item[0].name!='Anagram detection' && item[0].name!='Entropy' && item[0].name!='Index of coincidence'" class="chart-container">
   <div class="spectre-pie-chart">
   <ngx-charts-bar-vertical 
-   
+    [view] = [1300,230]
     [results]="saleData[i]"
-    [xAxisLabel]="'Products'"
-    [legendTitle]="'Product Sale Chart'"
-    [yAxisLabel]="'Sale'"
+    [xAxisLabel]="'x'"
+    [yAxisLabel]="'y'"
     [xAxis]="true"
     [yAxis]="true"
     >
@@ -100,6 +99,6 @@
 </div>
 </div>
 </div>
-<div class="footer"><p>@ManuLab team 2022</p></div>
+<div class="footer"><p>@ManuLab team 2022 <app-info-modal class="icon-show-modal"></app-info-modal></p></div>
 </div>
   

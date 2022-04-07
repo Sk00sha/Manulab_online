@@ -9,6 +9,7 @@ import {faFileDownload}from '@fortawesome/free-solid-svg-icons';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import {faArrowDown}from '@fortawesome/free-solid-svg-icons';
+import { reduceTicks } from '@swimlane/ngx-charts';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class FilterGroupsComponent implements OnInit {
   faChartarea=faChartArea;
   faFile=faFile;
   faFileDownload=faFileDownload;
+  color = 'red';
   faArrowDown=faArrowDown;
   previous_target:any=[];
   constructor(private exchange:DataExchangeService,private loader:DataloaderService,private sanitizer: DomSanitizer) { }
@@ -44,8 +46,12 @@ export class FilterGroupsComponent implements OnInit {
   applied_filters(element:string){
     this.filters_export.push(element);
   }
+  submit() {
+    this.color = 'blue';  
+  }
+
   click(event:any){
- 
+    
     if(this.previous_target.length==0){
       event.target.style="border-color:red;"
       this.previous_target.push(event.target);
@@ -54,6 +60,7 @@ export class FilterGroupsComponent implements OnInit {
       this.previous_target[0].style="border-color:none;";
       event.target.style="border-color:red;"
       this.previous_target[0]=event.target;
+      
     }
    
   }
