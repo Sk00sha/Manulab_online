@@ -58,11 +58,14 @@ height: 31rem;
   overflow-y: scroll;
 }
 
+
 .inputtextarea{
   height: 100%;
   width: 100%;
   border: none;
   outline: none;
+  resize: none;
+  max-height: 31rem;
 }
 mat-selection-list {
   max-height: 500px;
