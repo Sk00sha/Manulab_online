@@ -54,7 +54,7 @@ export class AnalysisResultComponent implements OnInit {
   ngAfterViewInit(){
     setTimeout(()=>{
       this.ready=true;
-      this.init_worker();
+      this.init_graph();
     },0) 
   }
   //SORTING STARTS
@@ -151,8 +151,10 @@ compare(a: number | string, b: number | string, isAsc: boolean) {
             var res=this.graph_settings.filter((data:any)=>{
                   return data.name==array_data.name;
             })
-           
-            temp_array.push({ name: array_data[res[0].x], value: array_data[res[0].y] });
+            if(res.length!=0){
+              temp_array.push({ name: array_data[res[0].x], value: array_data[res[0].y] });
+             }
+            //temp_array.push({ name: array_data[res[0].x], value: array_data[res[0].y] });
         });
         this.saleData.push(temp_array);
      });
