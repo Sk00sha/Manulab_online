@@ -4,10 +4,10 @@
 <!--<app-filter-groups (messageEvent)="receiveData($event)" (emit_applied_filter)="receive_applied_filterData($event)" [get_applied]="applied"></app-filter-groups>-->
   <div class="container">
     <div class="row">
-      <div class="col-lg-6 bg-white border rounded">
+      <div id="right-row" class="col-lg-6 bg-white  shadow rounded">
         <app-page-viewer (emit_boolean)="recieve_event_boolean($event)" (emit_src)="recieve_src_modal($event)"></app-page-viewer>
       </div>
-      <div id="left-row" class="col-lg-6 border rounded bg-white">
+      <div id="left-row" class="col-md  shadow  rounded bg-white">
         <app-filter-groups (messageEvent)="receiveData($event)" (emit_applied_filter)="receive_applied_filterData($event)" [get_applied]="applied"></app-filter-groups>
         <div cdkDropListGroup>
           <div class="example-container" cdkScrollable>

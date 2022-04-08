@@ -81,7 +81,7 @@ export class PageLoaderComponent implements OnInit {
   url: string = 'assets/images/placeholder.jpg';
   text: string = '';
   img_name:string='placeholder';
-  text_name: string = 'placeholder';
+  text_name: string = 'locally created text';
   bulk_upload:boolean=false;
   id_generator: number = 0;
   Pages: Pages[] = [];

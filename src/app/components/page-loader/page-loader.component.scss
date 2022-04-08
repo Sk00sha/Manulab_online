@@ -58,7 +58,15 @@ height: 31rem;
   overflow-y: scroll;
 }
 
-
+.row{
+  column-gap: 5px;
+}
+.col-md{
+  border-left: #003688 4px solid;
+}
+#left-pad{
+  border-left: #003688 4px solid;
+}
 .inputtextarea{
   height: 100%;
   width: 100%;
@@ -72,7 +80,10 @@ mat-selection-list {
   overflow: auto;
 }
 .container{
-  margin-top: 0.8%;
+  margin-top: 1%;
+}
+.col-md{
+  height: 31rem;
 }
 
 input[type="checkbox"] {
@@ -96,7 +107,15 @@ background-color: rgb(218, 214, 236);
 input[type="file"] {
   display: none;
 }
-
+@media (max-width:992px) {
+  .col-md{
+    margin-top:10px;
+  }
+}
+tr:hover{
+    
+  background: rgb(231, 231, 231);
+}
 .row{
   margin-top: 0;
 }
