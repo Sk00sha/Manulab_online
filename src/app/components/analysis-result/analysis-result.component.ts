@@ -13,7 +13,6 @@ export class AnalysisResultComponent implements OnInit {
 
   constructor(private exchange:DataExchangeService,private csv_creator:CsvDataServiceService) { }
   graph_settings:any=(data as any).default;
-  ready:boolean=false;
   saleData:any = [];
   result_data=[];
   page_name:string="Page1";
@@ -37,10 +36,11 @@ export class AnalysisResultComponent implements OnInit {
        {}
     else{
       this.filtering_data=this.get_list_data(this.display_results[index]);
-        break;
-}
+     break; 
+      }
      }
     //this.init_worker();
+    this.init_graph();
     }    
     this.display_result_keys=[];
     this.all_data=[];
@@ -50,12 +50,6 @@ export class AnalysisResultComponent implements OnInit {
       });
     }
     
-  }
-  ngAfterViewInit(){
-    setTimeout(()=>{
-      this.ready=true;
-      this.init_graph();
-    },0) 
   }
   //SORTING STARTS
   sortData(sort: Sort,i:number) {

@@ -2,7 +2,7 @@
 <app-navigation></app-navigation>
 <div class="container">
 <div style="text-align:center;"class="data-result-nodata shadow rounded" *ngIf="display_results.length < 1"><img style="max-height:150px;width:auto;margin-top: 5%;"[src]="url" alt="None"></div>
-<div *ngIf="ready">
+
 <div *ngFor="let item of display_results;let i=index;">
   <div class="data-pointer shadow p-3 bg-white"><h3>{{i+1}}</h3></div>
   <div *ngIf=" item[0].name=='Remove accents'"class="data-result-noresults shadow p-1 bg-white rounded">
@@ -92,7 +92,6 @@
     [yAxis]="true"
     >
 </ngx-charts-bar-vertical>
-</div>
 </div>
 </div>
 </div>
