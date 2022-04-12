@@ -30,7 +30,6 @@ import { Form1Component } from './components/form1/form1.component';
 import { AnalysisResultComponent } from './components/analysis-result/analysis-result.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { FooterComponent } from './components/footer/footer.component';
-import { NgxChartsModule }from '@swimlane/ngx-charts';
 import {SelectPaginationModule} from 'ngx-select-pagination';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
@@ -80,7 +79,6 @@ import { GoogleChartsModule } from 'angular-google-charts';
     FormsModule,
     ReactiveFormsModule,
     MatTooltipModule,
-    NgxChartsModule,
     SelectPaginationModule,
     MatSortModule,
     MatSlideToggleModule,
