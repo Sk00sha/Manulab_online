@@ -126,7 +126,7 @@ compare(a: number | string, b: number | string, isAsc: boolean) {
                  return data.name==array_data.name;
            })
            if(res.length!=0){
-           temp_array.push([ array_data[res[0].x], array_data[res[0].y] ]);
+           temp_array.push([ array_data[res[0].x], parseFloat(array_data[res[0].y]) ]);
           }
         
        this.saleData[indice]=temp_array;
