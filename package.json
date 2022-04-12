@@ -27,6 +27,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.3",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@swimlane/ngx-charts": "^20.1.0",
+    "angular-google-charts": "^2.2.2",
     "bootstrap": "^5.1.3",
     "firebase": "^9.2.0",
     "hammerjs": "^2.0.8",

@@ -82,7 +82,12 @@
             </option>    
         </select>
 <div *ngIf="item[0].name!='Pattern search' && item[0].name!='Letter Count' && item[0].name!='Remove accents' && item[0].name!='Anagram detection' && item[0].name!='Entropy' && item[0].name!='Index of coincidence'" class="chart-container">
-  <div class="spectre-pie-chart">
+    <google-chart style="width: 100%;"
+  [type]='BarChart'
+  [data]="saleData[i]"
+>
+</google-chart>
+    <!--
   <ngx-charts-bar-vertical 
     [view] = [1300,230]
     [results]="saleData[i]"
@@ -91,8 +96,8 @@
     [xAxis]="true"
     [yAxis]="true"
     >
-</ngx-charts-bar-vertical>
-</div>
+</ngx-charts-bar-vertical>-->
+
 </div>
 </div>
 </div>

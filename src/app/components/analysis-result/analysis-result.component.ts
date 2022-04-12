@@ -4,6 +4,7 @@ import { CsvDataServiceService } from 'src/app/services/csv-data-service.service
 import * as data  from '../../graphSettings.json';
 import {faFileDownload}from '@fortawesome/free-solid-svg-icons';
 import {Sort} from '@angular/material/sort';
+import { ChartType } from 'angular-google-charts';
 @Component({
   selector: 'app-analysis-result',
   templateUrl: './analysis-result.component.html',
@@ -18,6 +19,7 @@ export class AnalysisResultComponent implements OnInit {
   page_name:string="Page1";
   url: string = 'assets/images/Noitems.png';
   display_results:any[]=[];
+  BarChart:ChartType = ChartType.ColumnChart;
   display_result_keys:any;
   results:any[]=[];
   all_data:any[]=[];
@@ -124,7 +126,7 @@ compare(a: number | string, b: number | string, isAsc: boolean) {
                  return data.name==array_data.name;
            })
            if(res.length!=0){
-           temp_array.push({ name: array_data[res[0].x], value: array_data[res[0].y] });
+           temp_array.push([ array_data[res[0].x], array_data[res[0].y] ]);
           }
        this.saleData[indice]=temp_array;
     });
@@ -146,7 +148,7 @@ compare(a: number | string, b: number | string, isAsc: boolean) {
                   return data.name==array_data.name;
             })
             if(res.length!=0){
-              temp_array.push({ name: array_data[res[0].x], value: array_data[res[0].y] });
+              temp_array.push([array_data[res[0].x], array_data[res[0].y]]);
              }
             //temp_array.push({ name: array_data[res[0].x], value: array_data[res[0].y] });
         });

@@ -37,6 +37,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { PageDisplayModalComponent } from './components/page-display-modal/page-display-modal.component';
 import { ToastrModule } from 'ngx-toastr';
 import { PictureModalComponent } from './components/picture-modal/picture-modal.component';
+import { GoogleChartsModule } from 'angular-google-charts';
 
 
 @NgModule({
@@ -87,7 +88,8 @@ import { PictureModalComponent } from './components/picture-modal/picture-modal.
       timeOut:1000,
       progressBar:true,
       positionClass: 'toast-bottom-right'
-    })
+    }),
+    GoogleChartsModule
 
   ],
   providers: [],
