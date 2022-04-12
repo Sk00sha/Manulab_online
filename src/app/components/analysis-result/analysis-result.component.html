@@ -81,7 +81,7 @@
               {{item}}
             </option>    
         </select>
-<div *ngIf="item[0].name!='Pattern search' && item[0].name!='Letter Count' && item[0].name!='Remove accents' && item[0].name!='Anagram detection' && item[0].name!='Entropy' && item[0].name!='Index of coincidence'" class="chart-container">
+<div *ngIf=" item[0].name!='Pattern search' && item[0].name!='Letter Count' && item[0].name!='Remove accents' && item[0].name!='Anagram detection' && item[0].name!='Entropy' && item[0].name!='Index of coincidence'" class="chart-container">
     <google-chart style="width: 100%;"
   [type]='BarChart'
   [data]="saleData[i]"
