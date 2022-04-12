@@ -153,7 +153,6 @@ compare(a: number | string, b: number | string, isAsc: boolean) {
              }
             //temp_array.push({ name: array_data[res[0].x], value: array_data[res[0].y] });
         });
-        console.log(temp_array);
         this.saleData.push(temp_array);
      });
     }
