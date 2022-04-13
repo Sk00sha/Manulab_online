@@ -162,7 +162,6 @@ compare(a: number | string, b: number | string, isAsc: boolean) {
   
   }
   get_list_data(data:any){
- 
     var result=data.map((a:any)=>a.Page);
    var final=[... new Set(result)];
    return final;
