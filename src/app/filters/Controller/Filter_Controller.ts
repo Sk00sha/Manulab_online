@@ -55,10 +55,6 @@ export class FilterController{
             var letter_distances=new LetterDistances(filter_name.delimiter,filter_name.n);
             this.filters.push({name:filter_name.name,function:letter_distances});
         }
-        if(filter_name.name=="Remove accents"){
-            var remove_accent=new remove_accents(filter_name.Spaces,this.pages_for_analysis);
-            this.filters.push({name:filter_name.name,function:remove_accent});
-        }
         
         if(filter_name.name=="Anagram detection"){
             var anag_detection=new AnagramDetection(filter_name.pattern);
@@ -76,6 +72,10 @@ export class FilterController{
             var l_c=new LetterCount();
             this.filters.push({name:filter_name.name,function:l_c});
         }
+        if(filter_name.name=="Remove accents"){
+            var remove_accent=new remove_accents(filter_name.Spaces,this.pages_for_analysis);
+            this.filters.push({name:filter_name.name,function:remove_accent});
+        }
     }
     add_multiple_filters(array_of_filters:any[]){
         for(var item in array_of_filters){
@@ -88,8 +88,19 @@ export class FilterController{
         var transformation:boolean=false;
         var new_pages:Pages[]=[];
         this.filters.forEach((filter:any)=>{
-            
-            if(filter.name=="Remove accents"){
+            //this helps us understand if we have modified text and return instence of Pages type
+            if(filter.function.activate(this.pages_for_analysis)[0] instanceof Pages){
+                pages_used.push(this.pages_for_analysis);
+                this.pages_for_analysis=filter.function.activate(this.pages_for_analysis);
+                result.push([{name:filter.name}]);
+                
+            }
+            else{
+            result.push(filter.function.activate(this.pages_for_analysis));
+            pages_used.push(this.pages_for_analysis);
+        }
+        //testing code
+          /*  if(filter.name=="Remove accents"){
                 pages_used.push(this.pages_for_analysis);
                 new_pages=filter.function.activate();
                 transformation=true;
@@ -102,7 +113,7 @@ export class FilterController{
             else if(filter.name!="Remove accents"){
                 result.push(filter.function.activate(this.pages_for_analysis));
                 pages_used.push(this.pages_for_analysis);
-            }
+            }*/
             
             });
             return [result,pages_used];
