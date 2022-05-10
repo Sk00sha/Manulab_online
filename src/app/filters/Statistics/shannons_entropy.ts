@@ -28,6 +28,7 @@ export class shannons_entropy extends Filter{
             
         })
         if(text.length>1){
+          //if length is >1 calculate entropy for the whole text
           var allinone="";
           text.forEach((element:any)=>{
             allinone+=(element.page_text);

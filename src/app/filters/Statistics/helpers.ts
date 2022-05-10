@@ -1,5 +1,7 @@
 
 import { Pages } from "src/app/models/pages";
+//helper functions used in statistic filters
+
 export function countNGram(text:string,delimiter:string,n:number){
     var ngrams:any= {};
     // split by delimitter

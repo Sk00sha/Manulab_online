@@ -24,8 +24,17 @@ export class FilterController{
     constructor(pages:Pages[]){
         this.pages_for_analysis=pages;
     }
-    all_filters:string[]=["Remove accents","Frequency of text elements",'Index of coincidence','Shannons entropy'
-  ,'Pattern search','Adjacent contacts','Text element distances',"Anagram detection",'Vowel detection','Language guess'];
+    all_filters:string[]=[
+    "Remove accents"
+    ,"Frequency of text elements"
+    ,'Index of coincidence'
+    ,'Shannons entropy'
+    ,'Pattern search'
+    ,'Adjacent contacts'
+    ,'Text element distances'
+    ,"Anagram detection"
+    ,'Vowel detection'
+    ,'Language guess'];
 
     add_filter_to_stack(filter_name:any){
         
@@ -88,13 +97,14 @@ export class FilterController{
         var transformation:boolean=false;
         var new_pages:Pages[]=[];
         this.filters.forEach((filter:any)=>{
-            //this helps us understand if we have modified text and return instence of Pages type
+            //this helps us understand if we have modified text and return instance of type Pages 
             if(filter.function.activate(this.pages_for_analysis)[0] instanceof Pages){
                 pages_used.push(this.pages_for_analysis);
                 this.pages_for_analysis=filter.function.activate(this.pages_for_analysis);
                 result.push([{name:filter.name}]);
                 
             }
+            //else we push results that were generated in filter
             else{
             result.push(filter.function.activate(this.pages_for_analysis));
             pages_used.push(this.pages_for_analysis);

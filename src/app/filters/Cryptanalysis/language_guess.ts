@@ -50,6 +50,7 @@ export class LanguageGuess extends Filter{
               }
           }
           result.sort(compare)
+          
         return result;
     }
 }

@@ -5,8 +5,9 @@ import { Filter } from "../Filter";
 export class index_of_coincidence extends Filter{
   approx: boolean;
   normalize:boolean;
-   delimiter: string;
-    n: number;
+  delimiter: string;
+  n: number;
+
   constructor(approx: boolean,normalize:boolean, delimiter: string, n: number) {
     super();
     this.delimiter=delimiter;
@@ -14,7 +15,9 @@ export class index_of_coincidence extends Filter{
     this.n=n;
     this.normalize=normalize;
   }
+
   activate(text: Pages[]): any {
+    //determine if we want to approximate IC or not
     if (!this.approx) {
       var ic = indexOfCoincidenceDirect(this.normalize, text, this.delimiter, this.n);
       ic.forEach((element:any)=>element.name="Index of coincidence");

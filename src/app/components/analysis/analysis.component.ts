@@ -95,19 +95,22 @@ export class AnalysisComponent implements OnInit {
     this.showing_src=$event;
     
   }
+  //Main function used in analysis
   make_analysis() {
     if(this.pages.length==0 || this.applied.length==0){
       this.show_toastr_failure();
       this.exchange.analysis_result_set([]);
       this.exchange.set_result_pages([]);}
     else{
-   var controller = new FilterController(this.pages);
+
+    var controller = new FilterController(this.pages);
     this.applied = this.exchange.getapplied_filters();
     controller.add_multiple_filters(this.applied);
     var result = controller.start_analysis();
     this.exchange.analysis_result_set(result[0]);
     this.exchange.set_result_pages(result[1]);    
     this.show_toastr_success();
+    //animation to page transition
     setTimeout(()=>{
       this.router.navigateByUrl('/analysis results');
     },1000) 
@@ -121,15 +124,17 @@ export class AnalysisComponent implements OnInit {
   receive_applied_filterData($event: any) {
     this.applied = $event;
   }
-
+  //adding to applied filters
   add(event: any, i: number) {
     this.applied.push(this.filters[i]);
     this.exchange.applied_filters(this.applied);
   }
+  //delete filter at given indice
   delete(event: any, i: number) {
     this.applied.splice(i, 1);
     this.exchange.applied_filters(this.applied);
   }
+
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) { 
       moveItemInArray(

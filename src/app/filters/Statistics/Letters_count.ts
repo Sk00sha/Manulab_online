@@ -8,6 +8,7 @@ export class LetterCount extends Filter{
         return !isNaN(s - parseFloat(s));
     }
     activate(text:Pages[]){
+        
         var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     
         var Page_iterator=1;
@@ -16,6 +17,7 @@ export class LetterCount extends Filter{
         var characters:number=0;
         var special:number=0;
         var numbers:number=0;
+
         text.forEach(page=>{
        
         All_text+=page.page_text;

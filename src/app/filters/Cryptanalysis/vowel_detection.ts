@@ -162,7 +162,8 @@ export class VowelDetection extends Filter {
     bigrams = Object.keys(bigrams).map(function (key) {
       return [key, bigrams[key]];
     });
-    // this.sort_obj(bigrams);
+    
+
     for (let index = 0; index < bigrams.length; index++) {
       if (!(bigrams[index][0][0] in contact_letters)) {
         contact_letters[bigrams[index][0][0]] = [];
@@ -187,7 +188,7 @@ export class VowelDetection extends Filter {
   vowelDetectionVowelSolution(text: Pages[]) {
     var rem_accents = new remove_accents(this.keepSpace, text);
     var updated_texts = rem_accents.activate();
-    //this.first_pointer(text);
+    
     var full_result: any = [];
     var Page_iterator = 1;
     updated_texts.forEach((updated_text: any) => {
@@ -234,7 +235,7 @@ export class VowelDetection extends Filter {
         vowel_object = this.sort_obj(vowel_object);
         var maxkey = vowel_object[0][0];
         result.push(maxkey);
-        //vowel_object[0][1] = 0;
+       
         vowel_object = this.recreate_obj(vowel_object);
         vowel_object[maxkey] = 0;
         counter++;
@@ -320,9 +321,11 @@ export class VowelDetection extends Filter {
 
     return results;
   }
+  //helper function returns key for a given value
   getKeyByValue(object: any, value: any) {
     return Object.keys(object).find((key) => object[key] === value);
   }
+  //function sorts array
   sort_obj(rowSum: any) {
     var dataArray: any = [];
     for (var o in rowSum) {
@@ -337,6 +340,7 @@ export class VowelDetection extends Filter {
     });
     return sortable;
   }
+  //function sorts array ascending
   sort_obj_asc(rowSum: any) {
     var dataArray: any = [];
     for (var o in rowSum) {
@@ -351,6 +355,7 @@ export class VowelDetection extends Filter {
     });
     return sortable;
   }
+  //when sorted,recreate to object 
   recreate_obj(sorted_arr: any) {
     var rowSum: any = {};
     for (let item of sorted_arr) {
@@ -358,11 +363,13 @@ export class VowelDetection extends Filter {
     }
     return rowSum;
   }
+
   max_func(arraySum: any) {
     return Object.keys(arraySum).reduce((a, b) =>
       arraySum[a] > arraySum[b] ? a : b
     );
   }
+  //pointer functions used in vowel solution
   first_pointer(pages: Pages[]) {
     var vowels: any = [];
     var frequencies = getRelativeNgrams(pages, '', 1);
@@ -508,7 +515,7 @@ export class VowelDetection extends Filter {
       vowels.push([frequencies[index][0], count]);
     }
     vowels = this.recreate_obj(vowels);
-    // console.log(vowels);
+   
 
     var counter = 0;
     var result = [];
@@ -516,7 +523,7 @@ export class VowelDetection extends Filter {
       let arr: any = Object.values(vowels);
       let max = Math.max(...arr);
       var maxKey_max: any = this.getKeyByValue(vowels, max);
-      // vowels.push(maxKey_max);
+     
       result.push(maxKey_max);
       vowels[maxKey_max] = 0;
       counter++;

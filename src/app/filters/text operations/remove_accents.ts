@@ -11,6 +11,7 @@ export class remove_accents extends Filter {
       }
       activate(){
         var new_pages:Pages[]=[];
+        //we create and return Pages[] array to replace the previous text
         this.wanted_pages.forEach(element=>{
           new_pages.push(new Pages(element.id,element.img,this.remove_accents(element.page_text,this.boolean),element.name,element.checked));
         })

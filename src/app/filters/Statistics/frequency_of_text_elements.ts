@@ -19,7 +19,7 @@ export class frequency_of_text_elements extends Filter{
         var page_index=0;
         var allinone="";
         if (this.relative){
-          //if relative ==true then we call relativengrams
+          //if relative == true then we call relativengrams
             result=getRelativeNgrams(text,this.delimiter,this.n);
             if(text.length>1){
                 text.forEach((element:any)=>{
@@ -51,6 +51,7 @@ export class frequency_of_text_elements extends Filter{
         });
         var huge_object:any=[];
         var object_keys=(Object.keys(result_wrapper));
+        //calculationg for all pages combined
         object_keys.forEach(my_key=>{
           if(my_key=="All"){
           

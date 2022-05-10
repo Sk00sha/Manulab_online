@@ -68,7 +68,7 @@ export class AnalysisResultComponent implements OnInit {
     }
     
   }
-  //SORTING STARTS
+  //SORTING for table headers
   sortData(sort: Sort,i:number) {
       this.display_results[i] = this.display_results[i].sort((a:any, b:any) => {
       const isAsc = sort.direction === 'asc';
