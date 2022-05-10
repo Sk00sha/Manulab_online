@@ -19,7 +19,7 @@ export class Form1Component implements OnInit {
   @Input() name_of_filter:any;
   @Input() number_of_filter:number;
   name_number:string;
-  //output objektu, ktory definuje data pre filter do input modalu a emitter
+  //output object, which defines data for filter to input modal & emitter
   @Output() message=new EventEmitter<boolean>();
 
   ngOnInit(): void {

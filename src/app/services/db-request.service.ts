@@ -11,6 +11,7 @@ export class DbRequestService {
   readonly ROOT_URL =
     'https://www.cryptograms.hcportal.eu/api/rest/getCryptogramRecordsForManulab.php';
     
+    //localhost testing
   readonly ROOT_PROXY_URL =
     'https://thingproxy.freeboard.io/fetch/https://www.cryptograms.hcportal.eu/api/rest/getCryptogramRecordsForManulab.php';
 

@@ -12,12 +12,13 @@ import {faTimes}from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./info-modal.component.scss']
 })
 export class InfoModalComponent implements OnInit {
+  //icons and variable flag to display modal via css property
   showModal:boolean=false;
   faCalculator=faCalculator;
   faTextWidth=faTextWidth;
   faChartarea=faChartArea;
-faInfo=faInfo;
-faTimes=faTimes;
+  faInfo=faInfo;
+  faTimes=faTimes;
   constructor() { }
 
   ngOnInit(): void {

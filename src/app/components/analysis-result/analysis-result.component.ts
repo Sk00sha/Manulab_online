@@ -45,7 +45,7 @@ export class AnalysisResultComponent implements OnInit {
  
   ngOnInit(): void {
     this.display_results=this.exchange.analysis_results;
-   // var data:any=(,data.display_resuts,data.graph_settings)
+   
     if (this.display_results.length>0){
      for (let index = 0; index < this.display_results.length; index++) {
        const element = this.display_results[index];
