@@ -21,7 +21,7 @@ export class Form1Component implements OnInit {
   name_number:string;
   //output object, which defines data for filter to input modal & emitter
   @Output() message=new EventEmitter<boolean>();
-
+  //form object that holds its own properties, names of the properties have to be the same as in formControlName in html file
   ngOnInit(): void {
     var exchange_service_list:any=this.exchange_service.getapplied_filters();
     this.name_number=""+this.number_of_filter;
