@@ -117,10 +117,12 @@ export class PageLoaderComponent implements OnInit {
     }
     
   }
+  //set browsing to first page in db section
   first_page(){
     var desired_length=this.dropdown_partitions.length-1;
     this.scroller=0;
   }
+  //set browsing to last page in db section
   last_page(){
     var desired_length=this.dropdown_partitions.length-1;
     this.scroller=desired_length;
@@ -139,7 +141,7 @@ export class PageLoaderComponent implements OnInit {
     this.activeState=i;
   }
 
-
+  //used to split manuscripts from db import to 25 piece partitions
   repartition_select(){
     var temp_list:any[]=[];
     var i,j, chunk = 25;
@@ -161,6 +163,7 @@ export class PageLoaderComponent implements OnInit {
     }
 
   }
+  //material UI function implemented for drag & drop
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.Pages, event.previousIndex, event.currentIndex);
     
@@ -185,6 +188,7 @@ export class PageLoaderComponent implements OnInit {
   this.display_partitioner=false;
     
 }
+//edit page selected in menu
 edit_page(){
   this.Pages[this.edit_indice].page_text=this.text;
   this.Pages[this.edit_indice].img=this.url;
@@ -197,6 +201,7 @@ edit_page(){
   this.previous_target=[];
 
 }
+//change color when selecting menu item
 click(event:any){
  
   if(this.previous_target.length==0){
@@ -213,6 +218,7 @@ click(event:any){
   }
  
 }
+  //function uploads items into application for further analysis
   uploadPage() {
     this.dropdown_list_data=this.dataService.get_db_data();
     if( this.edit_flag==true &&this.edit_indice!==-1){
@@ -253,7 +259,7 @@ click(event:any){
         this.id_generator=this.Pages[this.Pages.length-1].id;
       }
       this.id_generator++;
-      //TUTO sa meni text - simple regex aby eliminovalo niektore neviditelne znaky v txt subore
+      // simple regex to eliminate some invisible characters in txt file
       this.text=this.text.replace(/\r\n/g,"\n");
       this.Pages.push(new Pages(this.id_generator,this.url,this.text,this.text_name,true));
       this.url = 'assets/images/placeholder.jpg';
@@ -272,6 +278,7 @@ click(event:any){
     this.text = '';
   }
   }
+  //select file event 
   selectfile(e: any): void {
     this.display_loader=false;
     if (e.target.files) {
@@ -286,6 +293,7 @@ click(event:any){
       var reader = new FileReader();
       let input_type: Array<string> = e.target.files[i].type.split('/');
       let name_split: Array<string>=[];
+      //check for plain text or for picture
       if (input_type[1] == 'plain') {
 
           reader.readAsText(e.target.files[i]);
@@ -313,6 +321,7 @@ click(event:any){
       }
       }  
     }
+    //function to determine which pages to check and use in the analysis
 check_pages(int:number){
   this.edit_flag=true;
   this.edit_indice=int;
@@ -321,6 +330,7 @@ check_pages(int:number){
   this.display_loader=false;
   
 }
+//checks all the pages in menu
   check_all($event:any){
     var id = $event.target.value;
     var checked = $event.target.checked;
