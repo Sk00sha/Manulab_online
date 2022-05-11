@@ -41,10 +41,10 @@ export class Form1Component implements OnInit {
     this.message.emit(false);
     this.set_filter_specs();
   }
-
+  //setting specs for a given filter
   set_filter_specs(){
-    var exchange_service_list:any=this.exchange_service.getapplied_filters();
-      let data=new FilterObject(
+        var exchange_service_list:any=this.exchange_service.getapplied_filters();
+        let data=new FilterObject(
         exchange_service_list[this.number_of_filter].name,
         this.form.get('delimiter')?.value,
         this.form.get('approx')?.value,
@@ -56,6 +56,7 @@ export class Form1Component implements OnInit {
         this.form.get('vowel')?.value,
         exchange_service_list[this.number_of_filter].group_id);  
         exchange_service_list[this.number_of_filter]=data;
+        //set data to default 
         this.form.setValue({
           delimiter:'',
           n:1,

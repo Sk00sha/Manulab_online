@@ -180,6 +180,7 @@ export class PageLoaderComponent implements OnInit {
       }
       
   }
+  //search handler method
   onOptionsSelected(event:any){
     const matches = this.dataService.get_db_data().filter((s:any) =>
     s.name.toLowerCase().includes(event.target.value.toLowerCase())
@@ -221,6 +222,7 @@ click(event:any){
   //function uploads items into application for further analysis
   uploadPage() {
     this.dropdown_list_data=this.dataService.get_db_data();
+    //edit function call
     if( this.edit_flag==true &&this.edit_indice!==-1){
      this.edit_page();
     }

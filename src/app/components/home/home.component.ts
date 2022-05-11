@@ -9,8 +9,9 @@ import {faChartArea}from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-faInfo=faInfo;
-faCalculator=faCalculator;
+  //icons
+  faInfo=faInfo;
+  faCalculator=faCalculator;
   faTextWidth=faTextWidth;
   faChartarea=faChartArea;
   constructor() { }

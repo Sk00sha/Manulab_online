@@ -13,8 +13,10 @@ export class PageDisplayModalComponent implements OnInit {
   @Input() pages_iterator:number;
   pages_to_show:any=[];
   constructor(private exchange:DataExchangeService) { }
+  //icons
   faFile=faFile;
   faTimes=faTimes;
+  //get data for page display from service
   ngOnInit(): void {
     this.pages_to_show=this.exchange.get_result_pages()[this.pages_iterator];
   }

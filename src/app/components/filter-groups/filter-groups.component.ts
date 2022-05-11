@@ -18,6 +18,7 @@ import { reduceTicks } from '@swimlane/ngx-charts';
   styleUrls: ['./filter-groups.component.scss']
 })
 export class FilterGroupsComponent implements OnInit {
+  //icons
   faCalculator=faCalculator;
   faTextWidth=faTextWidth;
   faChartarea=faChartArea;
@@ -28,6 +29,7 @@ export class FilterGroupsComponent implements OnInit {
   previous_target:any=[];
   constructor(private exchange:DataExchangeService,private loader:DataloaderService,private sanitizer: DomSanitizer) { }
   local_filters:string[]=[];
+  //parent => child & child => parent communication variables
   @Output() messageEvent=new EventEmitter<string[]>()
   @Output() emit_applied_filter=new EventEmitter<string[]>()
   @Input() get_applied:any[];
@@ -64,6 +66,7 @@ export class FilterGroupsComponent implements OnInit {
     }
    
   }
+  //download filters in JSON format
   download_filter():void{
   //appending to export applied filters
   this.get_applied.forEach(element=>this.applied_filters(element));
@@ -94,7 +97,7 @@ export class FilterGroupsComponent implements OnInit {
     }
     
   }
-  
+  //load JSON file that saved holds filter data
   selectfile(event:any) {
     const f = event.target.files[0];
     const reader = new FileReader();
